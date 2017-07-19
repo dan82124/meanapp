@@ -1,0 +1,57 @@
+<nav class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" [routerLink]="['/']">MEAN App</a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul id="active" class="nav navbar-nav side-nav">
+                	<li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']"><a [routerLink]="['/register']">Register</a></li>
+                    <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"><a [routerLink]="['/dashboard']">Dashboard</a></li>
+                    <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"><a [routerLink]="['/inventory']">Bikes</a></li>
+                    <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"><a [routerLink]="['/rental']">Rental</a></li>
+                    <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"><a [routerLink]="['/customer']">Customers</a></li>
+                    <!--
+                    <li [routerLinkActive]="['active']"><a [routerLink]="['/return']">Return</a></li>
+                    <li [routerLinkActive]="['active']"><a [routerLink]="['/sales']">Sales</a></li>
+                    -->
+                </ul>
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    <!-- <li class="dropdown messages-dropdown" [routerLinkActive]="['active']">
+                        <a [routerLink]="['/messages']" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">2</span> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">2 New Messages</li>
+                            <li class="message-preview">
+                                <a href="#">
+                                    <span class="avatar"><i class="fa fa-bell"></i></span>
+                                    <span class="message">Security alert</span>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li class="message-preview">
+                                <a href="#">
+                                    <span class="avatar"><i class="fa fa-bell"></i></span>
+                                    <span class="message">Security alert</span>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#">Go to Inbox <span class="badge">2</span></a></li>
+                        </ul>
+                    </li> -->
+                    <li *ngIf="authService.loggedIn()" class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> J M <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a [routerLink]="['/profile']"><i class="fa fa-user"></i> Profile</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#" (click)="onLogoutClick()"><i class="fa fa-power-off"></i> Log Out</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>

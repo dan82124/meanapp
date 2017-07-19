@@ -1,0 +1,42 @@
+<h2 class="page-header">Dashboard</h2>
+
+
+<div *ngIf="list">
+	<ul class="list-group">
+		<!-- Bike List Filter-->
+		<li class="list-group-item">
+			<div class="row">
+			  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+			    <input type="number" [(ngModel)]="bikefilter._id" placeholder="ID">
+			  </div>
+			  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+			    <input type="text" [(ngModel)]="bikefilter.model" placeholder="Model">
+			  </div>
+			  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+			    <input type="text" [(ngModel)]="bikefilter.status" placeholder="Status">
+			  </div>
+			  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+			    <input type="number" [(ngModel)]="bikefilter.price" placeholder="Price">
+			  </div>
+		  </div>
+		</li>
+
+		<!-- Bike List -->
+		<li class="list-group-item" *ngFor="let bike of list | bfilter:bikefilter">
+			<div class="row">
+	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+	      <b>ID:</b> {{bike._id}}
+	      </div>
+	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+	      <b>Model:</b> {{bike.model}}
+	      </div>
+	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+	      <b>Status:</b> {{bike.status}}
+	      </div>
+	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+	      <b>Price:</b> {{bike.price}}
+	      </div>
+    	</div>
+    </li>
+	</ul>
+</div>
