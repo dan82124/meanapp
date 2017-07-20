@@ -9,10 +9,10 @@
 	      	<b>Customer ID:</b> {{cust._id}}
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>Last Name:</b> {{cust.lname}}
+	      	<b>Name:</b> {{cust.name}}
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>First Name:</b> {{cust.fname}}
+	      	<b>Note:</b> {{cust.info}}
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center" style="overflow-wrap:break-word;">
 	      	<b>Rentals:</b> {{cust.rentalId}}
@@ -21,7 +21,7 @@
     	<hr>
     	<div class="row">
 	      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-	      	<button type="button" class="btn btn-primary btn-xs" (click)="onEditCust(cust)" data-toggle="modal" data-target="#editModal">Edit Time</button>
+	      	<!-- <button type="button" class="btn btn-primary btn-xs" (click)="onEditCust(cust)" data-toggle="modal" data-target="#editModal">Edit Time</button> -->
 	      	<button type="button" class="btn btn-danger btn-xs" (click)="onDelCust(cust)">Delete</button>
 	      </div>
     	</div>

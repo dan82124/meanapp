@@ -7,12 +7,18 @@
 			<div class="row">
 				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
 	      	<b>Rental ID:</b> {{rental._id}}
+	      	<hr>
+	      	<b>Status:</b> Active/Returned
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
 	      	<b>Customer ID:</b> {{rental.customerId}}
+	      	<hr>
+	      	<b>Name:</b> {{rental.customerName}}
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
 	      	<b>Date:</b> {{rental.date | date:"medium"}}
+	      	<hr>
+	      	<b>End Date/Duration:</b> {{rental.duration}}
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center" style="overflow-wrap:break-word;">
 	      	<b>Bikes:</b> {{rental.bikeId}}
@@ -21,10 +27,11 @@
     	<hr>
     	<div class="row">
 	      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-	      	<button type="button" class="btn btn-primary btn-xs" (click)="onAddBike(rental)" (click)="clearSelectedBikes()" data-toggle="modal" data-target="#addBikeModal">Add Bike</button>
-	      	<button type="button" class="btn btn-primary btn-xs" (click)="onDelBike(rental)" (click)="clearSelectedBikes()" data-toggle="modal" data-target="#delBikeModal">Remove Bike</button>
+	      	<button type="button" class="btn btn-primary btn-xs" (click)="onAddBike(rental)" data-toggle="modal" data-target="#addBikeModal">Add Bike</button>
+	      	<button type="button" class="btn btn-primary btn-xs" (click)="onDelBike(rental)" data-toggle="modal" data-target="#delBikeModal">Remove Bike</button>
 	      	<button type="button" class="btn btn-primary btn-xs" (click)="onEditRental(rental)" data-toggle="modal" data-target="#editModal">Edit Time</button>
-	      	<button type="button" class="btn btn-danger btn-xs" (click)="onDelRental(rental)">Delete</button>
+	      	<button type="button" class="btn btn-primary btn-xs" (click)="onRetBike(rental)" data-toggle="modal" data-target="#retBikeModal">Return Bike</button>
+	      	<button type="button" class="btn btn-danger btn-xs pull-right" (click)="onDelRental(rental)">Delete Rental</button>
 	      </div>
     	</div>
     </li>
@@ -41,12 +48,12 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-					<label>Customer First Name:</label>
-					<input type="text" [(ngModel)]="custFname" name="custFname" class="form-control">
+					<label>Name:</label>
+					<input type="text" [(ngModel)]="custName" name="custName" class="form-control">
 				</div>
 				<div class="form-group">
-					<label>Customer Last Name:</label>
-					<input type="text" [(ngModel)]="custLname" name="custLname" class="form-control">
+					<label>Note:</label>
+					<input type="text" [(ngModel)]="custInfo" name="custInfo" class="form-control">
 				</div>
       </div>
       <div class="modal-footer">
@@ -75,7 +82,7 @@
 					{{this.custId}}
 				</div>
 				<div class="form-group">
-					<label>Date:</label>
+					<label>Date: (Please change according to format)</label>
 					<input type="text" [(ngModel)]="editDate" id="rentalDate" class="form-control">
 				</div>
       </div>
@@ -151,6 +158,49 @@
 				</div>
       </div>
       <div class="modal-footer">
+        <button *ngIf="selectedBikes.length !== 0" type="button" class="btn btn-primary" (click)="onDelBikeSubmit()" data-dismiss="modal">Remove Bike</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Return Bike Modal -->
+<div class="modal fade" id="retBikeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clearSelectedBikes()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Return Bike</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+					<label>Rental ID:</label>
+					{{this.rentalId}}
+				</div>
+				<div class="form-group">
+					<label>Customer ID:</label>
+					{{this.custId}}
+				</div>
+				<div class="form-group">
+					<label>Customer Name:</label>
+					{{this.custName}}
+				</div>
+				<div class="form-group">
+					<label>Date:</label>
+					{{this.rentalDate | date:"medium"}}
+				</div>
+				<div class="form-group">
+					<label>Bike:</label>
+					<label *ngFor="let outBike of outBikes" class="form-control">
+		        <input type="checkbox" (change)="updateChecked(outBike);calcPrice(this.selectedBikes)"> ID: {{outBike._id}} | Model: {{outBike.model}}
+		    	</label>
+				</div>
+      </div>
+      <div class="modal-footer">
+      	<div class="pull-left">
+					<label>Total:</label>
+					{{this.rentalTotal}}
+				</div>
         <button *ngIf="selectedBikes.length !== 0" type="button" class="btn btn-primary" (click)="onDelBikeSubmit()" data-dismiss="modal">Remove Bike</button>
       </div>
     </div>

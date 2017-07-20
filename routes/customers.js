@@ -10,8 +10,7 @@ module.exports = router;
 //Add Customer
 router.post('/add', (req, res, next) => {
 	let newCustomer = new Customer({
-		fname: req.body.fname,
-		lname: req.body.lname,
+		name: req.body.name,
 		info: req.body.info
 	});
 
@@ -40,11 +39,10 @@ router.post('/del', (req, res, next) => {
 //Update Customer Info
 router.post('/update', (req, res, next) => {
 	const id = req.body.id;
-  const fname = req.body.fname;
-  const lname = req.body.lname;
+  const name = req.body.name;
 	const info = req.body.info;
 
-	Customer.updateCustomer(id, fname, lname, info, (err, result) => {
+	Customer.updateCustomer(id, name, info, (err, result) => {
 		if(err || result.nModified == 0) {
 			res.json({success: false, msg: 'Failed to update customer: ' + id});
 		} else {
@@ -55,10 +53,10 @@ router.post('/update', (req, res, next) => {
 
 //Find Customer By Name
 router.post('/find', (req, res, next) => {
-  const fname = req.body.fname;
-  const lname = req.body.lname;
+  const name = req.body.name;
+  const info = req.body.info;
 
-	Customer.getCustomerByName(fname, lname, (err, result) => {
+	Customer.getCustomerByName(name, info, (err, result) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get customer: ' + name});
 		} else {

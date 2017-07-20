@@ -4,11 +4,7 @@ const config = require('../config/database');
 
 //Customer Schema
 const CustomerSchema = mongoose.Schema({
-  fname: {
-		type: String,
-    required: true
-	},
-  lname: {
+  name: {
 		type: String,
     required: true
 	},	
@@ -19,13 +15,14 @@ const CustomerSchema = mongoose.Schema({
 const Customer = module.exports = mongoose.model('Customer', CustomerSchema);
 
 module.exports.getCustomerList = (callback) => {
-	Customer.find(callback).sort({lname: 1, fname: 1});
+	Customer.find(callback).sort({name: 1});
 }
 
-module.exports.getCustomerByName = (fname, lname, callback) => {
-	const query = {fname: fname, lname: lname};
-	
-	Customer.findOneAndUpdate(query, query, {upsert: true, new: true}, callback);
+module.exports.getCustomerByName = (name, info, callback) => {
+	const query = {name: name};
+	const update = {name: name, info: info};
+
+	Customer.findOneAndUpdate(query, update, {upsert: true, new: true}, callback);
 }
 
 module.exports.addCustomer = (newCustomer, callback) => {
@@ -38,9 +35,9 @@ module.exports.delCustomer = (id, callback) => {
   Customer.deleteOne(query, callback);
 }
 
-module.exports.updateCustomer = (id, fname, lname, info, callback) => {
+module.exports.updateCustomer = (id, name, info, callback) => {
   const query = {_id: id};
-  const update = {fname: fname, lname: lname, info: info};
+  const update = {name: name, info: info};
 
   Customer.update(query, {$set: update}, callback);
 }

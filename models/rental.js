@@ -9,10 +9,14 @@ const RentalSchema = mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		required: true
 	},
-  date: Date,
+  customerName: {
+    type: String,
+    required: true
+  },
   bikeId: [Number],
-  total: Number,
-  discount: Boolean
+  date: Date,
+  duration: Number,
+  total: Number
 });
 
 const Rental = module.exports = mongoose.model('Rental', RentalSchema);
@@ -23,7 +27,7 @@ module.exports.addRental = (newRental, callback) => {
 
 module.exports.delRental = (id, callback) => {
   const query = {_id: id};
-  
+
   Rental.deleteOne(query, callback);
 }
 

@@ -14,15 +14,16 @@ export class RentalComponent implements OnInit {
 	rentals: Object;
   rentalId: String;
   rentalDate: Date;
+  rentalTotal: Number = new Number(0);
   editDate: Date;
   rentalBikes: Number[];
   inBikes: Bike[] = new Array<Bike>();
   outBikes: Bike[] = new Array<Bike>();
-  selectedBikes: Number[] = new Array<Number>();
-
-  custId: Object;
-  custFname: String;
-  custLname: String;
+  selectedBikes: Bike[] = new Array<Bike>();
+  custId: String;
+  custName: String;
+  custInfo: String;
+  currentTime: Date;
 
   constructor(
     private customerService: CustomerService,
@@ -41,13 +42,13 @@ export class RentalComponent implements OnInit {
 
   getCustId() {
     let query = {
-      fname: this.custFname.toUpperCase(),
-      lname: this.custLname.toUpperCase()
+      name: this.custName.toUpperCase(),
+      info: this.custInfo
     }
 
     this.customerService.getCustId(query).subscribe(data => {
       if (data.success) {
-        this.startRental(data.msg._id);
+        this.startRental(data.msg);
       } else {
         this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
       }
@@ -57,14 +58,15 @@ export class RentalComponent implements OnInit {
     }); 
   }
 
-  startRental(custId) {
+  startRental(cust) {
     let start = {
-      customerId: custId
+      customerId: cust._id,
+      customerName: cust.name
     }
     this.rentalService.startRental(start).subscribe(data => {
       if (data.success) {
         console.log(data);
-        this.flashMessage.show("Rental created for: " + this.custFname.toUpperCase() + " " + this.custLname.toUpperCase(), {cssClass: 'alert-success'});
+        this.flashMessage.show("Rental created for: " + this.custName.toUpperCase(), {cssClass: 'alert-success'});
         this.ngOnInit();
       } else {
         this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
@@ -81,13 +83,13 @@ export class RentalComponent implements OnInit {
       rentalId: rental._id,
       bikeId: rental.bikeId
     }
-    console.log(del);
     this.rentalService.delRental(del).subscribe(data => {
       if (data.success) {
-        this.flashMessage.show(data.msg, {cssClass: 'alert-success'});
+        this.flashMessage.show("Rental " + rental._id + " deleted", {cssClass: 'alert-success'});
         this.ngOnInit();
       } else {
         this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
+        this.ngOnInit();
       }
     }, err => {
       console.log(err);
@@ -96,6 +98,7 @@ export class RentalComponent implements OnInit {
   }
 
   onAddBike(rental) {
+    this.clearSelectedBikes();
     this.custId = rental.customerId;
     this.rentalId = rental._id;
     this.rentalDate = new Date(rental.date);
@@ -116,7 +119,7 @@ export class RentalComponent implements OnInit {
   onAddBikeSubmit() {
     let add = {
       rentalId: this.rentalId,
-      bikeId: this.selectedBikes
+      bikes: this.selectedBikes
     }
     console.log(add);
     this.rentalService.addBike(add).subscribe(data => {
@@ -133,6 +136,7 @@ export class RentalComponent implements OnInit {
   }
 
   onDelBike(rental) {
+    this.clearSelectedBikes();
     this.custId = rental.customerId;
     this.rentalId = rental._id;
     this.rentalDate = new Date(rental.date);
@@ -157,7 +161,7 @@ export class RentalComponent implements OnInit {
   onDelBikeSubmit() {
     let del = {
       rentalId: this.rentalId,
-      bikeId: this.selectedBikes
+      bikes: this.selectedBikes
     }
     console.log(del);
     this.rentalService.removeBike(del).subscribe(data => {
@@ -171,6 +175,47 @@ export class RentalComponent implements OnInit {
       console.log(err);
       return false;
     }); 
+  }
+
+  onRetBike(rental) {
+    this.clearSelectedBikes();
+    this.rentalTotal = 0;
+    console.log(rental);
+    this.custId = rental.customerId;
+    this.custName = rental.customerName;
+    this.rentalId = rental._id;
+    this.rentalDate = new Date(rental.date);
+    this.rentalBikes = rental.bikeId;
+
+    let rented = {
+      status: this.rentalId
+    }
+
+    this.bikeService.bikeByStatus(rented).subscribe(data => {
+      if (data.success) {
+        this.outBikes = data.msg;
+      } else {
+        this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
+      }
+    }, err => {
+      console.log(err);
+      return false;
+    });
+  }
+
+  calcPrice(bikes) {
+    this.currentTime = new Date;
+    let duration = Math.round((this.currentTime.getTime() - this.rentalDate.getTime())/(1000*60));
+    console.log(duration + " minutes");
+
+    let total = 0;
+    
+    for (let bike = 0; bike < bikes.length; bike++) {
+      let cost = Math.round((duration * (bikes[bike].price/60))*100)/100;
+      total += cost;
+    }
+
+    this.rentalTotal = new Number(total);
   }
 
   onEditRental(rental) {
@@ -207,9 +252,9 @@ export class RentalComponent implements OnInit {
   }
 
   updateChecked(bike) {
-    let index = this.selectedBikes.indexOf(bike._id);
+    let index = this.selectedBikes.indexOf(bike);
     if (index === -1) {
-      this.selectedBikes.push(bike._id);
+      this.selectedBikes.push(bike);
     } else {
       this.selectedBikes.splice(index, 1);
     }
@@ -221,8 +266,7 @@ export class RentalComponent implements OnInit {
   }
 
   clearCustInfo() {
-    this.custFname = "";
-    this.custLname = "";
+    this.custName = "";
     this.custId = null;
   }
 }
