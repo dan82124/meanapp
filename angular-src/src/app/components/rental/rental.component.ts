@@ -14,7 +14,9 @@ export class RentalComponent implements OnInit {
 	rentals: Object;
   rentalId: String;
   rentalDate: Date;
-  rentalTotal: Number = new Number(0);
+  rentalTotal: Number;
+  rentalDuration: Number;
+  subTotal: Number = 0;
   editDate: Date;
   rentalBikes: Number[];
   inBikes: Bike[] = new Array<Bike>();
@@ -179,8 +181,8 @@ export class RentalComponent implements OnInit {
 
   onRetBike(rental) {
     this.clearSelectedBikes();
-    this.rentalTotal = 0;
-    console.log(rental);
+    this.subTotal = 0;
+    this.rentalTotal = rental.total;
     this.custId = rental.customerId;
     this.custName = rental.customerName;
     this.rentalId = rental._id;
@@ -203,6 +205,37 @@ export class RentalComponent implements OnInit {
     });
   }
 
+  onRetBikeSubmit() {
+    this.rentalTotal = this.subTotal.valueOf() + this.rentalTotal.valueOf();
+    console.log(this.rentalId);
+    console.log(this.currentTime);
+    console.log(this.selectedBikes);
+    console.log(this.rentalTotal);
+    console.log(this.rentalDuration);
+
+    console.log(this.selectedBikes.length !== this.outBikes.length);
+
+    let ret = {
+      rentalId: this.rentalId,
+      endDate: this.currentTime,
+      duration: this.rentalDuration,
+      rentalStatus: (this.selectedBikes.length !== this.outBikes.length),
+      total: this.rentalTotal,
+      bikes: this.selectedBikes
+    }
+
+    this.rentalService.returnRental(ret).subscribe(data => {
+      if (data.success) {
+        this.ngOnInit();
+      } else {
+        this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
+      }
+    }, err => {
+      console.log(err);
+      return false;
+    });
+  }
+
   calcPrice(bikes) {
     this.currentTime = new Date;
     let duration = Math.round((this.currentTime.getTime() - this.rentalDate.getTime())/(1000*60));
@@ -215,7 +248,8 @@ export class RentalComponent implements OnInit {
       total += cost;
     }
 
-    this.rentalTotal = new Number(total);
+    this.subTotal = Math.round(total*100)/100;
+    this.rentalDuration = duration;
   }
 
   onEditRental(rental) {

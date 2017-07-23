@@ -20,6 +20,12 @@ export class RentalService {
   	return this.http.post('http://localhost:3000/rentals/start', custId, {headers: headers}).map(res => res.json());
   }
 
+  returnRental(rental) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/rentals/ret', rental, {headers: headers}).map(res => res.json());
+  }
+
   delRental(rentId) {
   	let headers = new Headers();
   	headers.append('Content-Type', 'application/json');

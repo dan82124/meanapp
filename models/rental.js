@@ -15,7 +15,9 @@ const RentalSchema = mongoose.Schema({
   },
   bikeId: [Number],
   date: Date,
+  endDate: Date,
   duration: Number,
+  status: Boolean,
   total: Number
 });
 
@@ -48,6 +50,13 @@ module.exports.removeBike = (id, bike, callback) => {
 module.exports.editDate = (id, date, callback) => {
   const query = {_id: id};
   const update = {date: date};
+
+  Rental.update(query, {$set: update}, callback);
+}
+
+module.exports.retRental = (id, endDate, duration, status, total, callback) => {
+  const query = {_id: id};
+  const update = {endDate: endDate, duration: duration, status: status, total: total};
 
   Rental.update(query, {$set: update}, callback);
 }

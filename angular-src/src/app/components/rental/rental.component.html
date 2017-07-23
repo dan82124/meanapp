@@ -8,7 +8,7 @@
 				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
 	      	<b>Rental ID:</b> {{rental._id}}
 	      	<hr>
-	      	<b>Status:</b> Active/Returned
+	      	<b>Status:</b> {{rental.status}}
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
 	      	<b>Customer ID:</b> {{rental.customerId}}
@@ -16,21 +16,23 @@
 	      	<b>Name:</b> {{rental.customerName}}
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>Date:</b> {{rental.date | date:"medium"}}
+	      	<b>Start Date:</b> {{rental.date | date:"medium"}}
 	      	<hr>
-	      	<b>End Date/Duration:</b> {{rental.duration}}
+	      	<b>Duration (Minutes):</b> {{rental.duration}}
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center" style="overflow-wrap:break-word;">
 	      	<b>Bikes:</b> {{rental.bikeId}}
+	      	<hr>
+	      	<b>Total:</b> {{rental.total}}
 	      </div>
     	</div>
     	<hr>
     	<div class="row">
 	      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-	      	<button type="button" class="btn btn-primary btn-xs" (click)="onAddBike(rental)" data-toggle="modal" data-target="#addBikeModal">Add Bike</button>
-	      	<button type="button" class="btn btn-primary btn-xs" (click)="onDelBike(rental)" data-toggle="modal" data-target="#delBikeModal">Remove Bike</button>
-	      	<button type="button" class="btn btn-primary btn-xs" (click)="onEditRental(rental)" data-toggle="modal" data-target="#editModal">Edit Time</button>
-	      	<button type="button" class="btn btn-primary btn-xs" (click)="onRetBike(rental)" data-toggle="modal" data-target="#retBikeModal">Return Bike</button>
+	      	<button *ngIf="rental.status" type="button" class="btn btn-primary btn-xs" (click)="onAddBike(rental)" data-toggle="modal" data-target="#addBikeModal">Add Bike</button>
+	      	<button *ngIf="rental.status" type="button" class="btn btn-primary btn-xs" (click)="onDelBike(rental)" data-toggle="modal" data-target="#delBikeModal">Remove Bike</button>
+	      	<button *ngIf="rental.status" type="button" class="btn btn-primary btn-xs" (click)="onEditRental(rental)" data-toggle="modal" data-target="#editModal">Edit Time</button>
+	      	<button *ngIf="rental.status" type="button" class="btn btn-primary btn-xs" (click)="onRetBike(rental)" data-toggle="modal" data-target="#retBikeModal">Return Bike</button>
 	      	<button type="button" class="btn btn-danger btn-xs pull-right" (click)="onDelRental(rental)">Delete Rental</button>
 	      </div>
     	</div>
@@ -199,9 +201,9 @@
       <div class="modal-footer">
       	<div class="pull-left">
 					<label>Total:</label>
-					{{this.rentalTotal}}
+					{{this.subTotal}}
 				</div>
-        <button *ngIf="selectedBikes.length !== 0" type="button" class="btn btn-primary" (click)="onDelBikeSubmit()" data-dismiss="modal">Remove Bike</button>
+        <button *ngIf="selectedBikes.length !== 0" type="button" class="btn btn-primary" (click)="onRetBikeSubmit()" data-dismiss="modal">Return Bike</button>
       </div>
     </div>
   </div>

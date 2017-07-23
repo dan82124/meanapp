@@ -15,7 +15,9 @@ router.post('/start', (req, res, next) => {
 		customerId: req.body.customerId,
 		customerName: req.body.customerName,
     date: new Date,
-    duration: 0
+    duration: 0,
+    status: true,
+    total: 0
 	});
 
 	Rental.addRental(newRental, (err, rental) => {
@@ -31,6 +33,44 @@ router.post('/start', (req, res, next) => {
 			});
 		}
 	});
+});
+
+//Return Rental
+router.post('/ret', (req, res, next) => {
+	const rentalId = req.body.rentalId;
+	const endDate = req.body.endDate;
+	const duration = req.body.duration;
+	const rentalStatus = req.body.rentalStatus;
+	const total = req.body.total;
+	const bikes = req.body.bikes;
+  const bikeStatus = "in";
+
+  console.log(rentalId);
+  console.log(endDate);
+  console.log(duration);
+  console.log(rentalStatus);
+  console.log(total);
+  console.log(bikes);
+
+  Bike.updateBikes(bikes, bikeStatus, (err, result) => {
+		if(err || result.nModified == 0) {
+			res.json({success: false, msg: 'Failed to update bikes: ' + bikes});
+		} else {
+			Rental.removeBike(rentalId, bikes, (err, result) => {
+				if(err || result.nModified == 0) {
+					res.json({success: false, msg: 'Failed to remove bike: ' + bikeIds});
+				} else {
+		      Rental.retRental(rentalId, endDate, duration, rentalStatus, total, (err, rental) => {
+						if(err || rental.deletedCount == 0) {
+							res.json({success: false, msg: 'Failed to return rental: ' + rentalId});
+						} else {
+							res.json({success: true, msg: 'Returned rental: ' + rentalId});
+				    }
+					});
+		    }
+			});
+		}
+	}); 
 });
 
 //Delete Rental
