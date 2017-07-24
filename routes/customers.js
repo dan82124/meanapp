@@ -76,16 +76,3 @@ router.get('/list', (req, res, next) => {
   });
 });
 
-// //Remove Rental
-// router.post('/remove', (req, res, next) => {
-// 	const custId = req.body.custId;
-// 	const rentId = req.body.rentId;
-
-// 	Customer.removeRental(custId, rentId, (err, result) => {
-//     if(err || result.nModified == 0) {
-// 			res.json({success: false, msg: 'Failed to get remove rental: ' + rentId});
-// 		} else {
-//       res.json({success: true, msg: result});
-//     }
-//   });
-// });

@@ -25,5 +25,11 @@ export class CustomerService {
 		let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
   	return this.http.post('http://localhost:3000/customers/del', custId, {headers: headers}).map(res => res.json());	
+	}
+
+	editCustomer(cust) {
+		let headers = new Headers();
+  	headers.append('Content-Type', 'application/json');
+  	return this.http.post('http://localhost:3000/customers/update', cust, {headers: headers}).map(res => res.json());	
 	} 
 }

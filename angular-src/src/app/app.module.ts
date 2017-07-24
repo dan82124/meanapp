@@ -23,7 +23,7 @@ import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { BikeFilterPipe } from './shared/bikefilter.pipe';
-import { ModelFilterPipe } from './shared/modelfilter.pipe';
+import { CustomerFilterPipe } from './shared/customerfilter.pipe';
 
 const appRoutes: Routes = [
   {path:'', component: HomeComponent},
@@ -47,7 +47,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     InventoryComponent,
     BikeFilterPipe,
-    ModelFilterPipe,
+    CustomerFilterPipe,
     RentalComponent,
     CustomerComponent
   ],

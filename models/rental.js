@@ -62,7 +62,7 @@ module.exports.retRental = (id, endDate, duration, status, total, callback) => {
 }
 
 module.exports.getRentalList = (callback) => {
-  Rental.find(callback).sort({date: -1});
+  Rental.find(callback).sort({status: -1, date: -1});
 }
 
 module.exports.getRentalByCustId = (custId, callback) => {

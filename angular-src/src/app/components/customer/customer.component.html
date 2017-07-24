@@ -1,30 +1,77 @@
 <h2 class="page-header">Customers</h2>
 
-<!-- Customer List -->
 <div *ngIf="customers">
 	<ul class="list-group">
-		<li class="list-group-item" *ngFor="let cust of customers">
+			<!-- Customer List Filter-->
+		<li class="list-group-item">
+			<div class="row">
+			  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+			    <input type="text" [(ngModel)]="customerfilter._id" placeholder="ID" style="width: 100px;">
+			  </div>
+			  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+			    <input type="text" [(ngModel)]="customerfilter.name" placeholder="Name" style="width: 100px;">
+			  </div>
+			  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+			    <input type="text" [(ngModel)]="customerfilter.info" placeholder="Info" style="width: 100px;">
+			  </div>
+			  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+			    <input type="text" [(ngModel)]="customerfilter.rentalId" placeholder="Rental ID" style="width: 100px;">
+			  </div>
+		  </div>
+		</li>
+		<!-- Customer List -->
+		<li class="list-group-item" *ngFor="let cust of customers | cfilter:customerfilter">
 			<div class="row">
 				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>Customer ID:</b> {{cust._id}}
+	      	<b>Customer ID:</b> <div>{{cust._id}}</div>
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>Name:</b> {{cust.name}}
+	      	<b>Name:</b> <div>{{cust.name}}</div>
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>Note:</b> {{cust.info}}
+	      	<b>Note:</b> <div>{{cust.info}}</div>
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center" style="overflow-wrap:break-word;">
-	      	<b>Rentals:</b> {{cust.rentalId}}
+	      	<b>Rentals:</b> <div>{{cust.rentalId}}</div>
 	      </div>
     	</div>
     	<hr>
     	<div class="row">
 	      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-	      	<!-- <button type="button" class="btn btn-primary btn-xs" (click)="onEditCust(cust)" data-toggle="modal" data-target="#editModal">Edit Time</button> -->
-	      	<button type="button" class="btn btn-danger btn-xs" (click)="onDelCust(cust)">Delete</button>
+	      	<button type="button" class="btn btn-primary btn-xs" (click)="onEditCust(cust)" data-toggle="modal" data-target="#editModal">Edit Customer</button>
+	      	<button type="button" class="btn btn-danger btn-xs pull-right" (click)="onDelCust(cust)">Delete</button>
 	      </div>
     	</div>
     </li>
 	</ul>
+</div>
+
+<!-- Edit Customer Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Customer Info</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+					<label>Customer ID:</label>
+					{{this.currCust._id}}
+				</div>
+        <div class="form-group">
+					<label>Name:</label>
+					{{this.currCust.name}}
+				</div>
+				<div class="form-group">
+					<label>Note</label>
+					<input type="text" [(ngModel)]="this.currCust.info" name="custInfo" class="form-control">
+				</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="resetEdit()">Reset Changes</button>
+        <button type="button" class="btn btn-primary" (click)="onEditSubmit()" data-dismiss="modal">Save Changes</button>
+      </div>
+    </div>
+  </div>
 </div>

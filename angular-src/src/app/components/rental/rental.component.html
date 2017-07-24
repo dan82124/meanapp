@@ -6,24 +6,24 @@
 		<li class="list-group-item" *ngFor="let rental of rentals">
 			<div class="row">
 				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>Rental ID:</b> {{rental._id}}
+	      	<b>Rental ID:</b> <div>{{rental._id}}</div>
 	      	<hr>
-	      	<b>Status:</b> {{rental.status}}
+	      	<b>Status:</b> <div *ngIf="rental.status" class="text-success">Active</div> <div *ngIf="!rental.status" class="text-danger">Returned</div>
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>Customer ID:</b> {{rental.customerId}}
+	      	<b>Customer ID:</b> <div>{{rental.customerId}}</div>
 	      	<hr>
-	      	<b>Name:</b> {{rental.customerName}}
+	      	<b>Customer Name:</b> <div>{{rental.customerName}}</div>
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>Start Date:</b> {{rental.date | date:"medium"}}
+	      	<b>Start Date:</b> <div>{{rental.date | date:"medium"}}</div>
 	      	<hr>
-	      	<b>Duration (Minutes):</b> {{rental.duration}}
+	      	<b>Duration (Minutes):</b> <div>{{rental.duration}}</div>
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center" style="overflow-wrap:break-word;">
-	      	<b>Bikes:</b> {{rental.bikeId}}
+	      	<b>Bikes:</b> <div>{{rental.bikeId}}</div>
 	      	<hr>
-	      	<b>Total:</b> {{rental.total}}
+	      	<b>Total:</b> <div>{{rental.total}}</div>
 	      </div>
     	</div>
     	<hr>
