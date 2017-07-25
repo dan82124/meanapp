@@ -26,11 +26,42 @@
 			</div>
 	</div>
 
-	<div *ngIf="list" class="row">
-		<h3>Bike List</h3>
+	<div *ngIf="rentalList" class="row">
+		<h3>Active Rentals</h3>
+		<ul class="list-group">
+			<!-- Rental List -->
+			<li class="list-group-item" *ngFor="let rental of rentalList">
+				<div class="row text-center">
+		      <div class="col-md-3 col-sm-6 col-xs-12">
+						<b>Rental ID:</b> <div>{{rental._id}}</div>
+		      	<hr>
+		      	<b>Status:</b> <div *ngIf="rental.status" class="text-success">Active</div> <div *ngIf="!rental.status" class="text-danger">Returned</div>
+		      </div>
+		      <div class="col-md-3 col-sm-6 col-xs-12">
+		      	<b>Customer ID:</b> <div>{{rental.customerId}}</div>
+		      	<hr>
+		      	<b>Customer Name:</b> <div>{{rental.customerName}}</div>
+		      </div>
+		      <div class="col-md-3 col-sm-6 col-xs-12">
+		      	<b>Start Date:</b> <div>{{rental.date | date:"medium"}}</div>
+		      	<hr>
+		      	<b>Duration (Minutes):</b> <div>{{rental.duration}}</div>
+		      </div>
+		      <div class="col-md-3 col-sm-6 col-xs-12" style="overflow-wrap:break-word;">
+		      	<b>Bikes:</b> <div>{{rental.bikeId}}</div>
+		      	<hr>
+		      	<b>Total:</b> <div>{{rental.total}}</div>
+		      </div>
+	    	</div>
+	    </li>
+		</ul>
+	</div>
+
+	<div *ngIf="bikeList" class="row">
+		<h3>Available Bikes</h3>
 		<ul class="list-group">
 			<!-- Bike List Filter-->
-			<li class="list-group-item">
+<!-- 			<li class="list-group-item">
 				<div class="row text-center">
 				  <div class="col-md-3 col-sm-6 col-xs-12">
 				    <input class="form-control" type="number" [(ngModel)]="bikefilter._id" placeholder="ID">
@@ -45,10 +76,10 @@
 				    <input class="form-control" type="number" min="4.5" max="12.5" step="0.5" [(ngModel)]="bikefilter.price" placeholder="Price">
 				  </div>
 			  </div>
-			</li>
+			</li> -->
 
 			<!-- Bike List -->
-			<li class="list-group-item" *ngFor="let bike of list | bfilter:bikefilter">
+			<li class="list-group-item" *ngFor="let bike of bikeList | bfilter:bikefilter">
 				<div class="row text-center">
 		      <div class="col-md-3 col-sm-6 col-xs-12">
 		      <b>ID:</b> {{bike._id}}

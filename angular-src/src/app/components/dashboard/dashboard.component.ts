@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { BikeService } from '../../services/bike.service';
 import { RentalService } from '../../services/rental.service';
@@ -11,8 +10,8 @@ import { Bike } from '../../shared/bike';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-	user: Object;
-	list: Object;
+	bikeList: Bike[];
+  rentalList: Object[];
   bikefilter: Bike = new Bike();
   totalBikeCount: Number;
   availBikeCount: Number;
@@ -21,19 +20,12 @@ export class DashboardComponent implements OnInit {
   constructor(
   	private bikeService: BikeService,
     private rentalService: RentalService,
-  	private authService: AuthService,
   	private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
-  	this.authService.getProfile().subscribe(profile => {
-  		this.user = profile.user;
-  	}, err => {
-  		console.log(err);
-  		return false;
-  	});
-
   	this.bikeService.getBikeList().subscribe(data => {
-  		this.list = data.msg;
+  		this.bikeList = data.msg;
+      this.bikefilter.status = "in";
   	}, err => {
   		console.log(err);
   		return false;
@@ -49,6 +41,7 @@ export class DashboardComponent implements OnInit {
 
     this.rentalService.getActiveRentals().subscribe(data => {
       this.rentalCount = data.msg.length;
+      this.rentalList = data.msg;
     }, err => {
       console.log(err);
       return false;

@@ -31,8 +31,8 @@
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
 	      	<b>Note:</b> <div>{{cust.info}}</div>
 	      </div>
-	      <div class="col-md-3 col-sm-6 col-xs-12 text-center" style="overflow-wrap:break-word;">
-	      	<b>Rentals:</b> <div>{{cust.rentalId}}</div>
+	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+	      	<b>Rentals:</b> <div *ngFor="let id of cust.rentalId">{{id}}</div>
 	      </div>
     	</div>
     	<hr>

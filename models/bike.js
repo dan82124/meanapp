@@ -78,7 +78,7 @@ module.exports.getBikeByModel = (model, callback) => {
 module.exports.getBikeByStatus = (status, callback) => {
 	const query = {status: status};
 
-	Bike.find(query, callback);
+	Bike.find(query, callback).sort({model: 1});
 }
 
 module.exports.getBikeByPrice = (price, callback) => {

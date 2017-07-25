@@ -9,7 +9,7 @@ import { Bike } from '../../shared/bike';
   styleUrls: ['./inventory.component.css']
 })
 export class InventoryComponent implements OnInit {
-	list: Object;
+	list: Bike[];
   currBike: Bike = new Bike();
   prevBike: Bike = new Bike();
   bikefilter: Bike = new Bike();
@@ -33,6 +33,7 @@ export class InventoryComponent implements OnInit {
   }
 
   onAddSubmit() {
+    this.currBike.status = "in";
   	this.bikeService.addBike(this.currBike).subscribe(data => {
   		console.log(data);
   		if (data.success) {

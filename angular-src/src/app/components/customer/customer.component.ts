@@ -9,7 +9,7 @@ import { Customer }  from '../../shared/customer';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-	customers: [Customer];
+	customers: Customer[];
   customerfilter: Customer = new Customer();
   currCust: Customer = new Customer();
   prevCust: Customer = new Customer();
