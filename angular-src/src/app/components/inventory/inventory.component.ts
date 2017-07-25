@@ -10,15 +10,10 @@ import { Bike } from '../../shared/bike';
 })
 export class InventoryComponent implements OnInit {
 	list: Object;
-	id: String;
-	model: String;
-	status: String;
-	price: String;
-	prev_id: String;
-	prev_model: String;
-	prev_status: String;
-	prev_price: String;
+  currBike: Bike = new Bike();
+  prevBike: Bike = new Bike();
   bikefilter: Bike = new Bike();
+  bikeModels: String[] = ["Cruiser", "MTN", "Electric", "Tandem", "Kids", "Trailer"]
 
   constructor(
   	private bikeService: BikeService,
@@ -34,21 +29,11 @@ export class InventoryComponent implements OnInit {
   }
 
   clearBikeInfo() {
-  	this.id = null;
-  	this.model = null;
-  	this.status = null;
-  	this.price = null;
+    this.currBike = new Bike();
   }
 
-  onAddBike() {
-  	let add = {
-  		_id: this.id,
-      model: this.model,
-      status: this.status,
-      price: this.price
-  	}
-  	
-  	this.bikeService.addBike(add).subscribe(data => {
+  onAddSubmit() {
+  	this.bikeService.addBike(this.currBike).subscribe(data => {
   		console.log(data);
   		if (data.success) {
   			this.flashMessage.show(data.msg, {cssClass: 'alert-success'});
@@ -64,34 +49,26 @@ export class InventoryComponent implements OnInit {
   }
 
   onEditBike(bike) {
-  	this.id = bike._id;
-  	this.model = bike.model;
-  	this.status = bike.status;
-  	this.price = bike.price;
+  	this.currBike._id = bike._id;
+  	this.currBike.model = bike.model;
+  	this.currBike.status = bike.status;
+  	this.currBike.price = bike.price;
 
-  	this.prev_id = bike._id;
-  	this.prev_model = bike.model;
-  	this.prev_status = bike.status;
-  	this.prev_price = bike.price;
+  	this.prevBike._id = bike._id;
+  	this.prevBike.model = bike.model;
+  	this.prevBike.status = bike.status;
+  	this.prevBike.price = bike.price;
   }
 
   undoEdit() {
-  	this.id = this.prev_id;
-  	this.model = this.prev_model;
-  	this.status = this.prev_status;
-  	this.price = this.prev_price;
+  	this.currBike._id = this.prevBike._id;
+  	this.currBike.model = this.prevBike.model;
+  	this.currBike.status = this.prevBike.status;
+  	this.currBike.price = this.prevBike.price;
   }
 
   onEditSubmit() {
-  	let edit = {
-  		_id: this.id,
-      model: this.model,
-      status: this.status,
-      price: this.price
-  	}
-  	console.log(edit);
-
-  	this.bikeService.editBike(edit).subscribe(data => {
+    this.bikeService.editBike(this.currBike).subscribe(data => {
   		console.log(data);
   		if (data.success) {
   			this.flashMessage.show(data.msg, {cssClass: 'alert-success'});
@@ -107,11 +84,7 @@ export class InventoryComponent implements OnInit {
   }
 
   onDelBike(bike) {
-  	let del = {
-  		_id: bike._id
-  	}
-    
-  	this.bikeService.delBike(del).subscribe(data => {
+    this.bikeService.delBike(bike).subscribe(data => {
   		console.log(data);
   		if (data.success) {
   			this.flashMessage.show(data.msg, {cssClass: 'alert-success'});

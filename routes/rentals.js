@@ -192,3 +192,14 @@ router.get('/list', (req, res, next) => {
     }
   });
 });
+
+//Get Active Rentals
+router.get('/active', (req, res, next) => {
+	Rental.getRentalByStatus(true, (err, result) => {
+    if(err) {
+			res.json({success: false, msg: 'Failed to get active rental list'});
+		} else {
+      res.json({success: true, msg: result});
+    }
+  });
+});

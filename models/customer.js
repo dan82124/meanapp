@@ -20,7 +20,7 @@ module.exports.getCustomerList = (callback) => {
 
 module.exports.getCustomerByName = (name, info, callback) => {
 	const query = {name: name};
-	const update = {name: name, info: info};
+	const update = {name: name};
 
 	Customer.findOneAndUpdate(query, update, {upsert: true, new: true}, callback);
 }

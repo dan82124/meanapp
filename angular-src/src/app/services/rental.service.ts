@@ -14,6 +14,12 @@ export class RentalService {
   	return this.http.get('http://localhost:3000/rentals/list', {headers: headers}).map(res => res.json());
 	}
 
+  getActiveRentals() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/rentals/active', {headers: headers}).map(res => res.json());
+  }
+
   startRental(custId) {
   	let headers = new Headers();
   	headers.append('Content-Type', 'application/json');

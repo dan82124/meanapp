@@ -10,6 +10,7 @@ module.exports = router;
 //Add Bike
 router.post('/add', (req, res, next) => {
 	let newBike = new Bike({
+		_id: req.body._id,
 		model: req.body.model,
 		status: req.body.status,
 		price: req.body.price
@@ -71,11 +72,17 @@ router.post('/update', (req, res, next) => {
 
 //Count Bikes
 router.get('/count', (req, res, next) => {
-	Bike.getBikeCount((err, result) => {
+	Bike.getBikeCount((err, total) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get count'});
 		} else {
-      res.json({success: true, msg: 'Number of bikes: ' + result});
+      Bike.getBikeByStatus("in", (err, bikes) => {
+      	if(err) {
+					res.json({success: false, msg: 'Failed to get bikes'});
+				} else {
+		      res.json({success: true, msg: {totalBikes: total, inBikes: bikes.length}});
+		    }
+      });
     }
   });
 });

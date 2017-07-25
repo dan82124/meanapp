@@ -50,12 +50,8 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-					<label>Name:</label>
+					<label>Name</label>
 					<input type="text" [(ngModel)]="custName" name="custName" class="form-control">
-				</div>
-				<div class="form-group">
-					<label>Note:</label>
-					<input type="text" [(ngModel)]="custInfo" name="custInfo" class="form-control">
 				</div>
       </div>
       <div class="modal-footer">
@@ -84,7 +80,7 @@
 					{{this.custId}}
 				</div>
 				<div class="form-group">
-					<label>Date: (Please change according to format)</label>
+					<label>Date (Please change according to format)</label>
 					<input type="text" [(ngModel)]="editDate" id="rentalDate" class="form-control">
 				</div>
       </div>
@@ -118,7 +114,7 @@
 					{{this.rentalDate | date:"medium"}}
 				</div>
 				<div class="form-group">
-					<label>Bike:</label>
+					<label>Bike</label>
 					<label *ngFor="let inBike of inBikes" class="form-control">
 		        <input type="checkbox" (change)="updateChecked(inBike)"> ID: {{inBike._id}} | Model: {{inBike.model}}
 		    	</label>
@@ -153,7 +149,7 @@
 					{{this.rentalDate | date:"medium"}}
 				</div>
 				<div class="form-group">
-					<label>Bike:</label>
+					<label>Bike</label>
 					<label *ngFor="let outBike of outBikes" class="form-control">
 		        <input type="checkbox" (change)="updateChecked(outBike)"> ID: {{outBike._id}} | Model: {{outBike.model}}
 		    	</label>
@@ -192,7 +188,7 @@
 					{{this.rentalDate | date:"medium"}}
 				</div>
 				<div class="form-group">
-					<label>Bike:</label>
+					<label>Bike</label>
 					<label *ngFor="let outBike of outBikes" class="form-control">
 		        <input type="checkbox" (change)="updateChecked(outBike);calcPrice(this.selectedBikes)"> ID: {{outBike._id}} | Model: {{outBike.model}}
 		    	</label>

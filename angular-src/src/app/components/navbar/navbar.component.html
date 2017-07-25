@@ -6,7 +6,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" [routerLink]="['/']">MEAN App</a>
+                <a class="navbar-brand" [routerLink]="['/']">Bike Rental</a>
             </div>
 
             <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -17,7 +17,6 @@
                     <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"><a [routerLink]="['/rental']">Rental</a></li>
                     <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']"><a [routerLink]="['/customer']">Customers</a></li>
                     <!--
-                    <li [routerLinkActive]="['active']"><a [routerLink]="['/return']">Return</a></li>
                     <li [routerLinkActive]="['active']"><a [routerLink]="['/sales']">Sales</a></li>
                     -->
                 </ul>
@@ -44,7 +43,7 @@
                         </ul>
                     </li> -->
                     <li *ngIf="authService.loggedIn()" class="dropdown user-dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> J M <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{authService.user.name}} <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a [routerLink]="['/profile']"><i class="fa fa-user"></i> Profile</a></li>
                             <li class="divider"></li>

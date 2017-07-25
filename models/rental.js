@@ -70,3 +70,9 @@ module.exports.getRentalByCustId = (custId, callback) => {
 
   Rental.find(query, callback).sort({date: -1});
 }
+
+module.exports.getRentalByStatus = (status, callback) => {
+  const query = {status: status}
+
+  Rental.find(query, callback);
+}

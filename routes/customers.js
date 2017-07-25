@@ -51,7 +51,7 @@ router.post('/update', (req, res, next) => {
 	});
 });
 
-//Find Customer By Name
+//Find Or Insert Customer By Name
 router.post('/find', (req, res, next) => {
   const name = req.body.name;
   const info = req.body.info;

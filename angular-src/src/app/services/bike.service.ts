@@ -32,7 +32,11 @@ export class BikeService {
     return this.http.post('http://localhost:3000/bikes/edit', bike, {headers: headers}).map(res => res.json());
   }
 
-
+  countBike() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/bikes/count', {headers: headers}).map(res => res.json());
+  }
 
 
 
@@ -49,12 +53,6 @@ export class BikeService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/bikes/update', model, {headers: headers}).map(res => res.json());
-  }
-
-  countBike() {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/bikes/count', {headers: headers}).map(res => res.json());
   }
 
   bikeById(id) {

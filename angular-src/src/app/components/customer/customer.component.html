@@ -5,17 +5,17 @@
 			<!-- Customer List Filter-->
 		<li class="list-group-item">
 			<div class="row">
-			  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-			    <input type="text" [(ngModel)]="customerfilter._id" placeholder="ID" style="width: 100px;">
+			  <div class="col-md-3 col-sm-6 col-xs-12">
+			    <input class="form-control" type="text" [(ngModel)]="customerfilter._id" placeholder="ID">
 			  </div>
-			  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-			    <input type="text" [(ngModel)]="customerfilter.name" placeholder="Name" style="width: 100px;">
+			  <div class="col-md-3 col-sm-6 col-xs-12">
+			    <input class="form-control" type="text" [(ngModel)]="customerfilter.name" placeholder="Name">
 			  </div>
-			  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-			    <input type="text" [(ngModel)]="customerfilter.info" placeholder="Info" style="width: 100px;">
+			  <div class="col-md-3 col-sm-6 col-xs-12">
+			    <input class="form-control" type="text" [(ngModel)]="customerfilter.info" placeholder="Info">
 			  </div>
-			  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-			    <input type="text" [(ngModel)]="customerfilter.rentalId" placeholder="Rental ID" style="width: 100px;">
+			  <div class="col-md-3 col-sm-6 col-xs-12">
+			    <input class="form-control" type="text" [(ngModel)]="customerfilter.rentalId" placeholder="Rental ID">
 			  </div>
 		  </div>
 		</li>
@@ -38,8 +38,8 @@
     	<hr>
     	<div class="row">
 	      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-	      	<button type="button" class="btn btn-primary btn-xs" (click)="onEditCust(cust)" data-toggle="modal" data-target="#editModal">Edit Customer</button>
-	      	<button type="button" class="btn btn-danger btn-xs pull-right" (click)="onDelCust(cust)">Delete</button>
+	      	<button type="button" class="btn btn-primary btn-xs" (click)="onEditCust(cust)" data-toggle="modal" data-target="#editModal">Edit Note</button>
+	      	<button type="button" class="btn btn-danger btn-xs pull-right" (click)="onDelCust(cust)">Delete Customer</button>
 	      </div>
     	</div>
     </li>

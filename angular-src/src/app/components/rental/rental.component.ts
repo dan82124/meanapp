@@ -19,9 +19,9 @@ export class RentalComponent implements OnInit {
   subTotal: Number = 0;
   editDate: Date;
   rentalBikes: Number[];
-  inBikes: Bike[] = new Array<Bike>();
-  outBikes: Bike[] = new Array<Bike>();
-  selectedBikes: Bike[] = new Array<Bike>();
+  inBikes: Bike[] = [];
+  outBikes: Bike[] = [];
+  selectedBikes: Bike[] = [];
   custId: String;
   custName: String;
   custInfo: String;
@@ -206,14 +206,12 @@ export class RentalComponent implements OnInit {
   }
 
   onRetBikeSubmit() {
-    this.rentalTotal = this.subTotal.valueOf() + this.rentalTotal.valueOf();
+    this.rentalTotal = Math.round((this.subTotal.valueOf() + this.rentalTotal.valueOf())*100)/100;
     console.log(this.rentalId);
     console.log(this.currentTime);
     console.log(this.selectedBikes);
     console.log(this.rentalTotal);
     console.log(this.rentalDuration);
-
-    console.log(this.selectedBikes.length !== this.outBikes.length);
 
     let ret = {
       rentalId: this.rentalId,
@@ -239,7 +237,6 @@ export class RentalComponent implements OnInit {
   calcPrice(bikes) {
     this.currentTime = new Date;
     let duration = Math.round((this.currentTime.getTime() - this.rentalDate.getTime())/(1000*60));
-    console.log(duration + " minutes");
 
     let total = 0;
     
