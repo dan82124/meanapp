@@ -18,7 +18,8 @@ const UserSchema = mongoose.Schema({
 	password: {
 		type: String,
 		required: true
-	}
+	},
+	lastLogin: Date
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
@@ -29,6 +30,7 @@ module.exports.getUserById = (id, callback) => {
 
 module.exports.getUserByUsername = (username, callback) => {
 	const query = {username: username};
+
 	User.findOne(query, callback);
 }
 
@@ -51,4 +53,11 @@ module.exports.comparePassword = (candidatePassword, hash, callback) => {
 		}
 		callback(null, isMatch);
 	});
+}
+
+module.exports.updateLogin = (id, callback) => {
+	const query = {_id: id};
+	const update = {lastLogin: new Date};
+
+	User.update(query, {$set: update}, callback);
 }

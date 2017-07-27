@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { ValidateService } from '../../services/validate.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
   	private authService: AuthService,
+    private validateService: ValidateService,
   	private flashMessage: FlashMessagesService,
     private router: Router
   ) { }
@@ -26,6 +28,11 @@ export class LoginComponent implements OnInit {
   		username: this.username,
   		password: this.password
   	}
+
+    if(!this.validateService.validateLogin(user)) {
+      this.flashMessage.show('Please enter a username and password', {cssClass: 'alert-danger'});
+      return false;
+    }
 
   	this.authService.authenticateUser(user).subscribe(data => {
   		if(data.success) {
