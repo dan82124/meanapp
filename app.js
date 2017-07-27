@@ -14,7 +14,7 @@ const rentals = require('./routes/rentals');
 
 const app = express();
 
-const port = process.env.port || 8080;
+const port = process.env.PORT || 8080;
 
 //Connect to DB
 mongoose.connect(config.database);
