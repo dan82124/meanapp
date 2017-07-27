@@ -585,8 +585,9 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.bikeService.getBikeList().subscribe(function (data) {
-            console.log(data.msg);
-            _this.bikeList = data.msg;
+            if (data.msg.length !== 0) {
+                _this.bikeList = data.msg;
+            }
             _this.bikefilter.status = "in";
         }, function (err) {
             console.log(err);
