@@ -11,48 +11,48 @@ export class RentalService {
 	getRentalList() {
 		let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.get('http://localhost:3000/rentals/list', {headers: headers}).map(res => res.json());
+  	return this.http.get('rentals/list', {headers: headers}).map(res => res.json());
 	}
 
   getActiveRentals() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/rentals/active', {headers: headers}).map(res => res.json());
+    return this.http.get('rentals/active', {headers: headers}).map(res => res.json());
   }
 
   startRental(custId) {
   	let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.post('http://localhost:3000/rentals/start', custId, {headers: headers}).map(res => res.json());
+  	return this.http.post('rentals/start', custId, {headers: headers}).map(res => res.json());
   }
 
   returnRental(rental) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/rentals/ret', rental, {headers: headers}).map(res => res.json());
+    return this.http.post('rentals/ret', rental, {headers: headers}).map(res => res.json());
   }
 
   delRental(rentId) {
   	let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.post('http://localhost:3000/rentals/del', rentId, {headers: headers}).map(res => res.json());
+  	return this.http.post('rentals/del', rentId, {headers: headers}).map(res => res.json());
   }
 
 	addBike(rental) {
   	let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.post('http://localhost:3000/rentals/add', rental, {headers: headers}).map(res => res.json());
+  	return this.http.post('rentals/add', rental, {headers: headers}).map(res => res.json());
   }
 
   removeBike(rental) {
   	let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.post('http://localhost:3000/rentals/remove', rental, {headers: headers}).map(res => res.json());
+  	return this.http.post('rentals/remove', rental, {headers: headers}).map(res => res.json());
   }
 
   changeDate(rental) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/rentals/date', rental, {headers: headers}).map(res => res.json());
+    return this.http.post('rentals/date', rental, {headers: headers}).map(res => res.json());
   }
 }

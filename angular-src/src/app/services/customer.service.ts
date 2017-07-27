@@ -12,24 +12,24 @@ export class CustomerService {
 	getCustList() {
 		let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.get('http://localhost:3000/customers/list', {headers: headers}).map(res => res.json());
+  	return this.http.get('customers/list', {headers: headers}).map(res => res.json());
 	}
 
 	getCustId(name) {
 		let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.post('http://localhost:3000/customers/find', name, {headers: headers}).map(res => res.json());		
+  	return this.http.post('customers/find', name, {headers: headers}).map(res => res.json());		
 	}
 
 	delCustomer(custId) {
 		let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.post('http://localhost:3000/customers/del', custId, {headers: headers}).map(res => res.json());	
+  	return this.http.post('customers/del', custId, {headers: headers}).map(res => res.json());	
 	}
 
 	editCustomer(cust) {
 		let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.post('http://localhost:3000/customers/update', cust, {headers: headers}).map(res => res.json());	
+  	return this.http.post('customers/update', cust, {headers: headers}).map(res => res.json());	
 	} 
 }

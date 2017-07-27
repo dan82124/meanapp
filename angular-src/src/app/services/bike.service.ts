@@ -11,71 +11,70 @@ export class BikeService {
   getBikeList() {
   	let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.get('http://localhost:3000/bikes/list', {headers: headers}).map(res => res.json());
+  	return this.http.get('bikes/list', {headers: headers}).map(res => res.json());
   }
 
   addBike(bike) {
   	let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.post('http://localhost:3000/bikes/add', bike, {headers: headers}).map(res => res.json());
+  	return this.http.post('bikes/add', bike, {headers: headers}).map(res => res.json());
   }
 
   delBike(id) {
   	let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.post('http://localhost:3000/bikes/del', id, {headers: headers}).map(res => res.json());
+  	return this.http.post('bikes/del', id, {headers: headers}).map(res => res.json());
   }
 
   editBike(bike) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/bikes/edit', bike, {headers: headers}).map(res => res.json());
+    return this.http.post('bikes/edit', bike, {headers: headers}).map(res => res.json());
   }
 
   countBike() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/bikes/count', {headers: headers}).map(res => res.json());
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-  updatePrice(model) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/bikes/update', model, {headers: headers}).map(res => res.json());
-  }
-
-  bikeById(id) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/bikes/id', id, {headers: headers}).map(res => res.json());
-  }
-
-  bikeByModel(model) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/bikes/model', model, {headers: headers}).map(res => res.json());
+    return this.http.get('bikes/count', {headers: headers}).map(res => res.json());
   }
 
   bikeByStatus(status) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/bikes/status', status, {headers: headers}).map(res => res.json());
+    return this.http.post('bikes/status', status, {headers: headers}).map(res => res.json());
   }
 
-  bikeByPrice(price) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/bikes/price', price, {headers: headers}).map(res => res.json());
-  }      
+
+
+
+
+
+
+
+
+
+
+  // updatePrice(model) {
+  //   let headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   return this.http.post('http://localhost:3000/bikes/update', model, {headers: headers}).map(res => res.json());
+  // }
+
+  // bikeById(id) {
+  //   let headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   return this.http.post('http://localhost:3000/bikes/id', id, {headers: headers}).map(res => res.json());
+  // }
+
+  // bikeByModel(model) {
+  //   let headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   return this.http.post('http://localhost:3000/bikes/model', model, {headers: headers}).map(res => res.json());
+  // }
+
+  // bikeByPrice(price) {
+  //   let headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   return this.http.post('http://localhost:3000/bikes/price', price, {headers: headers}).map(res => res.json());
+  // }      
 }
