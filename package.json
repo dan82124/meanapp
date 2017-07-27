@@ -18,5 +18,9 @@
   	"passport-jwt": "*"
   },
   "author": "JM",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "npm": "4.2.0",
+    "node": "7.9.0"
+  }
 }
