@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   	this.bikeService.getBikeList().subscribe(data => {
+      console.log(data.msg);
   		this.bikeList = data.msg;
       this.bikefilter.status = "in";
   	}, err => {
@@ -41,7 +42,9 @@ export class DashboardComponent implements OnInit {
 
     this.rentalService.getActiveRentals().subscribe(data => {
       this.rentalCount = data.msg.length;
-      this.rentalList = data.msg;
+      if(this.rentalCount !== 0) {
+        this.rentalList = data.msg;    
+      }
     }, err => {
       console.log(err);
       return false;

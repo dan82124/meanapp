@@ -585,6 +585,7 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.bikeService.getBikeList().subscribe(function (data) {
+            console.log(data.msg);
             _this.bikeList = data.msg;
             _this.bikefilter.status = "in";
         }, function (err) {
@@ -600,7 +601,9 @@ var DashboardComponent = (function () {
         });
         this.rentalService.getActiveRentals().subscribe(function (data) {
             _this.rentalCount = data.msg.length;
-            _this.rentalList = data.msg;
+            if (_this.rentalCount !== 0) {
+                _this.rentalList = data.msg;
+            }
         }, function (err) {
             console.log(err);
             return false;
