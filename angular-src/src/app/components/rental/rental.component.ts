@@ -237,13 +237,28 @@ export class RentalComponent implements OnInit {
   calcPrice(bikes) {
     this.currentTime = new Date;
     let duration = Math.round((this.currentTime.getTime() - this.rentalDate.getTime())/(1000*60));
-
     let total = 0;
-    
-    for (let bike = 0; bike < bikes.length; bike++) {
-      let cost = Math.round((duration * (bikes[bike].price/60))*100)/100;
-      total += cost;
+    let discountDuration = 0;
+
+    if (duration < 180) {
+      //Normal Pricing (Below 3 Hours)
+      discountDuration = duration;
+    } else if (duration <= 240 && duration >= 180) {
+      //Discount Pricing Between 3-4 Hours
+      discountDuration = 180;
+    } else if (duration < 360 && duration > 240) {
+      //Discount Pricing For Under 6 Hours But Above 4 Hours
+      discountDuration = (duration - 240) + 180;
+    } else {
+      //Full Day Pricing (6+ Hours)
+      discountDuration = 360;
     }
+
+    for (let bike = 0; bike < bikes.length; bike++) {
+        let cost = Math.round((discountDuration * (bikes[bike].price/60))*100)/100;
+        total += cost;
+    }
+
 
     this.subTotal = Math.round(total*100)/100;
     this.rentalDuration = duration;
