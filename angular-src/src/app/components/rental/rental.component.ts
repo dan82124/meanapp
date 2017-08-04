@@ -4,6 +4,7 @@ import { CustomerService } from '../../services/customer.service';
 import { RentalService } from '../../services/rental.service';
 import { BikeService } from '../../services/bike.service';
 import { Bike } from '../../shared/bike';
+import { Customer }  from '../../shared/customer';
 
 @Component({
   selector: 'app-rental',
@@ -11,7 +12,7 @@ import { Bike } from '../../shared/bike';
   styleUrls: ['./rental.component.css']
 })
 export class RentalComponent implements OnInit {
-	rentals: Object;
+  rentals: Object;
   rentalId: String;
   rentalDate: Date;
   rentalTotal: Number;
@@ -22,30 +23,27 @@ export class RentalComponent implements OnInit {
   inBikes: Bike[] = [];
   outBikes: Bike[] = [];
   selectedBikes: Bike[] = [];
-  custId: String;
-  custName: String;
-  custInfo: String;
+  cust: Customer = new Customer();
   currentTime: Date;
 
   constructor(
     private customerService: CustomerService,
     private bikeService: BikeService,
-  	private rentalService: RentalService,
-  	private flashMessage: FlashMessagesService) { }
+    private rentalService: RentalService,
+    private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
-  	this.rentalService.getRentalList().subscribe(data => {
-  		this.rentals = data.msg;
-  	}, err => {
-  		console.log(err);
-  		return false;
-  	});
+    this.rentalService.getRentalList().subscribe(data => {
+      this.rentals = data.msg;
+    }, err => {
+      console.log(err);
+      return false;
+    });
   }
 
   getCustId() {
     let query = {
-      name: this.custName.toUpperCase(),
-      info: this.custInfo
+      name: this.cust.name.toUpperCase()
     }
 
     this.customerService.getCustId(query).subscribe(data => {
@@ -68,7 +66,7 @@ export class RentalComponent implements OnInit {
     this.rentalService.startRental(start).subscribe(data => {
       if (data.success) {
         console.log(data);
-        this.flashMessage.show("Rental created for: " + this.custName.toUpperCase(), {cssClass: 'alert-success'});
+        this.flashMessage.show("Rental created for: " + this.cust.name.toUpperCase(), {cssClass: 'alert-success'});
         this.ngOnInit();
       } else {
         this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
@@ -101,7 +99,8 @@ export class RentalComponent implements OnInit {
 
   onAddBike(rental) {
     this.clearSelectedBikes();
-    this.custId = rental.customerId;
+    this.cust._id = rental.customerId;
+    this.cust.name = rental.customerName;
     this.rentalId = rental._id;
     this.rentalDate = new Date(rental.date);
     this.rentalBikes = rental.bikeId;
@@ -139,7 +138,8 @@ export class RentalComponent implements OnInit {
 
   onDelBike(rental) {
     this.clearSelectedBikes();
-    this.custId = rental.customerId;
+    this.cust._id = rental.customerId;
+    this.cust.name = rental.customerName;
     this.rentalId = rental._id;
     this.rentalDate = new Date(rental.date);
     this.rentalBikes = rental.bikeId;
@@ -183,8 +183,8 @@ export class RentalComponent implements OnInit {
     this.clearSelectedBikes();
     this.subTotal = 0;
     this.rentalTotal = rental.total;
-    this.custId = rental.customerId;
-    this.custName = rental.customerName;
+    this.cust._id = rental.customerId;
+    this.cust.name = rental.customerName;
     this.rentalId = rental._id;
     this.rentalDate = new Date(rental.date);
     this.rentalBikes = rental.bikeId;
@@ -235,7 +235,7 @@ export class RentalComponent implements OnInit {
   }
 
   calcPrice(bikes) {
-    this.currentTime = new Date;
+    this.currentTime = new Date();
     let duration = Math.round((this.currentTime.getTime() - this.rentalDate.getTime())/(1000*60));
     let total = 0;
     let discountDuration = 0;
@@ -259,13 +259,12 @@ export class RentalComponent implements OnInit {
         total += cost;
     }
 
-
     this.subTotal = Math.round(total*100)/100;
     this.rentalDuration = duration;
   }
 
   onEditRental(rental) {
-    this.custId = rental.customerId;
+    this.cust._id = rental.customerId;
     this.rentalId = rental._id;
     this.rentalDate = new Date(rental.date);
     this.rentalBikes = rental.bikeId;
@@ -274,7 +273,10 @@ export class RentalComponent implements OnInit {
 
   resetEdit() {
     this.editDate = this.rentalDate;
-    document.getElementById("rentalDate").nodeValue = this.rentalDate.toLocaleString();
+  }
+
+  editToCurrent() {
+    this.editDate = new Date();
   }
 
   onEditSubmit() {
@@ -312,7 +314,7 @@ export class RentalComponent implements OnInit {
   }
 
   clearCustInfo() {
-    this.custName = "";
-    this.custId = null;
+    this.cust.name = "";
+    this.cust._id = null;
   }
 }

@@ -51,7 +51,7 @@
       <div class="modal-body">
         <div class="form-group">
 					<label>Name</label>
-					<input type="text" [(ngModel)]="custName" name="custName" class="form-control">
+					<input type="text" [(ngModel)]="cust.name" name="custName" class="form-control">
 				</div>
       </div>
       <div class="modal-footer">
@@ -76,8 +76,8 @@
 					{{this.rentalId}}
 				</div>
 				<div class="form-group">
-					<label>Customer ID:</label>
-					{{this.custId}}
+					<label>Customer Name:</label>
+					{{this.cust.name}}
 				</div>
 				<div class="form-group">
 					<label>Date (Please change according to format)</label>
@@ -85,6 +85,7 @@
 				</div>
       </div>
       <div class="modal-footer">
+      	<button type="button" class="btn btn-default" (click)="editToCurrent()">Use Current Time</button>
         <button type="button" class="btn btn-default" (click)="resetEdit()">Reset Change</button>
         <button type="button" class="btn btn-primary" (click)="onEditSubmit()" data-dismiss="modal">Change Time</button>
       </div>
@@ -106,8 +107,8 @@
 					{{this.rentalId}}
 				</div>
 				<div class="form-group">
-					<label>Customer ID:</label>
-					{{this.custId}}
+					<label>Customer Name:</label>
+					{{this.cust.name}}
 				</div>
 				<div class="form-group">
 					<label>Date:</label>
@@ -141,9 +142,9 @@
 					{{this.rentalId}}
 				</div>
 				<div class="form-group">
-					<label>Customer ID:</label>
-					{{this.custId}}
-				</div>
+					<label>Customer Name:</label>
+					{{this.cust.name}}
+				</div>				
 				<div class="form-group">
 					<label>Date:</label>
 					{{this.rentalDate | date:"medium"}}
@@ -176,12 +177,8 @@
 					{{this.rentalId}}
 				</div>
 				<div class="form-group">
-					<label>Customer ID:</label>
-					{{this.custId}}
-				</div>
-				<div class="form-group">
 					<label>Customer Name:</label>
-					{{this.custName}}
+					{{this.cust.name}}
 				</div>
 				<div class="form-group">
 					<label>Date:</label>
