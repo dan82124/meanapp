@@ -17,8 +17,6 @@ export class AppComponent implements OnInit {
 	ngOnInit() {
 		this.authService.getUserData();
 
-		this.bikeSerivce.getModelList().subscribe(data => {
-			console.log(data);
-		});
+		this.bikeSerivce.getModelList();
 	}
 }

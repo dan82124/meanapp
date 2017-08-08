@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class BikeService {
+  modelList: Object;
 
   constructor(private http: Http) { }
 
@@ -47,7 +48,7 @@ export class BikeService {
   getModelList() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get('models/list', {headers: headers}).map(res => res.json());
+    this.modelList = this.http.get('models/list', {headers: headers}).map(res => res.json());
   }
 
   addModel(model) {
