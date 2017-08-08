@@ -858,9 +858,8 @@ var InventoryComponent = (function () {
     };
     InventoryComponent.prototype.onEditModelSubmit = function () {
         var _this = this;
-        console.log("edit");
         var model = {
-            name: this.modelName,
+            modelName: this.modelName,
             price: this.modelPrice
         };
         this.bikeService.updatePrice(model).subscribe(function (data) {

@@ -149,9 +149,8 @@ export class InventoryComponent implements OnInit {
   }
 
   onEditModelSubmit() {
-    console.log("edit");
     let model = {
-      name: this.modelName,
+      modelName: this.modelName,
       price: this.modelPrice
     };
 
