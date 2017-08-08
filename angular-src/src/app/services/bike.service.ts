@@ -49,7 +49,7 @@ export class BikeService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     this.http.get('models/list', {headers: headers}).map(res => res.json()).subscribe(list => {
-      this.modelList = list.msg;
+      this.modelList = list;
     });
     console.log(this.modelList);
   }

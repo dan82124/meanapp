@@ -60,7 +60,7 @@ var BikeService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
         this.http.get('models/list', { headers: headers }).map(function (res) { return res.json(); }).subscribe(function (list) {
-            _this.modelList = list.msg;
+            _this.modelList = list;
         });
         console.log(this.modelList);
     };
