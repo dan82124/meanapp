@@ -11,6 +11,7 @@ const users = require('./routes/users');
 const bikes = require('./routes/bikes');
 const customers = require('./routes/customers');
 const rentals = require('./routes/rentals');
+const models = require('./routes/models');
 
 const app = express();
 
@@ -42,6 +43,7 @@ app.use('/users', users);
 app.use('/bikes', bikes);
 app.use('/customers', customers);
 app.use('/rentals', rentals);
+app.use('/models', models);
 
 app.get('/', (req, res) => {
 	res.send('Invalid');

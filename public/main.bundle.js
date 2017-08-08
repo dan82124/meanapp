@@ -1,6 +1,6 @@
 webpackJsonp([1,4],{
 
-/***/ 155:
+/***/ 110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -54,6 +54,26 @@ var BikeService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
         return this.http.post('bikes/status', status, { headers: headers }).map(function (res) { return res.json(); });
+    };
+    BikeService.prototype.getModelList = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('models/list', { headers: headers }).map(function (res) { return res.json(); });
+    };
+    BikeService.prototype.addModel = function (model) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('models/add', model, { headers: headers }).map(function (res) { return res.json(); });
+    };
+    BikeService.prototype.delModel = function (model) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('models/del', model, { headers: headers }).map(function (res) { return res.json(); });
+    };
+    BikeService.prototype.updatePrice = function (model) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('bikes/update', model, { headers: headers }).map(function (res) { return res.json(); });
     };
     BikeService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
@@ -316,6 +336,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dyna
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_bike_service__ = __webpack_require__(110);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -328,12 +349,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var AppComponent = (function () {
-    function AppComponent(authService) {
+    function AppComponent(authService, bikeSerivce) {
         this.authService = authService;
+        this.bikeSerivce = bikeSerivce;
     }
     AppComponent.prototype.ngOnInit = function () {
         this.authService.getUserData();
+        this.bikeSerivce.getModelList().subscribe(function (data) {
+            console.log(data);
+        });
     };
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -341,10 +367,10 @@ var AppComponent = (function () {
             template: __webpack_require__(695),
             styles: [__webpack_require__(685)]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_bike_service__["a" /* BikeService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__services_bike_service__["a" /* BikeService */]) === 'function' && _b) || Object])
     ], AppComponent);
     return AppComponent;
-    var _a;
+    var _a, _b;
 }());
 //# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/app.component.js.map
 
@@ -354,7 +380,7 @@ var AppComponent = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(473);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(79);
@@ -373,7 +399,7 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_customer_customer_component__ = __webpack_require__(514);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_customer_service__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_rental_service__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_bike_service__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_bike_service__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_validate_service__ = __webpack_require__(226);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_auth_service__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__guards_auth_guard__ = __webpack_require__(523);
@@ -571,7 +597,7 @@ var CustomerComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_bike_service__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_bike_service__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_rental_service__ = __webpack_require__(225);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_bike__ = __webpack_require__(338);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
@@ -679,7 +705,7 @@ var HomeComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_bike_service__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_bike_service__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_bike__ = __webpack_require__(338);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InventoryComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1051,7 +1077,7 @@ var RegisterComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_customer_service__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_rental_service__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_bike_service__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_bike_service__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_customer__ = __webpack_require__(339);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RentalComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1734,7 +1760,7 @@ module.exports = "<div class=\"jumbotron text-center\">\n\t<h2>Bike Rental</h2>\
 /***/ 699:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Bikes <a class=\"btn btn-success pull-right\" data-toggle=\"modal\" data-target=\"#addModal\" (click)=\"clearBikeInfo()\">Add Bike</a></h2>\n\n<div *ngIf=\"list\">\n\t<ul class=\"list-group\">\n\t\t<!-- Bike List Filter-->\n\t\t<li class=\"list-group-item\">\n\t\t\t<div class=\"row\">\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <input class=\"form-control\" type=\"number\" [(ngModel)]=\"bikefilter._id\" placeholder=\"ID\">\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <select class=\"form-control\" [(ngModel)]=\"bikefilter.model\">\n\t\t\t    \t<option selected=\"selected\" [ngValue]=\"null\">All</option>\n\t\t\t\t    <option *ngFor=\"let model of bikeModels\" [ngValue]=\"model\">{{model}}</option>\n\t\t\t    </select>\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <input class=\"form-control\" type=\"text\" [(ngModel)]=\"bikefilter.status\" placeholder=\"Status\">\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <input class=\"form-control\" type=\"number\" min=\"4.5\" max=\"12.5\" step=\"0.5\" [(ngModel)]=\"bikefilter.price\" placeholder=\"Price\">\n\t\t\t  </div>\n\t\t  </div>\n\t\t</li>\n\t\t<!-- Bike List -->\n\t\t<li class=\"list-group-item\" *ngFor=\"let bike of list | bfilter:bikefilter\">\n\t\t\t<div class=\"row\">\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>ID:</b> {{bike._id}}\n\t      </div>\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>Model:</b> {{bike.model}}\n\t      </div>\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>Status:</b> {{bike.status}}\n\t      </div>\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>Price:</b> {{bike.price}}\n\t      </div>\n\t      <div class=\"col-md-4 col-sm-12 col-xs-12 text-center\"> \n\t      \t<button type=\"button\" class=\"btn btn-primary btn-xs pull-left\" (click)=\"onEditBike(bike)\" data-toggle=\"modal\" data-target=\"#editModal\">Edit Bike</button>\n\t      \t<button type=\"button\" class=\"btn btn-danger btn-xs pull-right\" (click)=\"onDelBike(bike)\">Delete Bike</button>\n\t      </div>\n    \t</div>\n    </li>\n\t</ul>\n</div>\n\n<!-- Add Modal -->\n<div class=\"modal fade\" id=\"addModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearBikeInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Add Bike</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>ID</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike._id\" name=\"id\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"currBike.model\">\n\t\t\t\t    <option *ngFor=\"let model of bikeModels\" [ngValue]=\"model\">{{model}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike.price\" name=\"price\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"clearBikeInfo()\">Clear</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"currBike._id && currBike.model && currBike.price\" (click)=\"onAddSubmit()\" data-dismiss=\"modal\">Add Bike</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Edit Modal -->\n<div class=\"modal fade\" id=\"editModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearBikeInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Edit Bike {{currBike._id}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"prevBike.status === 'in'\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike.model\" name=\"model\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Status</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike.status\" name=\"status\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike.price\" name=\"price\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"prevBike.status !== 'in'\">\n      \t<h3 class=\"text-danger\">Bike is currently out and cannot be modified.</h3>\n      </div>\n      <div class=\"modal-footer\" *ngIf=\"prevBike.status === 'in'\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"undoEdit()\">Reset</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"currBike.model && currBike.status && currBike.price\" (click)=\"onEditSubmit()\" data-dismiss=\"modal\">Save changes</button>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<h2 class=\"page-header\">Bikes <a class=\"btn btn-success pull-right\" data-toggle=\"modal\" data-target=\"#addModal\" (click)=\"clearBikeInfo()\">Add Bike</a></h2>\n\n<a class=\"btn btn-success pull-right\" data-toggle=\"modal\" data-target=\"#addModelModal\" (click)=\"clearBikeInfo()\">Add Model</a>\n<!-- <a class=\"btn btn-success pull-right\" data-toggle=\"modal\" data-target=\"#delModelModal\" (click)=\"clearBikeInfo()\">Delete Model</a>\n<a class=\"btn btn-success pull-right\" data-toggle=\"modal\" data-target=\"#editModelModal\" (click)=\"clearBikeInfo()\">Update Model Price</a> -->\n\n<div *ngIf=\"list\">\n\t<ul class=\"list-group\">\n\t\t<!-- Bike List Filter-->\n\t\t<li class=\"list-group-item\">\n\t\t\t<div class=\"row\">\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <input class=\"form-control\" type=\"number\" [(ngModel)]=\"bikefilter._id\" placeholder=\"ID\">\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <select class=\"form-control\" [(ngModel)]=\"bikefilter.model\">\n\t\t\t    \t<option selected=\"selected\" [ngValue]=\"null\">All</option>\n\t\t\t\t    <option *ngFor=\"let model of bikeModels\" [ngValue]=\"model\">{{model}}</option>\n\t\t\t    </select>\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <input class=\"form-control\" type=\"text\" [(ngModel)]=\"bikefilter.status\" placeholder=\"Status\">\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <input class=\"form-control\" type=\"number\" min=\"4.5\" max=\"12.5\" step=\"0.5\" [(ngModel)]=\"bikefilter.price\" placeholder=\"Price\">\n\t\t\t  </div>\n\t\t  </div>\n\t\t</li>\n\t\t<!-- Bike List -->\n\t\t<li class=\"list-group-item\" *ngFor=\"let bike of list | bfilter:bikefilter\">\n\t\t\t<div class=\"row\">\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>ID:</b> {{bike._id}}\n\t      </div>\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>Model:</b> {{bike.model}}\n\t      </div>\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>Status:</b> {{bike.status}}\n\t      </div>\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>Price:</b> {{bike.price}}\n\t      </div>\n\t      <div class=\"col-md-4 col-sm-12 col-xs-12 text-center\"> \n\t      \t<button type=\"button\" class=\"btn btn-primary btn-xs pull-left\" (click)=\"onEditBike(bike)\" data-toggle=\"modal\" data-target=\"#editModal\">Edit Bike</button>\n\t      \t<button type=\"button\" class=\"btn btn-danger btn-xs pull-right\" (click)=\"onDelBike(bike)\">Delete Bike</button>\n\t      </div>\n    \t</div>\n    </li>\n\t</ul>\n</div>\n\n<!-- Add Bike Modal -->\n<div class=\"modal fade\" id=\"addModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearBikeInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Add Bike</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>ID</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike._id\" name=\"id\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"currBike.model\">\n\t\t\t\t    <option *ngFor=\"let model of bikeModels\" [ngValue]=\"model\">{{model}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike.price\" name=\"price\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"clearBikeInfo()\">Clear</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"currBike._id && currBike.model && currBike.price\" (click)=\"onAddSubmit()\" data-dismiss=\"modal\">Add Bike</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Edit Bike Modal -->\n<div class=\"modal fade\" id=\"editModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearBikeInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Edit Bike {{currBike._id}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"prevBike.status === 'in'\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike.model\" name=\"model\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Status</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike.status\" name=\"status\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike.price\" name=\"price\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"prevBike.status !== 'in'\">\n      \t<h3 class=\"text-danger\">Bike is currently out and cannot be modified.</h3>\n      </div>\n      <div class=\"modal-footer\" *ngIf=\"prevBike.status === 'in'\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"undoEdit()\">Reset</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"currBike.model && currBike.status && currBike.price\" (click)=\"onEditSubmit()\" data-dismiss=\"modal\">Save changes</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Add Model Modal -->\n<div class=\"modal fade\" id=\"addModelModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearBikeInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Add Bike</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>ID</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike._id\" name=\"id\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"currBike.model\">\n\t\t\t\t    <option *ngFor=\"let model of bikeModels\" [ngValue]=\"model\">{{model}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike.price\" name=\"price\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"clearBikeInfo()\">Clear</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"currBike._id && currBike.model && currBike.price\" (click)=\"onAddSubmit()\" data-dismiss=\"modal\">Add Bike</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Delete Model Modal -->\n<!-- <div class=\"modal fade\" id=\"delModelModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearBikeInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Add Bike</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>ID</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike._id\" name=\"id\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"currBike.model\">\n\t\t\t\t    <option *ngFor=\"let model of bikeModels\" [ngValue]=\"model\">{{model}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike.price\" name=\"price\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"clearBikeInfo()\">Clear</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"currBike._id && currBike.model && currBike.price\" (click)=\"onAddSubmit()\" data-dismiss=\"modal\">Add Bike</button>\n      </div>\n    </div>\n  </div>\n</div> -->\n\n<!-- Update Model Price Modal -->\n<!-- <div class=\"modal fade\" id=\"editModelModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearBikeInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Add Bike</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>ID</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike._id\" name=\"id\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"currBike.model\">\n\t\t\t\t    <option *ngFor=\"let model of bikeModels\" [ngValue]=\"model\">{{model}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"currBike.price\" name=\"price\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"clearBikeInfo()\">Clear</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"currBike._id && currBike.model && currBike.price\" (click)=\"onAddSubmit()\" data-dismiss=\"modal\">Add Bike</button>\n      </div>\n    </div>\n  </div>\n</div> -->"
 
 /***/ }),
 

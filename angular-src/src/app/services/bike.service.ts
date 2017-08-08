@@ -44,21 +44,29 @@ export class BikeService {
     return this.http.post('bikes/status', status, {headers: headers}).map(res => res.json());
   }
 
+  getModelList() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('models/list', {headers: headers}).map(res => res.json());
+  }
 
+  addModel(model) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('models/add', model, {headers: headers}).map(res => res.json());
+  }
 
+  delModel(model) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('models/del', model, {headers: headers}).map(res => res.json());
+  }
 
-
-
-
-
-
-
-
-  // updatePrice(model) {
-  //   let headers = new Headers();
-  //   headers.append('Content-Type', 'application/json');
-  //   return this.http.post('http://localhost:3000/bikes/update', model, {headers: headers}).map(res => res.json());
-  // }
+  updatePrice(model) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('bikes/update', model, {headers: headers}).map(res => res.json());
+  }
 
   // bikeById(id) {
   //   let headers = new Headers();

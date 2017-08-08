@@ -4,6 +4,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const Bike = require('../models/bike');
+const Model = require('../models/model');
 
 module.exports = router;
 
@@ -60,14 +61,23 @@ router.post('/update', (req, res, next) => {
 	const model = req.body.model;
 	const price = req.body.price;
 
+	//Update prices in bike list
 	Bike.updatePriceByModel(model, price, (err, result) => {
-		console.log(result);
 		if(err || result.nModified == 0) {
-			res.json({success: false, msg: 'Failed to update price of ' + model});
+			res.json({success: false, msg: 'Failed to update ' + model + ' bikes'});
 		} else {
-			res.json({success: true, msg: 'Price of ' + model + ' updated to ' + price});
+			res.json({success: true, msg: 'Price of ' + model + ' bikes updated to ' + price});
 		}
 	});
+
+	//Update price in model list
+	Model.updateModel(model, price, (err, result) => {
+    if(err || result.nModified == 0) {
+      res.json({success: false, msg: 'Failed to update model: ' + model});
+    } else {
+      res.json({success: true, msg: 'Model: ' + model + ' updated to ' + price});
+    }
+  });
 });
 
 //Count Bikes
