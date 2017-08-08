@@ -2,7 +2,7 @@
 	Bikes 
 	<a class="btn btn-success pull-right" data-toggle="modal" data-target="#addModal" (click)="clearBikeInfo()">Add Bike</a>
 	<a class="btn btn-danger pull-right" data-toggle="modal" data-target="#delModelModal" (click)="clearModelInfo()">Delete Model</a>
-	<a class="btn btn-danger pull-right" data-toggle="modal" data-target="#delModelModal" (click)="clearModelInfo()">Edit Model Price</a>
+	<a class="btn btn-danger pull-right" data-toggle="modal" data-target="#editModelModal" (click)="clearModelInfo()">Edit Model Price</a>
 	<a class="btn btn-success pull-right" data-toggle="modal" data-target="#addModelModal" (click)="clearModelInfo()">Add Model</a>
 </h2>
 
@@ -160,6 +160,7 @@
 				    <option *ngFor="let model of this.bikeService.modelList" [ngValue]="model.name">{{model.name}}</option>
 			    </select>
 				</div>
+			</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" *ngIf="modelName" (click)="onDelModelSubmit()" data-dismiss="modal">Delete Model</button>
       </div>
@@ -182,6 +183,7 @@
 				    <option *ngFor="let model of this.bikeService.modelList" [ngValue]="model.name">{{model.name}}</option>
 			    </select>
 				</div>
+			</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" *ngIf="modelName" (click)="onDelModelSubmit()" data-dismiss="modal">Delete Model</button>
       </div>
