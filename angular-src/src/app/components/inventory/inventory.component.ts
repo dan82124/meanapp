@@ -110,7 +110,6 @@ export class InventoryComponent implements OnInit {
     };
 
     this.bikeService.addModel(model).subscribe(data => {
-      console.log(data);
       this.bikeService.getModelList();
       console.log(this.bikeService.modelList);
     });

@@ -60,9 +60,8 @@ var BikeService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
         this.http.get('models/list', { headers: headers }).map(function (res) { return res.json(); }).subscribe(function (list) {
-            _this.modelList = list;
+            _this.modelList = list.msg;
         });
-        console.log(this.modelList);
     };
     BikeService.prototype.addModel = function (model) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
@@ -820,7 +819,6 @@ var InventoryComponent = (function () {
             price: this.modelPrice
         };
         this.bikeService.addModel(model).subscribe(function (data) {
-            console.log(data);
             _this.bikeService.getModelList();
             console.log(_this.bikeService.modelList);
         });
