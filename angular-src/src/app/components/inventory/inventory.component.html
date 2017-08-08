@@ -183,9 +183,13 @@
 				    <option *ngFor="let model of this.bikeService.modelList" [ngValue]="model.name">{{model.name}}</option>
 			    </select>
 				</div>
+				<div class="form-group">
+					<label>Price</label>
+					<input type="number" [(ngModel)]="modelPrice" name="price" class="form-control">
+				</div>
 			</div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" *ngIf="modelName" (click)="onDelModelSubmit()" data-dismiss="modal">Delete Model</button>
+        <button type="button" class="btn btn-primary" *ngIf="modelName && modelPrice" (click)="onEditModelSubmit()" data-dismiss="modal">Delete Model</button>
       </div>
     </div>
   </div>
