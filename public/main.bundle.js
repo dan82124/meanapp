@@ -56,9 +56,12 @@ var BikeService = (function () {
         return this.http.post('bikes/status', status, { headers: headers }).map(function (res) { return res.json(); });
     };
     BikeService.prototype.getModelList = function () {
+        var _this = this;
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        this.modelList = this.http.get('models/list', { headers: headers }).map(function (res) { return res.json(); });
+        this.http.get('models/list', { headers: headers }).map(function (res) { return res.json(); }).subscribe(function (list) {
+            _this.modelList = list.msg;
+        });
         console.log(this.modelList);
     };
     BikeService.prototype.addModel = function (model) {
