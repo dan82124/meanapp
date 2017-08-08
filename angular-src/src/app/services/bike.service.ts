@@ -49,6 +49,7 @@ export class BikeService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     this.modelList = this.http.get('models/list', {headers: headers}).map(res => res.json());
+    console.log(this.modelList);
   }
 
   addModel(model) {
