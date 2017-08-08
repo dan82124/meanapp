@@ -66,18 +66,16 @@ router.post('/update', (req, res, next) => {
 		if(err || result.nModified == 0) {
 			res.json({success: false, msg: 'Failed to update ' + model + ' bikes'});
 		} else {
-			res.json({success: true, msg: 'Price of ' + model + ' bikes updated to ' + price});
+			//Update price in model list
+			Model.updateModel(model, price, (err, log) => {
+		    if(err || log.nModified == 0) {
+		      res.json({success: false, msg: 'Failed to update model: ' + model});
+		    } else {
+		      res.json({success: true, msg: 'Model: ' + model + ' updated to ' + price});
+		    }
+		  });
 		}
 	});
-
-	//Update price in model list
-	Model.updateModel(model, price, (err, result) => {
-    if(err || result.nModified == 0) {
-      res.json({success: false, msg: 'Failed to update model: ' + model});
-    } else {
-      res.json({success: true, msg: 'Model: ' + model + ' updated to ' + price});
-    }
-  });
 });
 
 //Count Bikes
