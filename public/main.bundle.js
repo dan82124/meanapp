@@ -743,6 +743,10 @@ var InventoryComponent = (function () {
     InventoryComponent.prototype.clearBikeInfo = function () {
         this.currBike = new __WEBPACK_IMPORTED_MODULE_3__shared_bike__["a" /* Bike */]();
     };
+    InventoryComponent.prototype.clearModelInfo = function () {
+        this.modelName = null;
+        this.modelPrice = null;
+    };
     InventoryComponent.prototype.onAddSubmit = function () {
         var _this = this;
         this.currBike.status = "in";
@@ -819,12 +823,36 @@ var InventoryComponent = (function () {
             price: this.modelPrice
         };
         this.bikeService.addModel(model).subscribe(function (data) {
-            _this.bikeService.getModelList();
-            console.log(_this.bikeService.modelList);
+            if (data.success) {
+                _this.bikeService.getModelList();
+            }
+            else {
+                _this.flashMessage.show(data.msg, { cssClass: 'alert-danger' });
+            }
+            _this.clearModelInfo();
+        }, function (err) {
+            console.log(err);
+            return false;
         });
     };
     InventoryComponent.prototype.onDelModelSubmit = function () {
+        var _this = this;
         console.log("delete " + this.modelName);
+        var model = {
+            name: this.modelName
+        };
+        this.bikeService.delModel(model).subscribe(function (data) {
+            if (data.success) {
+                _this.bikeService.getModelList();
+            }
+            else {
+                _this.flashMessage.show(data.msg, { cssClass: 'alert-danger' });
+            }
+            _this.clearModelInfo();
+        }, function (err) {
+            console.log(err);
+            return false;
+        });
     };
     InventoryComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({

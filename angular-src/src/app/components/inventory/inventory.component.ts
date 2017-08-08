@@ -34,6 +34,11 @@ export class InventoryComponent implements OnInit {
     this.currBike = new Bike();
   }
 
+  clearModelInfo() {
+    this.modelName = null;
+    this.modelPrice = null;
+  }
+
   onAddSubmit() {
     this.currBike.status = "in";
   	this.bikeService.addBike(this.currBike).subscribe(data => {
@@ -110,12 +115,34 @@ export class InventoryComponent implements OnInit {
     };
 
     this.bikeService.addModel(model).subscribe(data => {
-      this.bikeService.getModelList();
-      console.log(this.bikeService.modelList);
+      if (data.success) {
+        this.bikeService.getModelList();
+      } else {
+        this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
+      }
+      this.clearModelInfo();
+    }, err => {
+      console.log(err);
+      return false;
     });
   }
 
   onDelModelSubmit() {
     console.log("delete " + this.modelName);
+    let model = {
+      name: this.modelName
+    };
+
+    this.bikeService.delModel(model).subscribe(data => {
+      if (data.success) {
+        this.bikeService.getModelList();
+      } else {
+        this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
+      }
+      this.clearModelInfo();
+    }, err => {
+      console.log(err);
+      return false;
+    });
   }
 }
