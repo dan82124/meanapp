@@ -865,8 +865,6 @@ var InventoryComponent = (function () {
         this.bikeService.updatePrice(model).subscribe(function (data) {
             if (data.success) {
                 _this.flashMessage.show(data.msg, { cssClass: 'alert-success' });
-                _this.bikeService.getModelList();
-                _this.ngOnInit();
             }
             else {
                 _this.flashMessage.show(data.msg, { cssClass: 'alert-danger' });
@@ -876,6 +874,8 @@ var InventoryComponent = (function () {
             console.log(err);
             return false;
         });
+        this.bikeService.getModelList();
+        this.ngOnInit();
     };
     InventoryComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({

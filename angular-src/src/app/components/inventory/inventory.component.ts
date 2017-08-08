@@ -157,8 +157,6 @@ export class InventoryComponent implements OnInit {
     this.bikeService.updatePrice(model).subscribe(data => {
       if (data.success) {
         this.flashMessage.show(data.msg, {cssClass: 'alert-success'});
-        this.bikeService.getModelList();
-        this.ngOnInit();
       } else {
         this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
       }
@@ -167,5 +165,8 @@ export class InventoryComponent implements OnInit {
       console.log(err);
       return false;
     });
+
+    this.bikeService.getModelList();
+    this.ngOnInit();
   }
 }
