@@ -13,7 +13,9 @@ export class InventoryComponent implements OnInit {
   currBike: Bike = new Bike();
   prevBike: Bike = new Bike();
   bikefilter: Bike = new Bike();
-  bikeModels: String[] = ["Cruiser", "MTN", "Electric", "Tandem", "Kids", "Trailer"]
+  bikeModels: String[] = ["Cruiser", "MTN", "Electric", "Tandem", "Kids", "Trailer"];
+  modelName: String;
+  modelPrice: Number;
 
   constructor(
   	private bikeService: BikeService,
@@ -98,5 +100,9 @@ export class InventoryComponent implements OnInit {
   		console.log(err);
   		return false;
   	});
+  }
+
+  onAddModelSubmit() {
+    console.log(this.modelName + " " + this.modelPrice);
   }
 }

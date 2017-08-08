@@ -1,6 +1,9 @@
-<h2 class="page-header">Bikes <a class="btn btn-success pull-right" data-toggle="modal" data-target="#addModal" (click)="clearBikeInfo()">Add Bike</a></h2>
+<h2 class="page-header">
+	Bikes 
+	<a class="btn btn-success pull-right" data-toggle="modal" data-target="#addModal" (click)="clearBikeInfo()">Add Bike</a>
+	<a class="btn btn-success pull-right" data-toggle="modal" data-target="#addModelModal" (click)="clearBikeInfo()">Add Model</a>
+</h2>
 
-<a class="btn btn-success pull-right" data-toggle="modal" data-target="#addModelModal" (click)="clearBikeInfo()">Add Model</a>
 <!-- <a class="btn btn-success pull-right" data-toggle="modal" data-target="#delModelModal" (click)="clearBikeInfo()">Delete Model</a>
 <a class="btn btn-success pull-right" data-toggle="modal" data-target="#editModelModal" (click)="clearBikeInfo()">Update Model Price</a> -->
 
@@ -61,7 +64,7 @@
       <div class="modal-body">
         <div class="form-group">
 					<label>ID</label>
-					<input type="text" [(ngModel)]="currBike._id" name="id" class="form-control">
+					<input type="number" [(ngModel)]="currBike._id" name="id" class="form-control">
 				</div>
 				<div class="form-group">
 					<label>Model</label>
@@ -71,7 +74,7 @@
 				</div>
 				<div class="form-group">
 					<label>Price</label>
-					<input type="text" [(ngModel)]="currBike.price" name="price" class="form-control">
+					<input type="number" [(ngModel)]="currBike.price" name="price" class="form-control">
 				</div>
       </div>
       <div class="modal-footer">
@@ -93,7 +96,9 @@
       <div class="modal-body" *ngIf="prevBike.status === 'in'">
 				<div class="form-group">
 					<label>Model</label>
-					<input type="text" [(ngModel)]="currBike.model" name="model" class="form-control">
+					<select class="form-control" [(ngModel)]="currBike.model">
+				    <option *ngFor="let model of bikeModels" [ngValue]="model">{{model}}</option>
+			    </select>
 				</div>
 				<div class="form-group">
 					<label>Status</label>
@@ -101,7 +106,7 @@
 				</div>
 				<div class="form-group">
 					<label>Price</label>
-					<input type="text" [(ngModel)]="currBike.price" name="price" class="form-control">
+					<input type="number" [(ngModel)]="currBike.price" name="price" class="form-control">
 				</div>
       </div>
       <div class="modal-body" *ngIf="prevBike.status !== 'in'">
@@ -121,27 +126,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clearBikeInfo()"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Bike</h4>
+        <h4 class="modal-title" id="myModalLabel">Add Model</h4>
       </div>
       <div class="modal-body">
-        <div class="form-group">
-					<label>ID</label>
-					<input type="text" [(ngModel)]="currBike._id" name="id" class="form-control">
-				</div>
 				<div class="form-group">
 					<label>Model</label>
-					<select class="form-control" [(ngModel)]="currBike.model">
-				    <option *ngFor="let model of bikeModels" [ngValue]="model">{{model}}</option>
-			    </select>
+					<input type="text" [(ngModel)]="modelName" name="model" class="form-control">
 				</div>
 				<div class="form-group">
 					<label>Price</label>
-					<input type="text" [(ngModel)]="currBike.price" name="price" class="form-control">
+					<input type="number" [(ngModel)]="modelPrice" name="price" class="form-control">
 				</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" (click)="clearBikeInfo()">Clear</button>
-        <button type="button" class="btn btn-primary" *ngIf="currBike._id && currBike.model && currBike.price" (click)="onAddSubmit()" data-dismiss="modal">Add Bike</button>
+        <button type="button" class="btn btn-primary" *ngIf="currBike._id && currBike.model && currBike.price" (click)="onAddModelSubmit()" data-dismiss="modal">Add Model</button>
       </div>
     </div>
   </div>
