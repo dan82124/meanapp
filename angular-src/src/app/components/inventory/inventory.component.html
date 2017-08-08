@@ -146,7 +146,7 @@
 </div>
 
 <!-- Delete Model Modal -->
-<!-- <div class="modal fade" id="delModelModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="delModelModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -161,12 +161,11 @@
 			    </select>
 				</div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" (click)="clearBikeInfo()">Clear</button>
-        <button type="button" class="btn btn-primary" *ngIf="currBike.model" (click)="onAddSubmit()" data-dismiss="modal">Add Bike</button>
+        <button type="button" class="btn btn-primary" *ngIf="modelName" (click)="onDelModelSubmit()" data-dismiss="modal">Delete Model</button>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
 <!-- Update Model Price Modal -->
 <!-- <div class="modal fade" id="editModelModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

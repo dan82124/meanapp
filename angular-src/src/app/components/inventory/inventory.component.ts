@@ -113,6 +113,9 @@ export class InventoryComponent implements OnInit {
       this.bikeService.getModelList();
       console.log(this.bikeService.modelList);
     });
+  }
 
+  onDelModelSubmit() {
+    console.log("delete " + this.modelName);
   }
 }
