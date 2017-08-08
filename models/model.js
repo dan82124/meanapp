@@ -34,5 +34,5 @@ module.exports.updateModel = (name, price, callback) => {
 }
 
 module.exports.getModelList = (callback) => {
-  Model.find({name:1, price:1, _id:0}, callback).sort({name: 1});
+  Model.find(callback).sort({name: 1});
 }
