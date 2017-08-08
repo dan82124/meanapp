@@ -150,23 +150,23 @@ export class InventoryComponent implements OnInit {
 
   onEditModelSubmit() {
     console.log("edit");
-    let model = {
-      name: this.modelName,
-      price: this.modelPrice
-    };
+    // let model = {
+    //   name: this.modelName,
+    //   price: this.modelPrice
+    // };
 
-    this.bikeService.updatePrice(model).subscribe(data => {
-      if (data.success) {
-        this.flashMessage.show(data.msg, {cssClass: 'alert-success'});
-        this.bikeService.getModelList();
-        this.ngOnInit();
-      } else {
-        this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
-      }
-      this.clearModelInfo();
-    }, err => {
-      console.log(err);
-      return false;
-    });
+    // this.bikeService.updatePrice(model).subscribe(data => {
+    //   if (data.success) {
+    //     this.flashMessage.show(data.msg, {cssClass: 'alert-success'});
+    //     this.bikeService.getModelList();
+    //     this.ngOnInit();
+    //   } else {
+    //     this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
+    //   }
+    //   this.clearModelInfo();
+    // }, err => {
+    //   console.log(err);
+    //   return false;
+    // });
   }
 }
