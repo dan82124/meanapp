@@ -104,5 +104,17 @@ export class InventoryComponent implements OnInit {
 
   onAddModelSubmit() {
     console.log(this.modelName + " " + this.modelPrice);
+    let model = {
+      name: this.modelName,
+      price: this.modelPrice
+    };
+
+    this.bikeService.addModel(model).subscribe(data => {
+      console.log(data);
+      this.bikeService.getModelList().subscribe(list => {
+        console.log(list);
+      });
+    });
+
   }
 }

@@ -1,6 +1,7 @@
 <h2 class="page-header">
 	Bikes 
 	<a class="btn btn-success pull-right" data-toggle="modal" data-target="#addModal" (click)="clearBikeInfo()">Add Bike</a>
+	<
 	<a class="btn btn-success pull-right" data-toggle="modal" data-target="#addModelModal" (click)="clearBikeInfo()">Add Model</a>
 </h2>
 
@@ -140,7 +141,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" (click)="clearBikeInfo()">Clear</button>
-        <button type="button" class="btn btn-primary" *ngIf="currBike._id && currBike.model && currBike.price" (click)="onAddModelSubmit()" data-dismiss="modal">Add Model</button>
+        <button type="button" class="btn btn-primary" *ngIf="modelName && modelPrice" (click)="onAddModelSubmit()" data-dismiss="modal">Add Model</button>
       </div>
     </div>
   </div>
