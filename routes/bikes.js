@@ -58,7 +58,7 @@ router.post('/edit', (req, res, next) => {
 
 //Update Bike Price By Model
 router.post('/update', (req, res, next) => {
-	const model = req.body.modelName;
+	const model = req.body.name;
 	const price = req.body.price;
 
 	//Update prices in bike list
