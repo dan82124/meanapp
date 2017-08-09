@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class BikeService {
-  modelList: Object;
+  modelList: Model[];
 
   constructor(private http: Http) { }
 

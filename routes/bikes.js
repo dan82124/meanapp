@@ -63,7 +63,7 @@ router.post('/update', (req, res, next) => {
 
 	//Update prices in bike list
 	Bike.updatePriceByModel(model, price, (err, result) => {
-		if(err || result.nModified == 0) {
+		if(err) {
 			res.json({success: false, msg: 'Failed to update ' + model + ' bikes'});
 		} else {
 			//Update price in model list
