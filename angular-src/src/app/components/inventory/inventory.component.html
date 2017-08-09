@@ -1,8 +1,8 @@
 <h2 class="page-header">
 	Bikes 
 	<a class="btn btn-success pull-right" data-toggle="modal" data-target="#addModal" (click)="clearBikeInfo()">Add Bike</a>
+	<a class="btn btn-primary pull-right" data-toggle="modal" data-target="#editModelModal" (click)="clearModelInfo()">Edit Price</a>
 	<a class="btn btn-danger pull-right" data-toggle="modal" data-target="#delModelModal" (click)="clearModelInfo()">Delete Model</a>
-	<a class="btn btn-primary pull-right" data-toggle="modal" data-target="#editModelModal" (click)="clearModelInfo()">Edit Model Price</a>
 	<a class="btn btn-success pull-right" data-toggle="modal" data-target="#addModelModal" (click)="clearModelInfo()">Add Model</a>
 </h2>
 
@@ -17,7 +17,7 @@
 			  <div class="col-md-2 col-sm-4 col-xs-6 text-center">
 			    <select class="form-control" [(ngModel)]="bikefilter.model">
 			    	<option selected="selected" [ngValue]="null">All</option>
-				    <option *ngFor="let model of bikeModels" [ngValue]="model">{{model}}</option>
+				    <option *ngFor="let model of bikeService.modelList" [ngValue]="model.name">{{model.name}}</option>
 			    </select>
 			  </div>
 			  <div class="col-md-2 col-sm-4 col-xs-6 text-center">
@@ -67,18 +67,19 @@
 				</div>
 				<div class="form-group">
 					<label>Model</label>
-					<select class="form-control" [(ngModel)]="currBike.model">
-				    <option *ngFor="let model of bikeModels" [ngValue]="model">{{model}}</option>
+					<select class="form-control" [(ngModel)]="selectModel">
+				    <option *ngFor="let model of bikeService.modelList" [ngValue]="model">{{model.name}}</option>
 			    </select>
 				</div>
 				<div class="form-group">
 					<label>Price</label>
-					<input type="number" [(ngModel)]="currBike.price" name="price" class="form-control">
+					<br>
+					{{selectModel.price}}
 				</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" (click)="clearBikeInfo()">Clear</button>
-        <button type="button" class="btn btn-primary" *ngIf="currBike._id && currBike.model && currBike.price" (click)="onAddSubmit()" data-dismiss="modal">Add Bike</button>
+        <button type="button" class="btn btn-primary" *ngIf="currBike._id" (click)="onAddSubmit()" data-dismiss="modal">Add Bike</button>
       </div>
     </div>
   </div>
@@ -95,8 +96,8 @@
       <div class="modal-body" *ngIf="prevBike.status === 'in'">
 				<div class="form-group">
 					<label>Model</label>
-					<select class="form-control" [(ngModel)]="currBike.model">
-				    <option *ngFor="let model of bikeModels" [ngValue]="model">{{model}}</option>
+					<select class="form-control" (change)="updateEdit(currBike.model)" [(ngModel)]="currBike.model">
+				    <option *ngFor="let model of bikeService.modelList" [ngValue]="model.name">{{model.name}}</option>
 			    </select>
 				</div>
 				<div class="form-group">
@@ -130,16 +131,16 @@
       <div class="modal-body">
 				<div class="form-group">
 					<label>Model</label>
-					<input type="text" [(ngModel)]="modelName" name="model" class="form-control">
+					<input type="text" [(ngModel)]="selectModel.name" name="model" class="form-control">
 				</div>
 				<div class="form-group">
 					<label>Price</label>
-					<input type="number" [(ngModel)]="modelPrice" name="price" class="form-control">
+					<input type="number" [(ngModel)]="selectModel.price" name="price" class="form-control">
 				</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" (click)="clearModelInfo()">Clear</button>
-        <button type="button" class="btn btn-primary" *ngIf="modelName && modelPrice" (click)="onAddModelSubmit()" data-dismiss="modal">Add Model</button>
+        <button type="button" class="btn btn-primary" (click)="onAddModelSubmit()" data-dismiss="modal">Add Model</button>
       </div>
     </div>
   </div>
@@ -156,13 +157,13 @@
       <div class="modal-body">
 				<div class="form-group">
 					<label>Model</label>
-					<select class="form-control" [(ngModel)]="modelName">
-				    <option *ngFor="let model of this.bikeService.modelList" [ngValue]="model.name">{{model.name}}</option>
+					<select class="form-control" [(ngModel)]="selectModel">
+				    <option *ngFor="let model of bikeService.modelList" [ngValue]="model">{{model.name}}</option>
 			    </select>
 				</div>
 			</div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" *ngIf="modelName" (click)="onDelModelSubmit()" data-dismiss="modal">Delete Model</button>
+        <button type="button" class="btn btn-primary" (click)="onDelModelSubmit()" data-dismiss="modal">Delete Model</button>
       </div>
     </div>
   </div>
@@ -174,22 +175,22 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clearModelInfo()"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Delete Model</h4>
+        <h4 class="modal-title" id="myModalLabel">Edit Price</h4>
       </div>
       <div class="modal-body">
 				<div class="form-group">
 					<label>Model</label>
-					<select class="form-control" [(ngModel)]="modelName">
-				    <option *ngFor="let model of this.bikeService.modelList" [ngValue]="model.name">{{model.name}}</option>
+					<select class="form-control" [(ngModel)]="selectModel">
+				    <option *ngFor="let model of bikeService.modelList" [ngValue]="model">{{model.name}}</option>
 			    </select>
 				</div>
 				<div class="form-group">
 					<label>Price</label>
-					<input type="number" [(ngModel)]="modelPrice" name="price" class="form-control">
+					<input type="number" [(ngModel)]="selectModel.price" name="price" class="form-control">
 				</div>
 			</div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" *ngIf="modelName && modelPrice" (click)="onEditModelSubmit()" data-dismiss="modal">Update Price</button>
+        <button type="button" class="btn btn-primary" (click)="onEditModelSubmit()" data-dismiss="modal">Update Price</button>
       </div>
     </div>
   </div>

@@ -12,11 +12,11 @@ export class AppComponent implements OnInit {
 
 	constructor(
 		private authService: AuthService,
-		private bikeSerivce: BikeService) { }
+		private bikeService: BikeService) { }
 	
 	ngOnInit() {
 		this.authService.getUserData();
 
-		this.bikeSerivce.getModelList();
+		this.bikeService.getModelList();
 	}
 }
