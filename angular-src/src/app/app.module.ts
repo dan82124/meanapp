@@ -15,6 +15,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { SalesComponent } from './components/sales/sales.component';
 
 import { CustomerService } from './services/customer.service';
 import { RentalService } from './services/rental.service';
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'inventory', component: InventoryComponent, canActivate:[AuthGuard]},
   {path:'rental', component: RentalComponent, canActivate:[AuthGuard]},
-  {path:'customer', component: CustomerComponent, canActivate:[AuthGuard]}
+  {path:'customer', component: CustomerComponent, canActivate:[AuthGuard]},
+  {path:'sales', component: SalesComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -49,7 +51,8 @@ const appRoutes: Routes = [
     BikeFilterPipe,
     CustomerFilterPipe,
     RentalComponent,
-    CustomerComponent
+    CustomerComponent,
+    SalesComponent
   ],
   imports: [
     BrowserModule,

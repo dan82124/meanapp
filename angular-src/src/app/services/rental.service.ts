@@ -20,6 +20,12 @@ export class RentalService {
     return this.http.get('rentals/active', {headers: headers}).map(res => res.json());
   }
 
+  getRentalByDate(date) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('rentals/date', date, {headers: headers}).map(res => res.json());
+  }
+
   startRental(custId) {
   	let headers = new Headers();
   	headers.append('Content-Type', 'application/json');

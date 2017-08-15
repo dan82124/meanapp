@@ -45,12 +45,12 @@ router.post('/ret', (req, res, next) => {
 	const bikes = req.body.bikes;
   const bikeStatus = "in";
 
-  console.log(rentalId);
-  console.log(endDate);
-  console.log(duration);
-  console.log(rentalStatus);
-  console.log(total);
-  console.log(bikes);
+  // console.log(rentalId);
+  // console.log(endDate);
+  // console.log(duration);
+  // console.log(rentalStatus);
+  // console.log(total);
+  // console.log(bikes);
 
   Bike.updateBikes(bikes, bikeStatus, (err, result) => {
 		if(err || result.nModified == 0) {
@@ -118,7 +118,7 @@ router.post('/del', (req, res, next) => {
 });
 
 //Edit Rental Date
-router.post('/date', (req, res, next) => {
+router.post('/edit', (req, res, next) => {
 	const id = req.body.rentalId;
   const date = req.body.date;
 
@@ -198,6 +198,25 @@ router.get('/active', (req, res, next) => {
 	Rental.getRentalByStatus(true, (err, result) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get active rental list'});
+		} else {
+      res.json({success: true, msg: result});
+    }
+  });
+});
+
+//Get Rentals By Date
+router.post('/date', (req, res, next) => {
+	const date = req.body.date;
+  //Adjust for 7 hour timezone difference
+  const startDate = new Date(new Date(date).getTime() + 25200000);
+  //Add 24 hours
+  const endDate = new Date(startDate.getTime() + 86400000);
+
+  console.log(startDate);
+  console.log(endDate);
+	Rental.getRentalByDate(startDate, endDate, (err, result) => {
+    if(err) {
+			res.json({success: false, msg: 'Failed to get rentals of: ' + date});
 		} else {
       res.json({success: true, msg: result});
     }

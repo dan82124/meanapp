@@ -76,3 +76,9 @@ module.exports.getRentalByStatus = (status, callback) => {
 
   Rental.find(query, callback);
 }
+
+module.exports.getRentalByDate = (startDate, endDate, callback) => {
+  const query = {date: {$gte: startDate, $lt: endDate}}
+
+  Rental.find(query, callback).sort({date: -1});
+}
