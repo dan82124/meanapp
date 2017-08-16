@@ -311,6 +311,7 @@ export class RentalComponent implements OnInit {
   }
 
   selectAllBikes() {
+    this.selectAll = !this.selectAll;
     if (this.selectAll) {
       for (let bike = 0; bike < this.outBikes.length; bike++) {
         let index = this.selectedBikes.indexOf(this.outBikes[bike]);
@@ -327,8 +328,10 @@ export class RentalComponent implements OnInit {
   }
 
   clearSelectedBikes() {
+    this.selectAll = false;
     this.selectedBikes.splice(0, this.selectedBikes.length);
     this.subTotal = 0;
+    document.getElementById('all').innerHTML = 'Select All';
   }
 
   clearCustInfo() {

@@ -192,7 +192,7 @@
 					<label *ngFor="let outBike of outBikes" class="form-control">
 		        <input type="checkbox" [checked]="selectAll" (change)="updateChecked(outBike);calcPrice(this.selectedBikes)"> ID: {{outBike._id}} | Model: {{outBike.model}}
 		    	</label>
-		    	<button type="button" class="form-control" id="all" (click)="this.selectAll=!selectAll;selectAllBikes();">Select All</button>
+		    	<button type="button" class="form-control" id="all" (click)="selectAllBikes();">Select All</button>
 				</div>
       </div>
       <div class="modal-footer">
