@@ -5,6 +5,7 @@ import { RentalService } from '../../services/rental.service';
 import { BikeService } from '../../services/bike.service';
 import { Bike } from '../../shared/bike';
 import { Customer }  from '../../shared/customer';
+import { Rental }  from '../../shared/rental';
 
 @Component({
   selector: 'app-rental',
@@ -12,7 +13,7 @@ import { Customer }  from '../../shared/customer';
   styleUrls: ['./rental.component.css']
 })
 export class RentalComponent implements OnInit {
-  rentals: Object;
+  rentals: Rental[];
   rentalId: String;
   rentalDate: Date;
   rentalTotal: Number;
@@ -25,6 +26,7 @@ export class RentalComponent implements OnInit {
   selectedBikes: Bike[] = [];
   cust: Customer = new Customer();
   currentTime: Date;
+  selectAll: Boolean = false;
 
   constructor(
     private customerService: CustomerService,
@@ -33,7 +35,7 @@ export class RentalComponent implements OnInit {
     private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
-    this.rentalService.getRentalList().subscribe(data => {
+    this.rentalService.getActiveRentals().subscribe(data => {
       this.rentals = data.msg;
     }, err => {
       console.log(err);
@@ -181,7 +183,6 @@ export class RentalComponent implements OnInit {
 
   onRetBike(rental) {
     this.clearSelectedBikes();
-    this.subTotal = 0;
     this.rentalTotal = rental.total;
     this.cust._id = rental.customerId;
     this.cust.name = rental.customerName;
@@ -309,8 +310,25 @@ export class RentalComponent implements OnInit {
     console.log(this.selectedBikes);
   }
 
+  selectAllBikes() {
+    if (this.selectAll) {
+      for (let bike = 0; bike < this.outBikes.length; bike++) {
+        let index = this.selectedBikes.indexOf(this.outBikes[bike]);
+        if (index === -1) {
+          this.selectedBikes.push(this.outBikes[bike]);
+        }
+      }
+      this.calcPrice(this.selectedBikes);
+      document.getElementById('all').innerHTML = 'Deselect All';
+    } else {
+      this.clearSelectedBikes();
+      document.getElementById('all').innerHTML = 'Select All';
+    }
+  }
+
   clearSelectedBikes() {
     this.selectedBikes.splice(0, this.selectedBikes.length);
+    this.subTotal = 0;
   }
 
   clearCustInfo() {
