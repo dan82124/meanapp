@@ -13,10 +13,10 @@
 	  	<b>Number of Rentals:</b> <div>{{totalRentals}}</div>
 	  </div>
 	  <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-	  	<b>Total Sales:</b> <div>{{revenue}}</div>
+	  	<b>Total Sales:</b> <div>{{revenue | currency:'CAD':'1.2-2'}}</div>
 	  </div>
 	  <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-	  	<b>Average Rental Sale:</b> <div>{{avgRental}}</div>
+	  	<b>Average Rental Sale:</b> <div>{{avgRental | currency:'CAD':'1.2-2'}}</div>
 	  </div>
 	</div>
 </table>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { RentalService } from '../../services/rental.service';
 import { Rental } from '../../shared/rental';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-sales',
@@ -59,6 +60,8 @@ export class SalesComponent implements OnInit {
     this.revenue = 0;
     for (let rental = 0; rental < this.rentals.length; rental++) {
       this.revenue += this.rentals[rental].total;
+      //this.revenue = Math.round((this.revenue)*100)/100;
+      console.log(this.revenue);
     }
     if (this.totalRentals > 0) {
       this.avgRental = Math.round((this.revenue/this.totalRentals)*100)/100;

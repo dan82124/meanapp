@@ -6,6 +6,7 @@ import { BikeService } from '../../services/bike.service';
 import { Bike } from '../../shared/bike';
 import { Customer }  from '../../shared/customer';
 import { Rental }  from '../../shared/rental';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-rental',
