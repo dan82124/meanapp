@@ -7,5 +7,5 @@ export class Rental {
   endDate: Date;
   duration: Number;
   status: Boolean;
-  total: Number;
+  total: number;
 }

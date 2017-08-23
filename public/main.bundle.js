@@ -1535,6 +1535,7 @@ var SalesComponent = (function () {
         this.rentalService.getRentalByDate(rentalDate).subscribe(function (data) {
             console.log(data);
             _this.rentals = data.msg;
+            _this.calcSales();
         }, function (err) {
             console.log(err);
             return false;
@@ -1549,10 +1550,22 @@ var SalesComponent = (function () {
         this.rentalService.getRentalByDate(rentalDate).subscribe(function (data) {
             console.log(data);
             _this.rentals = data.msg;
+            _this.calcSales();
         }, function (err) {
             console.log(err);
             return false;
         });
+    };
+    SalesComponent.prototype.calcSales = function () {
+        this.totalRentals = this.rentals.length;
+        this.avgRental = 0;
+        this.revenue = 0;
+        for (var rental = 0; rental < this.rentals.length; rental++) {
+            this.revenue += this.rentals[rental].total;
+        }
+        if (this.totalRentals > 0) {
+            this.avgRental = Math.round((this.revenue / this.totalRentals) * 100) / 100;
+        }
     };
     SalesComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1989,7 +2002,7 @@ module.exports = "<h2 class=\"page-header\">Rentals \n\t<!-- Function Buttons --
 /***/ 708:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Sales</h2>\n\n<!-- Search Date -->\n<div>\n\t<input type=\"date\" (change)=\"changeDate(date);\"[(ngModel)]=\"date\" name=\"date\" class=\"form-control\" style=\"width:170px;\">\n</div>\n\n<!-- Rental List -->\n<div *ngIf=\"rentals\">\n\t<ul class=\"list-group\">\n\t\t<li class=\"list-group-item\" *ngFor=\"let rental of rentals\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Rental ID:</b> <div>{{rental._id}}</div>\n\t      \t<hr>\n\t      \t<b>Status:</b> <div *ngIf=\"rental.status\" class=\"text-success\">Active</div> <div *ngIf=\"!rental.status\" class=\"text-danger\">Returned</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Customer ID:</b> <div>{{rental.customerId}}</div>\n\t      \t<hr>\n\t      \t<b>Customer Name:</b> <div>{{rental.customerName}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Start Date:</b> <div>{{rental.date | date:\"medium\"}}</div>\n\t      \t<hr>\n\t      \t<b>Duration (Minutes):</b> <div>{{rental.duration}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\" style=\"overflow-wrap:break-word;\">\n\t      \t<b>Bikes:</b> <div>{{rental.bikeId}}</div>\n\t      \t<hr>\n\t      \t<b>Total:</b> <div>{{rental.total}}</div>\n\t      </div>\n    \t</div>\n    </li>\n\t</ul>\n</div>"
+module.exports = "<h2 class=\"page-header\">Sales</h2>\n\n<!-- Search Date -->\n<div>\n\t<input type=\"date\" (change)=\"changeDate(date);\"[(ngModel)]=\"date\" name=\"date\" class=\"form-control\" style=\"width:170px;\">\n</div>\n<br>\n\n<!-- Sales Report -->\n<table class=\"table table-bordered\">\n\t<div class=\"row\">\n\t\t<div class=\"col-md-4 col-sm-6 col-xs-12 text-center\">\n\t  \t<b>Number of Rentals:</b> <div>{{totalRentals}}</div>\n\t  </div>\n\t  <div class=\"col-md-4 col-sm-6 col-xs-12 text-center\">\n\t  \t<b>Total Sales:</b> <div>{{revenue}}</div>\n\t  </div>\n\t  <div class=\"col-md-4 col-sm-6 col-xs-12 text-center\">\n\t  \t<b>Average Rental Sale:</b> <div>{{avgRental}}</div>\n\t  </div>\n\t</div>\n</table>\n\n<!-- Rental List -->\n<div *ngIf=\"rentals\">\n\t<ul class=\"list-group\">\n\t\t<li class=\"list-group-item\" *ngFor=\"let rental of rentals\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Rental ID:</b> <div>{{rental._id}}</div>\n\t      \t<hr>\n\t      \t<b>Status:</b> <div *ngIf=\"rental.status\" class=\"text-success\">Active</div> <div *ngIf=\"!rental.status\" class=\"text-danger\">Returned</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Customer ID:</b> <div>{{rental.customerId}}</div>\n\t      \t<hr>\n\t      \t<b>Customer Name:</b> <div>{{rental.customerName}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Start Date:</b> <div>{{rental.date | date:\"medium\"}}</div>\n\t      \t<hr>\n\t      \t<b>Duration (Minutes):</b> <div>{{rental.duration}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\" style=\"overflow-wrap:break-word;\">\n\t      \t<b>Bikes:</b> <div>{{rental.bikeId}}</div>\n\t      \t<hr>\n\t      \t<b>Total:</b> <div>{{rental.total}}</div>\n\t      </div>\n    \t</div>\n    </li>\n\t</ul>\n</div>"
 
 /***/ }),
 

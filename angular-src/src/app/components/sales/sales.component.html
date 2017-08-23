@@ -4,6 +4,22 @@
 <div>
 	<input type="date" (change)="changeDate(date);"[(ngModel)]="date" name="date" class="form-control" style="width:170px;">
 </div>
+<br>
+
+<!-- Sales Report -->
+<table class="table table-bordered">
+	<div class="row">
+		<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+	  	<b>Number of Rentals:</b> <div>{{totalRentals}}</div>
+	  </div>
+	  <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+	  	<b>Total Sales:</b> <div>{{revenue}}</div>
+	  </div>
+	  <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+	  	<b>Average Rental Sale:</b> <div>{{avgRental}}</div>
+	  </div>
+	</div>
+</table>
 
 <!-- Rental List -->
 <div *ngIf="rentals">
