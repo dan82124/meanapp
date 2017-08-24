@@ -5,10 +5,10 @@ const config = require('../config/database');
 //Rental Schema
 const RentalSchema = mongoose.Schema({
 
-	customerId: {
-		type: mongoose.Schema.Types.ObjectId,
-		required: true
-	},
+  customerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
+  },
   customerName: {
     type: String,
     required: true
@@ -55,9 +55,9 @@ module.exports.editDate = (id, date, callback) => {
   Rental.update(query, {$set: update}, callback);
 }
 
-module.exports.retRental = (id, endDate, duration, status, total, callback) => {
+module.exports.retRental = (id, endDate, duration, status, tax, total, callback) => {
   const query = {_id: id};
-  const update = {endDate: endDate, duration: duration, status: status, total: total};
+  const update = {endDate: endDate, duration: duration, status: status, tax: tax, total: total};
 
   Rental.update(query, {$set: update}, callback);
 }
@@ -75,7 +75,7 @@ module.exports.getRentalByCustId = (custId, callback) => {
 module.exports.getRentalByStatus = (status, callback) => {
   const query = {status: status}
 
-  Rental.find(query, callback);
+  Rental.find(query, callback).sort({date: -1});
 }
 
 module.exports.getRentalByDate = (startDate, endDate, callback) => {
