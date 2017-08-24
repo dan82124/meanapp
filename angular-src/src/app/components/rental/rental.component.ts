@@ -18,8 +18,11 @@ export class RentalComponent implements OnInit {
   rentalId: String;
   rentalDate: Date;
   rentalTotal: Number;
+  rentalTax: Number;
   rentalDuration: Number;
+  tax: Number = 0;
   subTotal: Number = 0;
+  total: Number = 0;
   editDate: Date;
   rentalBikes: Number[];
   inBikes: Bike[] = [];
@@ -185,6 +188,7 @@ export class RentalComponent implements OnInit {
   onRetBike(rental) {
     this.clearSelectedBikes();
     this.rentalTotal = rental.total;
+    this.rentalTax = rental.tax;
     this.cust._id = rental.customerId;
     this.cust.name = rental.customerName;
     this.rentalId = rental._id;
@@ -208,7 +212,8 @@ export class RentalComponent implements OnInit {
   }
 
   onRetBikeSubmit() {
-    this.rentalTotal = Math.round((this.subTotal.valueOf() + this.rentalTotal.valueOf())*100)/100;
+    this.rentalTax = Math.round((this.tax.valueOf() + this.rentalTax.valueOf())*100)/100;
+    this.rentalTotal = Math.round((this.rentalTax.valueOf() + this.subTotal.valueOf() + this.rentalTotal.valueOf())*100)/100;
     console.log(this.rentalId);
     console.log(this.currentTime);
     console.log(this.selectedBikes);
@@ -220,6 +225,7 @@ export class RentalComponent implements OnInit {
       endDate: this.currentTime,
       duration: this.rentalDuration,
       rentalStatus: (this.selectedBikes.length !== this.outBikes.length),
+      tax: this.rentalTax,
       total: this.rentalTotal,
       bikes: this.selectedBikes
     }
@@ -261,7 +267,9 @@ export class RentalComponent implements OnInit {
         total += cost;
     }
 
+    this.tax = Math.round((total*0.12)*100)/100;
     this.subTotal = Math.round(total*100)/100;
+    this.total = Math.round((this.tax.valueOf() + this.subTotal.valueOf())*100)/100;
     this.rentalDuration = duration;
   }
 
@@ -332,6 +340,8 @@ export class RentalComponent implements OnInit {
     this.selectAll = false;
     this.selectedBikes.splice(0, this.selectedBikes.length);
     this.subTotal = 0;
+    this.tax = 0;
+    this.total = 0;
     document.getElementById('all').innerHTML = 'Select All';
   }
 

@@ -18,6 +18,7 @@ const RentalSchema = mongoose.Schema({
   endDate: Date,
   duration: Number,
   status: Boolean,
+  tax: Number,
   total: Number
 });
 

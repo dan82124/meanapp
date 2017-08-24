@@ -41,6 +41,7 @@ router.post('/ret', (req, res, next) => {
 	const endDate = req.body.endDate;
 	const duration = req.body.duration;
 	const rentalStatus = req.body.rentalStatus;
+	const tax = req.body.tax;
 	const total = req.body.total;
 	const bikes = req.body.bikes;
   const bikeStatus = "in";
@@ -60,7 +61,7 @@ router.post('/ret', (req, res, next) => {
 				if(err || result.nModified == 0) {
 					res.json({success: false, msg: 'Failed to remove bike: ' + bikeIds});
 				} else {
-		      Rental.retRental(rentalId, endDate, duration, rentalStatus, total, (err, rental) => {
+		      Rental.retRental(rentalId, endDate, duration, rentalStatus, tax, total, (err, rental) => {
 						if(err || rental.deletedCount == 0) {
 							res.json({success: false, msg: 'Failed to return rental: ' + rentalId});
 						} else {

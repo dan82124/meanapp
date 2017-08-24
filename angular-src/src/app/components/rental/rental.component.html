@@ -197,8 +197,14 @@
       </div>
       <div class="modal-footer">
       	<div class="pull-left">
+					<label>Subtotal:</label>
+					{{this.subTotal | currency:'CAD':'1.2-2'}}
+					<br>
+					<label>Tax:</label>
+					{{this.tax | currency:'CAD':'1.2-2'}}
+					<hr>
 					<label>Total:</label>
-					{{this.subTotal  | currency:'CAD':'1.2-2'}}
+					{{this.total | currency:'CAD':'1.2-2'}}
 				</div>
         <button *ngIf="selectedBikes.length !== 0" type="button" class="btn btn-primary" (click)="onRetBikeSubmit()" data-dismiss="modal">Return Bike</button>
       </div>
