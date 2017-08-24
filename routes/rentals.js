@@ -17,6 +17,7 @@ router.post('/start', (req, res, next) => {
     date: new Date,
     duration: 0,
     status: true,
+    tax: 0,
     total: 0
 	});
 
