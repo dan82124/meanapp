@@ -157,7 +157,7 @@ var RentalService = (function () {
     RentalService.prototype.changeDate = function (rental) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('rentals/date', rental, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.post('rentals/edit', rental, { headers: headers }).map(function (res) { return res.json(); });
     };
     RentalService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 

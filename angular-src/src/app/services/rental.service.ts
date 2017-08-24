@@ -59,6 +59,6 @@ export class RentalService {
   changeDate(rental) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('rentals/date', rental, {headers: headers}).map(res => res.json());
+    return this.http.post('rentals/edit', rental, {headers: headers}).map(res => res.json());
   }
 }

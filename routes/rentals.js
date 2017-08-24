@@ -46,12 +46,13 @@ router.post('/ret', (req, res, next) => {
 	const bikes = req.body.bikes;
   const bikeStatus = "in";
 
-  // console.log(rentalId);
-  // console.log(endDate);
-  // console.log(duration);
-  // console.log(rentalStatus);
-  // console.log(total);
-  // console.log(bikes);
+  console.log(rentalId);
+  console.log(endDate);
+  console.log(duration);
+  console.log(rentalStatus);
+  console.log(tax);
+  console.log(total);
+  console.log(bikes);
 
   Bike.updateBikes(bikes, bikeStatus, (err, result) => {
 		if(err || result.nModified == 0) {
