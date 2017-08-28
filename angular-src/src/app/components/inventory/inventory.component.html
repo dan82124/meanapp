@@ -1,5 +1,6 @@
 <h2 class="page-header">
-	Bikes 
+	Bikes
+	<!-- Function Buttons --> 
 	<a class="btn btn-success pull-right" data-toggle="modal" data-target="#addModal" (click)="clearBikeInfo();clearModelInfo()">Add Bike</a>
 	<a class="btn btn-primary pull-right" data-toggle="modal" data-target="#editModelModal" (click)="clearModelInfo()">Edit Price</a>
 	<a class="btn btn-danger pull-right" data-toggle="modal" data-target="#delModelModal" (click)="clearModelInfo()">Delete Model</a>
@@ -21,7 +22,10 @@
 			    </select>
 			  </div>
 			  <div class="col-md-2 col-sm-4 col-xs-6 text-center">
-			    <input class="form-control" type="text" [(ngModel)]="bikefilter.status" placeholder="Status">
+			    <select class="form-control" [(ngModel)]="bikefilter.status">
+			    	<option selected="selected" [ngValue]="null">All</option>
+				    <option *ngFor="let status of bikeService.bikeStatus" [ngValue]="status">{{status}}</option>
+			    </select>
 			  </div>
 			  <div class="col-md-2 col-sm-4 col-xs-6 text-center">
 			    <input class="form-control" type="number" step="0.5" [(ngModel)]="bikefilter.price" placeholder="Price">
@@ -93,7 +97,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clearBikeInfo()"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Edit Bike {{currBike._id}}</h4>
       </div>
-      <div class="modal-body" *ngIf="prevBike.status === 'in'">
+      <div class="modal-body" *ngIf="prevBike.status === 'Available' || prevBike.status === 'Maintenance'">
 				<div class="form-group">
 					<label>Model</label>
 					<select class="form-control" (change)="updateEdit(currBike.model)" [(ngModel)]="currBike.model">
@@ -102,17 +106,19 @@
 				</div>
 				<div class="form-group">
 					<label>Status</label>
-					<input type="text" [(ngModel)]="currBike.status" name="status" class="form-control">
+					<select class="form-control" [(ngModel)]="currBike.status">
+				    <option *ngFor="let status of bikeService.bikeStatus" [ngValue]="status">{{status}}</option>
+			    </select>
 				</div>
 				<div class="form-group">
 					<label>Price</label>
 					<input type="number" [(ngModel)]="currBike.price" name="price" step="0.5" class="form-control">
 				</div>
       </div>
-      <div class="modal-body" *ngIf="prevBike.status !== 'in'">
+      <div class="modal-body" *ngIf="prevBike.status !== 'Available' && prevBike.status !== 'Maintenance'">
       	<h3 class="text-danger">Bike is currently out and cannot be modified.</h3>
       </div>
-      <div class="modal-footer" *ngIf="prevBike.status === 'in'">
+      <div class="modal-footer" *ngIf="prevBike.status === 'Available' || prevBike.status === 'Maintenance'">
         <button type="button" class="btn btn-default" (click)="undoEdit()">Reset</button>
         <button type="button" class="btn btn-primary" *ngIf="currBike.model && currBike.status && currBike.price" (click)="onEditSubmit()" data-dismiss="modal">Save changes</button>
       </div>

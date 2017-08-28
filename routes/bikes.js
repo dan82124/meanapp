@@ -78,13 +78,14 @@ router.post('/update', (req, res, next) => {
 	});
 });
 
+
 //Count Bikes
 router.get('/count', (req, res, next) => {
 	Bike.getBikeCount((err, total) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get count'});
 		} else {
-      Bike.getBikeByStatus("in", (err, bikes) => {
+      Bike.getBikeByStatus("Available", (err, bikes) => {
       	if(err) {
 					res.json({success: false, msg: 'Failed to get bikes'});
 				} else {

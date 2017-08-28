@@ -38,7 +38,7 @@ export class InventoryComponent implements OnInit {
   }
 
   onAddSubmit() {
-    this.currBike.status = "in";
+    this.currBike.status = "Available";
     this.currBike.model = this.selectModel.name;
     this.currBike.price = this.selectModel.price;
 

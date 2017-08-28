@@ -111,7 +111,7 @@ export class RentalComponent implements OnInit {
     this.rentalDate = new Date(rental.date);
     this.rentalBikes = rental.bikeId;
 
-    this.bikeService.bikeByStatus({status: "in"}).subscribe(data => {
+    this.bikeService.bikeByStatus({status: "Available"}).subscribe(data => {
       if (data.success) {
         this.inBikes = data.msg;
       } else {
@@ -248,7 +248,10 @@ export class RentalComponent implements OnInit {
     let total = 0;
     let discountDuration = 0;
 
-    if (duration < 180) {
+    if (duration < 60) {
+      //Minimum 1 Hour Charge
+      discountDuration = 60;
+    } else if (duration >= 60 && duration < 180) {
       //Normal Pricing (Below 3 Hours)
       discountDuration = duration;
     } else if (duration <= 240 && duration >= 180) {

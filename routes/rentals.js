@@ -45,15 +45,14 @@ router.post('/ret', (req, res, next) => {
 	const tax = req.body.tax;
 	const total = req.body.total;
 	const bikes = req.body.bikes;
-  const bikeStatus = "in";
+  const bikeStatus = "Available";
 
-  console.log(rentalId);
-  console.log(endDate);
-  console.log(duration);
-  console.log(rentalStatus);
-  console.log(tax);
-  console.log(total);
-  console.log(bikes);
+  // console.log(rentalId);
+  // console.log(endDate);
+  // console.log(duration);
+  // console.log(rentalStatus);
+  // console.log(total);
+  // console.log(bikes);
 
   Bike.updateBikes(bikes, bikeStatus, (err, result) => {
 		if(err || result.nModified == 0) {
@@ -81,7 +80,7 @@ router.post('/del', (req, res, next) => {
 	const rentalId = req.body.rentalId;
 	const custId = req.body.customerId;
 	const bikes = req.body.bikeId;
-  const status = "in";
+  const bikeStatus = "Available";
 
   if (bikes.length === 0) {
 		Rental.delRental(rentalId, (err, rental) => {
@@ -98,7 +97,7 @@ router.post('/del', (req, res, next) => {
 	    }
 		});  	
   } else {
-	  Bike.updateBikes(bikes, status, (err, result) => {
+	  Bike.updateBikes(bikes, bikeStatus, (err, result) => {
 			if(err || result.nModified == 0) {
 				res.json({success: false, msg: 'Failed to update bikes: ' + bikes});
 			} else {
@@ -162,7 +161,7 @@ router.post('/add', (req, res, next) => {
 //Remove Bikes From Rental
 router.post('/remove', (req, res, next) => {
 	const id = req.body.rentalId;
-  const status = "in";
+  const bikeStatus = "Available";
   const bikes = req.body.bikes;
   const bikeIds = [];
 
@@ -170,7 +169,7 @@ router.post('/remove', (req, res, next) => {
   	bikeIds.push(bikes[bike]._id);
   }
 
-  Bike.updateBikes(bikeIds, status, (err, result) => {
+  Bike.updateBikes(bikeIds, bikeStatus, (err, result) => {
 		if(err || result.nModified == 0) {
 			res.json({success: false, msg: 'Failed to update bikes: ' + bikeIds});
 		} else {

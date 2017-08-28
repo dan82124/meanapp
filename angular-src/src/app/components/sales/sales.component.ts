@@ -16,6 +16,7 @@ export class SalesComponent implements OnInit {
   totalRentals: number;
   avgRental: number;
   revenue: number;
+  tax: number;
 
   constructor(
     private rentalService: RentalService,
@@ -58,9 +59,10 @@ export class SalesComponent implements OnInit {
     this.totalRentals = this.rentals.length;
     this.avgRental = 0;
     this.revenue = 0;
+    this.tax = 0;
     for (let rental = 0; rental < this.rentals.length; rental++) {
-      this.revenue += this.rentals[rental].total;
-      this.revenue = Math.round((this.revenue)*100)/100;
+      this.revenue = this.rentals[rental].total.valueOf() + this.revenue.valueOf();
+      this.tax = this.rentals[rental].tax.valueOf() + this.tax.valueOf();
     }
     if (this.totalRentals > 0) {
       this.avgRental = Math.round((this.revenue/this.totalRentals)*100)/100;

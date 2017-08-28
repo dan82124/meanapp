@@ -7,7 +7,8 @@ import { Model } from '../shared/model';
 @Injectable()
 export class BikeService {
   modelList: Model[];
-
+  bikeStatus: String[] = ['Available', 'Maintenance'];
+  
   constructor(private http: Http) { }
 
   getBikeList() {
