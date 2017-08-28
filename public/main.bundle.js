@@ -637,7 +637,7 @@ var DashboardComponent = (function () {
         var _this = this;
         this.bikeService.getBikeList().subscribe(function (data) {
             _this.bikeList = data.msg;
-            _this.bikefilter.status = "in";
+            _this.bikefilter.status = "Available";
         }, function (err) {
             console.log(err);
             return false;

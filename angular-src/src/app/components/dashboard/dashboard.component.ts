@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   	this.bikeService.getBikeList().subscribe(data => {
       this.bikeList = data.msg;
-      this.bikefilter.status = "in";
+      this.bikefilter.status = "Available";
   	}, err => {
   		console.log(err);
   		return false;
