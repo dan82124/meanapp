@@ -3,6 +3,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { BikeService } from '../../services/bike.service';
 import { RentalService } from '../../services/rental.service';
 import { Bike } from '../../shared/bike';
+import { Rental }  from '../../shared/rental';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,7 @@ import { Bike } from '../../shared/bike';
 })
 export class DashboardComponent implements OnInit {
 	bikeList: Bike[];
-  rentalList: Object[];
+  rentalList: Rental[];
   bikefilter: Bike = new Bike();
   totalBikeCount: Number;
   availBikeCount: Number;

@@ -8,6 +8,7 @@ import { Model } from '../shared/model';
 export class BikeService {
   modelList: Model[];
   bikeStatus: String[] = ['Available', 'Maintenance'];
+  idTags: number[] = [1, 2, 3, 4];
   
   constructor(private http: Http) { }
 

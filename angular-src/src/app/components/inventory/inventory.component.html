@@ -13,7 +13,10 @@
 		<li class="list-group-item">
 			<div class="row">
 			  <div class="col-md-2 col-sm-4 col-xs-6 text-center">
-			    <input class="form-control" type="number" [(ngModel)]="bikefilter._id" placeholder="ID">
+			    <select class="form-control" [(ngModel)]="bikefilter._id">
+			    	<option selected="selected" [ngValue]="null">All</option>
+				    <option *ngFor="let tag of bikeService.idTags" [ngValue]="tag">Group {{tag}}</option>
+			    </select>
 			  </div>
 			  <div class="col-md-2 col-sm-4 col-xs-6 text-center">
 			    <select class="form-control" [(ngModel)]="bikefilter.model">
