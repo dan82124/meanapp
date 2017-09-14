@@ -38,21 +38,14 @@ router.post('/start', (req, res, next) => {
 
 //Return Rental
 router.post('/ret', (req, res, next) => {
-	const rentalId = req.body.rentalId;
+	const rentalId = req.body.rental._id;
 	const endDate = req.body.endDate;
-	const duration = req.body.duration;
-	const rentalStatus = req.body.rentalStatus;
-	const tax = req.body.tax;
-	const total = req.body.total;
+	const duration = req.body.rental.duration;
+	const rentalStatus = req.body.rental.status;
+	const tax = req.body.rental.tax;
+	const total = req.body.rental.total;
 	const bikes = req.body.bikes;
   const bikeStatus = "Available";
-
-  // console.log(rentalId);
-  // console.log(endDate);
-  // console.log(duration);
-  // console.log(rentalStatus);
-  // console.log(total);
-  // console.log(bikes);
 
   Bike.updateBikes(bikes, bikeStatus, (err, result) => {
 		if(err || result.nModified == 0) {
