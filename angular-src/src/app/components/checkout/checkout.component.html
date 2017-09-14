@@ -1,0 +1,67 @@
+<div *ngIf="this.rentalService.returnDetails" id="rentalDetails">
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12 text-center">
+          <b>Rental ID</b> <div>{{rentalService.returnDetails.rental._id}}</div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 text-center">
+          <b>Customer Name</b> <div>{{rentalService.returnDetails.cust.name}}</div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+          <b>Start Time</b> <div>{{rentalService.returnDetails.rental.date | date:"medium"}}</div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+          <b>Return Time</b> <div>{{rentalService.returnDetails.endDate | date:"medium"}}</div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+          <b>Duration (Minutes)</b> <div>{{rentalService.returnDetails.rental.duration}}</div>
+        </div>
+      </div>
+    </li>
+    <br>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th><b>Bike ID</b></th>
+          <th><b>Model</b></th>
+          <th><b>Rate</b></th>
+          <th><b>Subtotal</b></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bike of rentalService.returnDetails.bikes">
+          <td>{{bike._id}}</td>
+          <td>{{bike.model}}</td>
+          <td>{{bike.price}}</td>
+          <td>{{rentalService.calcPrice(bike, rentalService.returnDetails.rental.duration) | currency:'CAD':'1.2-2'}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+          <b>Subtotal</b> <div>{{rentalService.returnDetails.rental.total - rentalService.returnDetails.rental.tax | currency:'CAD':'1.2-2'}}</div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+          <b>Tax</b> <div>{{rentalService.returnDetails.rental.tax | currency:'CAD':'1.2-2'}}</div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12 text-center">
+          <b>Total</b> <div>{{rentalService.returnDetails.rental.total | currency:'CAD':'1.2-2'}}</div>
+        </div> 
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+    <button type="button" class="btn btn-default" (click)="rentalService.print('rentalDetails')">Print Page</button>
+    <button *ngIf="this.rentalService.returnDetails" type="button" class="btn btn-primary" (click)="onRetSubmit()">Return Bike</button>
+    <button type="button" class="btn btn-danger btn-xs pull-right" (click)="goBack()">Go Back</button>
+  </div>
+</div>

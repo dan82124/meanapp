@@ -7,6 +7,7 @@ import { Bike } from '../../shared/bike';
 import { Customer }  from '../../shared/customer';
 import { Rental }  from '../../shared/rental';
 import { CurrencyPipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rental',
@@ -15,16 +16,11 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class RentalComponent implements OnInit {
   rentals: Rental[];
-  rentalId: String;
-  rentalDate: Date;
-  rentalTotal: Number;
-  rentalTax: Number;
-  rentalDuration: Number;
+  rental: Rental = new Rental();
   tax: Number = 0;
   subTotal: Number = 0;
   total: Number = 0;
   editDate: Date;
-  rentalBikes: Number[];
   inBikes: Bike[] = [];
   outBikes: Bike[] = [];
   selectedBikes: Bike[] = [];
@@ -36,7 +32,8 @@ export class RentalComponent implements OnInit {
     private customerService: CustomerService,
     private bikeService: BikeService,
     private rentalService: RentalService,
-    private flashMessage: FlashMessagesService) { }
+    private flashMessage: FlashMessagesService,
+    private router: Router) { }
 
   ngOnInit() {
     this.rentalService.getActiveRentals().subscribe(data => {
@@ -107,9 +104,9 @@ export class RentalComponent implements OnInit {
     this.clearSelectedBikes();
     this.cust._id = rental.customerId;
     this.cust.name = rental.customerName;
-    this.rentalId = rental._id;
-    this.rentalDate = new Date(rental.date);
-    this.rentalBikes = rental.bikeId;
+    this.rental._id = rental._id;
+    this.rental.date = new Date(rental.date);
+    this.rental.bikeId = rental.bikeId;
 
     this.bikeService.bikeByStatus({status: "Available"}).subscribe(data => {
       if (data.success) {
@@ -125,7 +122,7 @@ export class RentalComponent implements OnInit {
 
   onAddBikeSubmit() {
     let add = {
-      rentalId: this.rentalId,
+      rentalId: this.rental._id,
       bikes: this.selectedBikes
     }
     console.log(add);
@@ -146,12 +143,12 @@ export class RentalComponent implements OnInit {
     this.clearSelectedBikes();
     this.cust._id = rental.customerId;
     this.cust.name = rental.customerName;
-    this.rentalId = rental._id;
-    this.rentalDate = new Date(rental.date);
-    this.rentalBikes = rental.bikeId;
+    this.rental._id = rental._id;
+    this.rental.date = new Date(rental.date);
+    this.rental.bikeId = rental.bikeId;
 
     let rented = {
-      status: this.rentalId
+      status: this.rental._id
     }
 
     this.bikeService.bikeByStatus(rented).subscribe(data => {
@@ -168,7 +165,7 @@ export class RentalComponent implements OnInit {
 
   onDelBikeSubmit() {
     let del = {
-      rentalId: this.rentalId,
+      rentalId: this.rental._id,
       bikes: this.selectedBikes
     }
     console.log(del);
@@ -187,16 +184,20 @@ export class RentalComponent implements OnInit {
 
   onRetBike(rental) {
     this.clearSelectedBikes();
-    this.rentalTotal = rental.total;
-    this.rentalTax = rental.tax;
     this.cust._id = rental.customerId;
     this.cust.name = rental.customerName;
-    this.rentalId = rental._id;
-    this.rentalDate = new Date(rental.date);
-    this.rentalBikes = rental.bikeId;
+    this.rental._id = rental._id;
+    this.rental.date = new Date(rental.date);
+    this.rental.bikeId = rental.bikeId;
+    this.rental.tax = rental.tax;
+    this.rental.total = rental.total;
+
+    this.currentTime = new Date();
+    let duration = Math.round((this.currentTime.getTime() - this.rental.date.getTime())/(1000*60));
+    this.rental.duration = duration;
 
     let rented = {
-      status: this.rentalId
+      status: this.rental._id
     }
 
     this.bikeService.bikeByStatus(rented).subscribe(data => {
@@ -212,39 +213,34 @@ export class RentalComponent implements OnInit {
   }
 
   onRetBikeSubmit() {
-    this.rentalTax = Math.round((this.tax.valueOf() + this.rentalTax.valueOf())*100)/100;
-    this.rentalTotal = Math.round((this.rentalTax.valueOf() + this.subTotal.valueOf() + this.rentalTotal.valueOf())*100)/100;
-    console.log(this.rentalId);
-    console.log(this.currentTime);
-    console.log(this.selectedBikes);
-    console.log(this.rentalTotal);
-    console.log(this.rentalDuration);
+    this.rental.tax = Math.round((this.tax.valueOf() + this.rental.tax.valueOf())*100)/100;
+    this.rental.total = Math.round((this.tax.valueOf() + this.subTotal.valueOf() + this.rental.total.valueOf())*100)/100;
+    this.rental.status = this.selectedBikes.length !== this.outBikes.length;
 
-    let ret = {
-      rentalId: this.rentalId,
-      endDate: this.currentTime,
-      duration: this.rentalDuration,
-      rentalStatus: (this.selectedBikes.length !== this.outBikes.length),
-      tax: this.rentalTax,
-      total: this.rentalTotal,
-      bikes: this.selectedBikes
+    this.rentalService.returnDetails = {
+      rental: this.rental,
+      cust: this.cust,
+      bikes: this.selectedBikes,
+      endDate: this.currentTime
     }
 
-    this.rentalService.returnRental(ret).subscribe(data => {
-      if (data.success) {
-        this.ngOnInit();
-      } else {
-        this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
-      }
-    }, err => {
-      console.log(err);
-      return false;
-    });
+    this.router.navigate(['/checkout']);
+
+    // this.rentalService.returnRental(ret).subscribe(data => {
+    //   if (data.success) {
+    //     this.ngOnInit();
+    //   } else {
+    //     this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
+    //   }
+    // }, err => {
+    //   console.log(err);
+    //   return false;
+    // });
   }
 
   calcPrice(bikes) {
     this.currentTime = new Date();
-    let duration = Math.round((this.currentTime.getTime() - this.rentalDate.getTime())/(1000*60));
+    let duration = Math.round((this.currentTime.getTime() - this.rental.date.getTime())/(1000*60));
     let total = 0;
     let discountDuration = 0;
 
@@ -273,19 +269,18 @@ export class RentalComponent implements OnInit {
     this.tax = Math.round((total*0.12)*100)/100;
     this.subTotal = Math.round(total*100)/100;
     this.total = Math.round((this.tax.valueOf() + this.subTotal.valueOf())*100)/100;
-    this.rentalDuration = duration;
   }
 
   onEditRental(rental) {
     this.cust._id = rental.customerId;
-    this.rentalId = rental._id;
-    this.rentalDate = new Date(rental.date);
-    this.rentalBikes = rental.bikeId;
+    this.rental._id = rental._id;
+    this.rental.date = new Date(rental.date);
+    this.rental.bikeId = rental.bikeId;
     this.editDate = new Date(rental.date);
   }
 
   resetEdit() {
-    this.editDate = this.rentalDate;
+    this.editDate = this.rental.date;
   }
 
   editToCurrent() {
@@ -294,7 +289,7 @@ export class RentalComponent implements OnInit {
 
   onEditSubmit() {
     let edit = {
-      rentalId: this.rentalId,
+      rentalId: this.rental._id,
       date: new Date(this.editDate).toISOString()
     }
 

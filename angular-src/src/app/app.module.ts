@@ -16,6 +16,7 @@ import { InventoryComponent } from './components/inventory/inventory.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { SalesComponent } from './components/sales/sales.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 import { CustomerService } from './services/customer.service';
 import { RentalService } from './services/rental.service';
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
   {path:'inventory', component: InventoryComponent, canActivate:[AuthGuard]},
   {path:'rental', component: RentalComponent, canActivate:[AuthGuard]},
   {path:'customer', component: CustomerComponent, canActivate:[AuthGuard]},
-  {path:'sales', component: SalesComponent, canActivate:[AuthGuard]}
+  {path:'sales', component: SalesComponent, canActivate:[AuthGuard]},
+  {path:'checkout', component: CheckoutComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -52,7 +54,8 @@ const appRoutes: Routes = [
     CustomerFilterPipe,
     RentalComponent,
     CustomerComponent,
-    SalesComponent
+    SalesComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,14 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [ValidateService, AuthService, AuthGuard, BikeService, RentalService, CustomerService],
+  providers: [
+    ValidateService, 
+    AuthService, 
+    AuthGuard, 
+    BikeService, 
+    RentalService, 
+    CustomerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
