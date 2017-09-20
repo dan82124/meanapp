@@ -24,7 +24,7 @@
 	      	<b>Duration (Minutes):</b> <div>{{rental.duration}}</div>
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center" style="overflow-wrap:break-word;">
-	      	<b>Total:</b> <div>{{rental.total}}</div>
+	      	<b>Total:</b> <div>{{rental.total | currency:'CAD':'1.2-2'}}</div>
 	      	<hr>
 	      	<b>Bikes:</b> <div>{{rental.bikeId}}</div>
 	      </div>
@@ -189,24 +189,18 @@
 					{{this.rental.date | date:"medium"}}
 				</div>
 				<div class="form-group">
+					<label>Duration:</label>
+					{{this.rental.duration}} minutes
+				</div>
+				<div class="form-group">
 					<label>Bike</label>
 					<label *ngFor="let outBike of outBikes" class="form-control">
-		        <input type="checkbox" [checked]="selectAll" (change)="updateChecked(outBike);calcPrice(this.selectedBikes)"> ID: {{outBike._id}} | Model: {{outBike.model}}
+		        <input type="checkbox" [checked]="selectAll" (change)="updateChecked(outBike)"> ID: {{outBike._id}} | Model: {{outBike.model}}
 		    	</label>
 		    	<button type="button" class="form-control" id="all" (click)="selectAllBikes();">Select All</button>
 				</div>
       </div>
       <div class="modal-footer">
-      	<div class="pull-left">
-					<strong>Subtotal:</strong>
-					{{this.subTotal | currency:'CAD':'1.2-2'}}
-					<br>
-					<strong>Tax:</strong>
-					{{this.tax | currency:'CAD':'1.2-2'}}
-					<hr>
-					<strong>Total:</strong>
-					{{this.total | currency:'CAD':'1.2-2'}}
-				</div>
 				<div class="pull-right">
         	<button *ngIf="selectedBikes.length !== 0" type="button" class="btn btn-primary" (click)="onRetBikeSubmit()" data-dismiss="modal">Return Bike</button>
         </div>

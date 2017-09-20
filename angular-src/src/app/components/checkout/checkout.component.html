@@ -30,14 +30,18 @@
           <th><b>Model</b></th>
           <th><b>Rate</b></th>
           <th><b>Subtotal</b></th>
+          <th><b>Tax</b></th>
+          <th><b>Total</b></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let bike of rentalService.returnDetails.bikes">
-          <td>{{bike._id}}</td>
-          <td>{{bike.model}}</td>
-          <td>{{bike.price}}</td>
-          <td>{{rentalService.calcPrice(bike, rentalService.returnDetails.rental.duration) | currency:'CAD':'1.2-2'}}</td>
+        <tr *ngFor="let bikeDetail of rentalService.returnDetails.bikeCostDetails">
+          <td>{{bikeDetail.bike._id}}</td>
+          <td>{{bikeDetail.bike.model}}</td>
+          <td>{{bikeDetail.bike.price}}</td>
+          <td>{{bikeDetail.subTotal | currency:'CAD':'1.2-2'}}</td>
+          <td>{{bikeDetail.tax | currency:'CAD':'1.2-2'}}</td>
+          <td>{{bikeDetail.total | currency:'CAD':'1.2-2'}}</td>
         </tr>
       </tbody>
     </table>
@@ -45,13 +49,13 @@
     <li class="list-group-item">
       <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12 text-center">
-          <b>Subtotal</b> <div>{{rentalService.returnDetails.rental.total - rentalService.returnDetails.rental.tax | currency:'CAD':'1.2-2'}}</div>
+          <b>Subtotal</b> <div>{{rentalService.returnDetails.subTotal | currency:'CAD':'1.2-2'}}</div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12 text-center">
-          <b>Tax</b> <div>{{rentalService.returnDetails.rental.tax | currency:'CAD':'1.2-2'}}</div>
+          <b>Tax</b> <div>{{rentalService.returnDetails.taxTotal | currency:'CAD':'1.2-2'}}</div>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12 text-center">
-          <b>Total</b> <div>{{rentalService.returnDetails.rental.total | currency:'CAD':'1.2-2'}}</div>
+          <b>Total</b> <div>{{rentalService.returnDetails.total | currency:'CAD':'1.2-2'}}</div>
         </div> 
       </div>
     </li>

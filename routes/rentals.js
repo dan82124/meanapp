@@ -42,8 +42,8 @@ router.post('/ret', (req, res, next) => {
 	const endDate = req.body.endDate;
 	const duration = req.body.rental.duration;
 	const rentalStatus = req.body.rental.status;
-	const tax = req.body.rental.tax;
-	const total = req.body.rental.total;
+	const tax = req.body.rental.tax + req.body.taxTotal;
+	const total = req.body.rental.total + req.body.total;
 	const bikes = req.body.bikes;
   const bikeStatus = "Available";
 

@@ -9,14 +9,14 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-
+  
   constructor(
     private rentalService: RentalService,
     private router: Router,
     private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
-    console.log(this.rentalService.returnDetails);
+    
   }
 
   goBack() {

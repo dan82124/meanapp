@@ -17,9 +17,9 @@ import { Router } from '@angular/router';
 export class RentalComponent implements OnInit {
   rentals: Rental[];
   rental: Rental = new Rental();
-  tax: Number = 0;
-  subTotal: Number = 0;
-  total: Number = 0;
+  tax: number = 0;
+  subTotal: number = 0;
+  total: number = 0;
   editDate: Date;
   inBikes: Bike[] = [];
   outBikes: Bike[] = [];
@@ -213,62 +213,39 @@ export class RentalComponent implements OnInit {
   }
 
   onRetBikeSubmit() {
-    this.rental.tax = Math.round((this.tax.valueOf() + this.rental.tax.valueOf())*100)/100;
-    this.rental.total = Math.round((this.tax.valueOf() + this.subTotal.valueOf() + this.rental.total.valueOf())*100)/100;
     this.rental.status = this.selectedBikes.length !== this.outBikes.length;
+
+    let bikeCostDetails = new Array();
+    for (let bike = 0; bike < this.selectedBikes.length; bike++) {
+      let bikeCost = this.rentalService.calcPrice(this.selectedBikes[bike], this.rental.duration);
+      let bikeTax = this.rentalService.calcTax(bikeCost);
+      let bikeTotal = bikeCost + bikeTax;
+
+      let bikeCostDetail = {
+        bike: this.selectedBikes[bike],
+        subTotal: bikeCost,
+        tax: bikeTax,
+        discount: 0,
+        total: bikeTotal
+      }
+      bikeCostDetails.push(bikeCostDetail);
+      this.subTotal += bikeCost;
+      this.tax += bikeTax;
+      this.total += bikeTotal;
+    }
 
     this.rentalService.returnDetails = {
       rental: this.rental,
       cust: this.cust,
+      bikeCostDetails: bikeCostDetails,
       bikes: this.selectedBikes,
-      endDate: this.currentTime
+      endDate: this.currentTime,
+      taxTotal: this.tax,
+      subTotal: this.subTotal,
+      total: this.total
     }
 
     this.router.navigate(['/checkout']);
-
-    // this.rentalService.returnRental(ret).subscribe(data => {
-    //   if (data.success) {
-    //     this.ngOnInit();
-    //   } else {
-    //     this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
-    //   }
-    // }, err => {
-    //   console.log(err);
-    //   return false;
-    // });
-  }
-
-  calcPrice(bikes) {
-    this.currentTime = new Date();
-    let duration = Math.round((this.currentTime.getTime() - this.rental.date.getTime())/(1000*60));
-    let total = 0;
-    let discountDuration = 0;
-
-    if (duration < 60) {
-      //Minimum 1 Hour Charge
-      discountDuration = 60;
-    } else if (duration >= 60 && duration < 180) {
-      //Normal Pricing (Below 3 Hours)
-      discountDuration = duration;
-    } else if (duration <= 240 && duration >= 180) {
-      //Discount Pricing Between 3-4 Hours
-      discountDuration = 180;
-    } else if (duration < 360 && duration > 240) {
-      //Discount Pricing For Under 6 Hours But Above 4 Hours
-      discountDuration = (duration - 240) + 180;
-    } else {
-      //Full Day Pricing (6+ Hours)
-      discountDuration = 360;
-    }
-
-    for (let bike = 0; bike < bikes.length; bike++) {
-        let cost = Math.round((discountDuration * (bikes[bike].price/60))*100)/100;
-        total += cost;
-    }
-
-    this.tax = Math.round((total*0.12)*100)/100;
-    this.subTotal = Math.round(total*100)/100;
-    this.total = Math.round((this.tax.valueOf() + this.subTotal.valueOf())*100)/100;
   }
 
   onEditRental(rental) {
@@ -326,7 +303,6 @@ export class RentalComponent implements OnInit {
           this.selectedBikes.push(this.outBikes[bike]);
         }
       }
-      this.calcPrice(this.selectedBikes);
       document.getElementById('all').innerHTML = 'Deselect All';
     } else {
       this.clearSelectedBikes();
