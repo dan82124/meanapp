@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { BikeService } from './services/bike.service';
-
 
 @Component({
   selector: 'app-root',
@@ -11,12 +9,9 @@ import { BikeService } from './services/bike.service';
 export class AppComponent implements OnInit {
 
 	constructor(
-		private authService: AuthService,
-		private bikeService: BikeService) { }
+		private authService: AuthService) { }
 	
 	ngOnInit() {
 		this.authService.getUserData();
-
-		this.bikeService.getModelList();
 	}
 }

@@ -59,8 +59,8 @@
 				</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" (click)="clearCustInfo()">Clear</button>
-        <button type="button" class="btn btn-primary" (click)="getCustId()" data-dismiss="modal">Create Rental</button>
+        <button *ngIf="cust.name" type="button" class="btn btn-default" (click)="clearCustInfo()">Clear</button>
+        <button *ngIf="cust.name" type="button" class="btn btn-primary" (click)="getCustId()" data-dismiss="modal">Create Rental</button>
       </div>
     </div>
   </div>

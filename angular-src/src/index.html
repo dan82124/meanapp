@@ -12,7 +12,52 @@
   <link rel="stylesheet" href="https://bootswatch.com/slate/bootstrap.min.css">
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <app-root>    
+    <style type="text/css">
+          #pre-bootstrap {
+              background-color: #262626;
+              bottom: 0px;
+              left: 0px;
+              position: fixed;
+              right: 0px;
+              top: 0px;
+              z-index: 999999;
+          }
+
+          #pre-bootstrap div.message {
+              color: #FFFFFF;
+              left: 0px;
+              margin-top: -37px;
+              position: absolute;
+              right: 0px;
+              text-align: center;
+              top: 50%;
+          }
+
+          #pre-bootstrap h1 {
+              font-size: 26px;
+              line-height: 35px;
+              margin: 0px 0px 20px 0px;
+          }
+
+          #pre-bootstrap p {
+              font-size: 18px;
+              line-height: 14px;
+              margin: 0px 0px 0px 0px;
+          }
+    </style>
+
+    <div id="pre-bootstrap">
+      <div class="message">
+        <h1>
+          App is loading
+        </h1>
+        <p>
+          One moment please
+        </p>
+      </div>
+    </div>
+  </app-root>
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
