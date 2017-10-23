@@ -46,16 +46,16 @@ export class RentalService {
   	return this.http.post('rentals/del', rentId, {headers: headers}).map(res => res.json());
   }
 
-	addBike(rental) {
-  	let headers = new Headers();
-  	headers.append('Content-Type', 'application/json');
-  	return this.http.post('rentals/add', rental, {headers: headers}).map(res => res.json());
+  addBike(rental) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put('rentals/add', rental, {headers: headers}).map(res => res.json());
   }
 
   removeBike(rental) {
-  	let headers = new Headers();
-  	headers.append('Content-Type', 'application/json');
-  	return this.http.post('rentals/remove', rental, {headers: headers}).map(res => res.json());
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put('rentals/remove', rental, {headers: headers}).map(res => res.json());
   }
 
   changeDate(rental) {

@@ -2079,12 +2079,12 @@ var RentalService = /** @class */ (function () {
     RentalService.prototype.addBike = function (rental) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('rentals/add', rental, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.put('rentals/add', rental, { headers: headers }).map(function (res) { return res.json(); });
     };
     RentalService.prototype.removeBike = function (rental) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('rentals/remove', rental, { headers: headers }).map(function (res) { return res.json(); });
+        return this.http.put('rentals/remove', rental, { headers: headers }).map(function (res) { return res.json(); });
     };
     RentalService.prototype.changeDate = function (rental) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();

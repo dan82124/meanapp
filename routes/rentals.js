@@ -70,7 +70,7 @@ router.post('/ret', (req, res, next) => {
 });
 
 // Delete Rental
-router.delete('/del', (req, res, next) => {
+router.post('/del', (req, res, next) => {
 	const rentalId = req.body.rentalId;
 	const custId = req.body.customerId;
 	const bikes = req.body.bikeId;
