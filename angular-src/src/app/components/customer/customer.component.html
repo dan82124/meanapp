@@ -2,25 +2,43 @@
 
 <div *ngIf="customers">
 	<ul class="list-group">
-			<!-- Customer List Filter-->
+		<!-- Customer List Filter-->
 		<li class="list-group-item">
 			<div class="row">
 			  <div class="col-md-3 col-sm-6 col-xs-12">
-			    <input class="form-control" type="text" [(ngModel)]="customerfilter._id" placeholder="ID">
+			    <input
+						class="form-control"
+						type="text"
+						[(ngModel)]="customerfilter._id"
+						placeholder="ID">
 			  </div>
 			  <div class="col-md-3 col-sm-6 col-xs-12">
-			    <input class="form-control" type="text" [(ngModel)]="customerfilter.name" placeholder="Name">
+			    <input
+						class="form-control"
+						type="text"
+						[(ngModel)]="customerfilter.name"
+						placeholder="Name">
 			  </div>
 			  <div class="col-md-3 col-sm-6 col-xs-12">
-			    <input class="form-control" type="text" [(ngModel)]="customerfilter.info" placeholder="Info">
+			    <input
+						class="form-control"
+						type="text"
+						[(ngModel)]="customerfilter.info"
+						placeholder="Info">
 			  </div>
 			  <div class="col-md-3 col-sm-6 col-xs-12">
-			    <input class="form-control" type="text" [(ngModel)]="customerfilter.rentalId" placeholder="Rental ID">
+			    <input
+						class="form-control"
+						type="text"
+						[(ngModel)]="customerfilter.rentalId"
+						placeholder="Rental ID">
 			  </div>
 		  </div>
 		</li>
 		<!-- Customer List -->
-		<li class="list-group-item" *ngFor="let cust of customers | cfilter:customerfilter">
+		<li
+			class="list-group-item"
+			*ngFor="let cust of customers | cfilter:customerfilter">
 			<div class="row">
 				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
 	      	<b>Customer ID:</b> <div>{{cust._id}}</div>
@@ -32,14 +50,26 @@
 	      	<b>Note:</b> <div>{{cust.info}}</div>
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>Rentals:</b> <div *ngFor="let id of cust.rentalId">{{id}}</div>
+	      	<b>Rentals:</b> <div>{{cust.rentalId.length}}</div>
 	      </div>
     	</div>
     	<hr>
     	<div class="row">
 	      <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-	      	<button type="button" class="btn btn-primary btn-xs" (click)="onEditCust(cust)" data-toggle="modal" data-target="#editModal">Edit Note</button>
-	      	<button type="button" class="btn btn-danger btn-xs pull-right" (click)="onDelCust(cust)">Delete Customer</button>
+	      	<button
+						type="button"
+						class="btn btn-primary btn-xs"
+						(click)="onEditCust(cust)"
+						data-toggle="modal"
+						data-target="#editModal">
+						Edit Note
+					</button>
+	      	<button
+						type="button"
+						class="btn btn-danger btn-xs pull-right"
+						(click)="onDelCust(cust)">
+						Delete Customer
+					</button>
 	      </div>
     	</div>
     </li>
@@ -47,12 +77,31 @@
 </div>
 
 <!-- Edit Customer Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+<div
+	class="modal fade"
+	id="editModal"
+	tabindex="-1"
+	role="dialog"
+	aria-labelledby="myModalLabel">
+  <div
+		class="modal-dialog"
+		role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Customer Info</h4>
+        <button
+					type="button"
+					class="close"
+					data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">
+						&times;
+					</span>
+				</button>
+        <h4
+					class="modal-title"
+					id="myModalLabel">
+					Customer Info
+				</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -65,12 +114,27 @@
 				</div>
 				<div class="form-group">
 					<label>Note</label>
-					<input type="text" [(ngModel)]="this.currCust.info" name="custInfo" class="form-control">
+					<input
+						type="text"
+						[(ngModel)]="this.currCust.info"
+						name="custInfo"
+						class="form-control">
 				</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" (click)="resetEdit()">Reset Changes</button>
-        <button type="button" class="btn btn-primary" (click)="onEditSubmit()" data-dismiss="modal">Save Changes</button>
+        <button
+					type="button"
+					class="btn btn-default"
+					(click)="resetEdit()">
+					Reset Changes
+				</button>
+        <button
+					type="button"
+					class="btn btn-primary"
+					(click)="onEditSubmit()"
+					data-dismiss="modal">
+					Save Changes
+				</button>
       </div>
     </div>
   </div>

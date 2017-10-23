@@ -24,19 +24,20 @@ export class SalesComponent implements OnInit {
 
   ngOnInit() {
     this.today = new Date();
-    this.today.setHours(0,0,0,0);
+    this.today.setUTCHours(0,0,0,0);
     let rentalDate = {
       date: this.today
     }
     console.log(rentalDate);
-    this.rentalService.getRentalByDate(rentalDate).subscribe(data => {
-      console.log(data);
-      this.rentals = data.msg;
-      this.calcSales();
-    }, err => {
-      console.log(err);
-      return false;
-    });
+    this.rentalService.getRentalByDate(rentalDate)
+      .subscribe(data => {
+        console.log(data);
+        this.rentals = data.msg;
+        this.calcSales();
+      }, err => {
+        console.log(err);
+        return false;
+      });
   }
 
   changeDate(date) {
@@ -45,14 +46,15 @@ export class SalesComponent implements OnInit {
     }
     console.log(rentalDate);
 
-    this.rentalService.getRentalByDate(rentalDate).subscribe(data => {
-      console.log(data);
-      this.rentals = data.msg;
-      this.calcSales();
-    }, err => {
-      console.log(err);
-      return false;
-    });
+    this.rentalService.getRentalByDate(rentalDate)
+      .subscribe(data => {
+        console.log(data);
+        this.rentals = data.msg;
+        this.calcSales();
+      }, err => {
+        console.log(err);
+        return false;
+      });
   }
 
   calcSales() {

@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const config = require('../config/database');
 
 //Bike Model Schema
 const ModelSchema = mongoose.Schema({
@@ -34,5 +32,5 @@ module.exports.updateModel = (name, price, callback) => {
 }
 
 module.exports.getModelList = (callback) => {
-  Model.find(callback).sort({name: 1});
+  Model.find({}, {__v:false, _id: false}, callback).sort({name: 1});
 }

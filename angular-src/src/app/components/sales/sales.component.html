@@ -2,7 +2,13 @@
 
 <!-- Search Date -->
 <div>
-	<input type="date" (change)="changeDate(date);"[(ngModel)]="date" name="date" class="form-control" style="width:170px;">
+	<input 
+		type="date" 
+		(change)="changeDate(date);"
+		[(ngModel)]="date" 
+		name="date" 
+		class="form-control" 
+		style="width:170px;">
 </div>
 <br>
 
@@ -10,16 +16,20 @@
 <table class="table table-bordered">
 	<div class="row">
 		<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	  	<b>Number of Rentals:</b> <div>{{totalRentals}}</div>
+	  	<b>Number of Rentals:</b> 
+			<div>{{totalRentals}}</div>
 	  </div>
 	  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	  	<b>Total Sales:</b> <div>{{revenue | currency:'CAD':'1.2-2'}}</div>
+	  	<b>Total Sales:</b> 
+			<div>{{revenue | currency:'CAD':'1.2-2'}}</div>
 	  </div>
 	  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	  	<b>Tax:</b> <div>{{tax | currency:'CAD':'1.2-2'}}</div>
+	  	<b>Tax:</b> 
+			<div>{{tax | currency:'CAD':'1.2-2'}}</div>
 	  </div>
 	  <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	  	<b>Average Rental Sale:</b> <div>{{avgRental | currency:'CAD':'1.2-2'}}</div>
+	  	<b>Average Rental Sale:</b> 
+			<div>{{avgRental | currency:'CAD':'1.2-2'}}</div>
 	  </div>
 	</div>
 </table>
@@ -27,27 +37,46 @@
 <!-- Rental List -->
 <div *ngIf="rentals">
 	<ul class="list-group">
-		<li class="list-group-item" *ngFor="let rental of rentals">
+		<li 
+			class="list-group-item" 
+			*ngFor="let rental of rentals">
 			<div class="row">
 				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>Rental ID:</b> <div>{{rental._id}}</div>
+	      	<b>Rental ID:</b> 
+					<div>{{rental._id}}</div>
 	      	<hr>
-	      	<b>Status:</b> <div *ngIf="rental.status" class="text-success">Active</div> <div *ngIf="!rental.status" class="text-danger">Returned</div>
+	      	<b>Status:</b> 
+					<div 
+						*ngIf="rental.status" 
+						class="text-success">
+						Active
+					</div> 
+					<div 
+						*ngIf="!rental.status" 
+						class="text-danger">
+						Returned
+					</div>
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>Customer ID:</b> <div>{{rental.customerId}}</div>
+	      	<b>Customer ID:</b> 
+					<div>{{rental.customerId}}</div>
 	      	<hr>
-	      	<b>Customer Name:</b> <div>{{rental.customerName}}</div>
+	      	<b>Customer Name:</b> 
+					<div>{{rental.customerName}}</div>
 	      </div>
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-	      	<b>Start Date:</b> <div>{{rental.date | date:"medium"}}</div>
+	      	<b>Start Date:</b> 
+					<div>{{rental.date | date:"medium"}}</div>
 	      	<hr>
 	      	<b>Duration (Minutes):</b> <div>{{rental.duration}}</div>
 	      </div>
-	      <div class="col-md-3 col-sm-6 col-xs-12 text-center" style="overflow-wrap:break-word;">
-	      	<b>Bikes:</b> <div>{{rental.bikeId}}</div>
+				<div 
+					class="col-md-3 col-sm-6 col-xs-12 text-center" style="overflow-wrap:break-word;">
+	      	<b>Total:</b> 
+					<div>{{rental.total | currency:'CAD':'1.2-2'}}</div>
 	      	<hr>
-	      	<b>Total:</b> <div>{{rental.total}}</div>
+	      	<b>Bikes:</b> 
+					<div>{{rental.bikeId.length}}</div>
 	      </div>
     	</div>
     </li>

@@ -2,7 +2,9 @@
 
 <div class="col-lg-12">
 	<!-- Current Counts -->
-	<div class="row text-center" id="countPanels">
+	<div
+		class="row text-center"
+		id="countPanels">
 			<div class="panel panel-success col-md-5 col-xs-12">
 				<div class="panel-heading">
 			    <h2 class="panel-title">Current Active Rentals</h2>
@@ -26,60 +28,69 @@
 			</div>
 	</div>
 
-	<div *ngIf="rentalList" class="row">
+	<div
+		*ngIf="rentalList" 
+		class="row">
 		<h3>Active Rentals</h3>
 		<ul class="list-group">
 			<!-- Rental List -->
-			<li class="list-group-item" *ngFor="let rental of rentalList">
+			<li
+				class="list-group-item"
+				*ngFor="let rental of rentalList">
 				<div class="row text-center">
 		      <div class="col-md-3 col-sm-6 col-xs-12">
-						<b>Rental ID:</b> <div>{{rental._id}}</div>
+						<b>Rental ID:</b>
+						<div>{{rental._id}}</div>
 		      	<hr>
-		      	<b>Status:</b> <div *ngIf="rental.status" class="text-success">Active</div> <div *ngIf="!rental.status" class="text-danger">Returned</div>
+		      	<b>Status:</b>
+						<div
+							*ngIf="rental.status"
+							class="text-success">
+							Active
+						</div>
+						<div
+							*ngIf="!rental.status"
+							class="text-danger">
+							Returned
+						</div>
 		      </div>
 		      <div class="col-md-3 col-sm-6 col-xs-12">
-		      	<b>Customer ID:</b> <div>{{rental.customerId}}</div>
+		      	<b>Customer ID:</b>
+						<div>{{rental.customerId}}</div>
 		      	<hr>
-		      	<b>Customer Name:</b> <div>{{rental.customerName}}</div>
+		      	<b>Customer Name:</b>
+						<div>{{rental.customerName}}</div>
 		      </div>
 		      <div class="col-md-3 col-sm-6 col-xs-12">
-		      	<b>Start Date:</b> <div>{{rental.date | date:"medium"}}</div>
+		      	<b>Start Date:</b>
+						<div>{{rental.date | date:"medium"}}</div>
 		      	<hr>
-		      	<b>Duration (Minutes):</b> <div>{{rental.duration}}</div>
+		      	<b>Duration (Minutes):</b>
+						<div>{{rental.duration}}</div>
 		      </div>
-		      <div class="col-md-3 col-sm-6 col-xs-12" style="overflow-wrap:break-word;">
-		      	<b>Bikes:</b> <div>{{rental.bikeId}}</div>
-		      	<hr>
-		      	<b>Total:</b> <div>{{rental.total}}</div>
+		      <div
+						class="col-md-3 col-sm-6 col-xs-12"
+						style="overflow-wrap:break-word;">
+						<b>Total:</b>
+						<div>{{rental.total}}</div>
+						<hr>
+						<b>Bikes:</b>
+						<div>{{rental.bikeId.length}}</div>
 		      </div>
 	    	</div>
 	    </li>
 		</ul>
 	</div>
 
-	<div *ngIf="this.availBikeCount !== 0" class="row">
+	<div
+		*ngIf="this.availBikeCount !== 0"
+		class="row">
 		<h3>Available Bikes</h3>
 		<ul class="list-group">
-			<!-- Bike List Filter-->
-<!-- 			<li class="list-group-item">
-				<div class="row text-center">
-				  <div class="col-md-3 col-sm-6 col-xs-12">
-				    <input class="form-control" type="number" [(ngModel)]="bikefilter._id" placeholder="ID">
-				  </div>
-				  <div class="col-md-3 col-sm-6 col-xs-12">
-				    <input class="form-control" type="text" [(ngModel)]="bikefilter.model" placeholder="Model">
-				  </div>
-				  <div class="col-md-3 col-sm-6 col-xs-12">
-				    <input class="form-control" type="text" [(ngModel)]="bikefilter.status" placeholder="Status">
-				  </div>
-				  <div class="col-md-3 col-sm-6 col-xs-12">
-				    <input class="form-control" type="number" min="4.5" max="12.5" step="0.5" [(ngModel)]="bikefilter.price" placeholder="Price">
-				  </div>
-			  </div>
-			</li> -->
-
 			<!-- Bike List -->
-			<li class="list-group-item" *ngFor="let bike of bikeList | bfilter:bikefilter">
+			<li
+				class="list-group-item"
+				*ngFor="let bike of bikeList | bfilter:bikefilter">
 				<div class="row text-center">
 		      <div class="col-md-3 col-sm-6 col-xs-12">
 		      <b>ID:</b> {{bike._id}}

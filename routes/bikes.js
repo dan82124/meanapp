@@ -5,10 +5,11 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const Bike = require('../models/bike');
 const Model = require('../models/model');
+const bikeController = require('../controllers/bikeController');
 
 module.exports = router;
 
-//Add Bike
+// Add Bike
 router.post('/add', (req, res, next) => {
 	let newBike = new Bike({
 		_id: req.body._id,
@@ -17,7 +18,7 @@ router.post('/add', (req, res, next) => {
 		price: req.body.price
 	});
 
-	Bike.addBike(newBike, (err, bike) => {
+	bikeController.addBike(newBike, (err, bike) => {
 		if(err) {
 			res.json({success: false, msg: 'Failed to add bike: ' + err});
 		} else {
@@ -26,11 +27,11 @@ router.post('/add', (req, res, next) => {
 	});
 });
 
-//Delete Bike
+// Delete Bike
 router.post('/del', (req, res, next) => {
 	const id = req.body._id;
 
-	Bike.delBike(id, (err, result) => {
+	bikeController.delBike(id, (err, result) => {
 		if(err || result.deletedCount == 0) {
 			res.json({success: false, msg: 'Failed to delete bike ' + id});
 		} else {
@@ -39,14 +40,14 @@ router.post('/del', (req, res, next) => {
 	});
 });
 
-//Update Bike Info
+// Update Bike Info
 router.post('/edit', (req, res, next) => {
 	const id = req.body._id;
 	const status = req.body.status;
 	const model = req.body.model;
 	const price = req.body.price;
 
-	Bike.updateBike(id, status, model, price, (err, result) => {
+	bikeController.updateBike(id, status, model, price, (err, result) => {
 		console.log(result);
 		if(err || result.nModified == 0) {
 			res.json({success: false, msg: 'Failed to update bike: ' + id});
@@ -56,17 +57,17 @@ router.post('/edit', (req, res, next) => {
 	});
 });
 
-//Update Bike Price By Model
+// Update Bike Price By Model
 router.post('/update', (req, res, next) => {
 	const model = req.body.name;
 	const price = req.body.price;
 
-	//Update prices in bike list
-	Bike.updatePriceByModel(model, price, (err, result) => {
+	// Update prices in bike list
+	bikeController.updatePriceByModel(model, price, (err, result) => {
 		if(err) {
 			res.json({success: false, msg: 'Failed to update ' + model + ' bikes'});
 		} else {
-			//Update price in model list
+			// Update price in model list
 			Model.updateModel(model, price, (err, log) => {
 		    if(err || log.nModified == 0) {
 		      res.json({success: false, msg: 'Failed to update model: ' + model});
@@ -79,13 +80,13 @@ router.post('/update', (req, res, next) => {
 });
 
 
-//Count Bikes
+// Count Bikes
 router.get('/count', (req, res, next) => {
-	Bike.getBikeCount((err, total) => {
+	bikeController.getBikeCount((err, total) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get count'});
 		} else {
-      Bike.getBikeByStatus("Available", (err, bikes) => {
+      bikeController.getBikeByStatus("Available", (err, bikes) => {
       	if(err) {
 					res.json({success: false, msg: 'Failed to get bikes'});
 				} else {
@@ -96,9 +97,9 @@ router.get('/count', (req, res, next) => {
   });
 });
 
-//List Bikes
+// List Bikes
 router.get('/list', (req, res, next) => {
-	Bike.getBikeList((err, result) => {
+	bikeController.getBikeList((err, result) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get inventory'});
 		} else {
@@ -107,11 +108,11 @@ router.get('/list', (req, res, next) => {
   });
 });
 
-//Get Bike By Id
+// Get Bike By Id
 router.post('/id', (req, res, next) => {
 	const id = req.body._id;
 
-	Bike.getBikeById(id, (err, result) => {
+	bikeController.getBikeById(id, (err, result) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get inventory'});
 		} else {
@@ -120,11 +121,11 @@ router.post('/id', (req, res, next) => {
 	});
 });
 
-//Get Bike By Model
+// Get Bike By Model
 router.post('/model', (req, res, next) => {
 	const model = req.body.model;
 
-	Bike.getBikeByModel(model, (err, result) => {
+	bikeController.getBikeByModel(model, (err, result) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get inventory'});
 		} else {
@@ -133,11 +134,11 @@ router.post('/model', (req, res, next) => {
 	});
 });
 
-//Get Bike By Status
+// Get Bike By Status
 router.post('/status', (req, res, next) => {
 	const status = req.body.status;
 
-	Bike.getBikeByStatus(status, (err, result) => {
+	bikeController.getBikeByStatus(status, (err, result) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get inventory'});
 		} else {
@@ -146,13 +147,25 @@ router.post('/status', (req, res, next) => {
 	});
 });
 
-//Get Bike By Price
+// Get Bike By Price
 router.post('/price', (req, res, next) => {
 	const price = req.body.price;
 
-	Bike.getBikeByPrice(price, (err, result) => {
+	bikeController.getBikeByPrice(price, (err, result) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get inventory'});
+		} else {
+      res.json({success: true, msg: result});
+    }
+	});
+});
+
+// Get Available Bike Counts Of Each Model
+router.get('/inbikecount', (req, res, next) => {
+
+	bikeController.getBikeCountOfModels((err, result) => {
+    if(err) {
+			res.json({success: false, msg: 'Failed to get bike counts'});
 		} else {
       res.json({success: true, msg: result});
     }

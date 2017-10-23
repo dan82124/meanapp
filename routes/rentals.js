@@ -6,10 +6,11 @@ const config = require('../config/database');
 const Rental = require('../models/rental');
 const Bike = require('../models/bike');
 const Customer = require('../models/customer');
+const bikeController = require('../controllers/bikeController');
 
 module.exports = router;
 
-//Start Rental
+// Start Rental
 router.post('/start', (req, res, next) => {
 	let newRental = new Rental({
 		customerId: req.body.customerId,
@@ -36,7 +37,7 @@ router.post('/start', (req, res, next) => {
 	});
 });
 
-//Return Rental
+// Return Rental
 router.post('/ret', (req, res, next) => {
 	const rentalId = req.body.rental._id;
 	const endDate = req.body.endDate;
@@ -47,7 +48,7 @@ router.post('/ret', (req, res, next) => {
 	const bikes = req.body.bikes;
   const bikeStatus = "Available";
 
-  Bike.updateBikes(bikes, bikeStatus, (err, result) => {
+  bikeController.updateBikes(bikes, bikeStatus, (err, result) => {
 		if(err || result.nModified == 0) {
 			res.json({success: false, msg: 'Failed to update bikes: ' + bikes});
 		} else {
@@ -65,11 +66,11 @@ router.post('/ret', (req, res, next) => {
 		    }
 			});
 		}
-	}); 
+	});
 });
 
-//Delete Rental
-router.post('/del', (req, res, next) => {
+// Delete Rental
+router.delete('/del', (req, res, next) => {
 	const rentalId = req.body.rentalId;
 	const custId = req.body.customerId;
 	const bikes = req.body.bikeId;
@@ -88,9 +89,9 @@ router.post('/del', (req, res, next) => {
 			    }
 			  });
 	    }
-		});  	
+		});
   } else {
-	  Bike.updateBikes(bikes, bikeStatus, (err, result) => {
+	  bikeController.updateBikes(bikes, bikeStatus, (err, result) => {
 			if(err || result.nModified == 0) {
 				res.json({success: false, msg: 'Failed to update bikes: ' + bikes});
 			} else {
@@ -108,11 +109,11 @@ router.post('/del', (req, res, next) => {
 			    }
 				});
 			}
-		});  	
+		});
   }
 });
 
-//Edit Rental Date
+// Edit Rental Date
 router.post('/edit', (req, res, next) => {
 	const id = req.body.rentalId;
   const date = req.body.date;
@@ -126,17 +127,14 @@ router.post('/edit', (req, res, next) => {
 	});
 });
 
-//Add Bikes To Rental
-router.post('/add', (req, res, next) => {
+// Add Bikes To Rental
+router.put('/add', async (req, res, next) => {
 	const id = req.body.rentalId;
-  const bikes = req.body.bikes;
-  const bikeIds = [];
+	const bikeCount = req.body.bikeCount;
 
-  for (let bike = 0; bike < bikes.length; bike++) {
-  	bikeIds.push(bikes[bike]._id);
-  }
+	const bikes = await bikeController.getBikesByModelCount(bikeCount);
 
-  Bike.updateBikes(bikeIds, id, (err, result) => {
+  bikeController.updateBikes(bikes, id, (err, result) => {
 		if(err || result.nModified == 0) {
 			res.json({success: false, msg: 'Failed to update bikes: ' + bikeIds});
 		} else {
@@ -144,15 +142,15 @@ router.post('/add', (req, res, next) => {
 				if(err) {
 					res.json({success: false, msg: 'Failed to add bikes: ' + bikeIds});
 				} else {
-		      res.json({success: true, msg: 'Added bikes: ' + bikeIds + ' to rental: ' + id});
+		      res.json({success: true, msg: 'Added bikes to rental: ' + id});
 		    }
 			});
 		}
 	});
 });
 
-//Remove Bikes From Rental
-router.post('/remove', (req, res, next) => {
+// Remove Bikes From Rental
+router.put('/remove', (req, res, next) => {
 	const id = req.body.rentalId;
   const bikeStatus = "Available";
   const bikes = req.body.bikes;
@@ -162,7 +160,7 @@ router.post('/remove', (req, res, next) => {
   	bikeIds.push(bikes[bike]._id);
   }
 
-  Bike.updateBikes(bikeIds, bikeStatus, (err, result) => {
+  bikeController.updateBikes(bikeIds, bikeStatus, (err, result) => {
 		if(err || result.nModified == 0) {
 			res.json({success: false, msg: 'Failed to update bikes: ' + bikeIds});
 		} else {
@@ -177,7 +175,7 @@ router.post('/remove', (req, res, next) => {
 	});
 });
 
-//List Rentals
+// List Rentals
 router.get('/list', (req, res, next) => {
 	Rental.getRentalList((err, result) => {
     if(err) {
@@ -188,7 +186,7 @@ router.get('/list', (req, res, next) => {
   });
 });
 
-//Get Active Rentals
+// Get Active Rentals
 router.get('/active', (req, res, next) => {
 	Rental.getRentalByStatus(true, (err, result) => {
     if(err) {
@@ -199,12 +197,12 @@ router.get('/active', (req, res, next) => {
   });
 });
 
-//Get Rentals By Date
+// Get Rentals By Date
 router.post('/date', (req, res, next) => {
 	const date = req.body.date;
-  //Adjust for 7 hour timezone difference
+  // Adjust for 7 hour timezone difference
   const startDate = new Date(new Date(date).getTime() + 25200000);
-  //Add 24 hours
+  // Add 24 hours
   const endDate = new Date(startDate.getTime() + 86400000);
 
   console.log(startDate);

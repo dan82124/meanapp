@@ -1,4 +1,4 @@
-<h2 class="page-header">Rentals 
+<h2 class="page-header">Rentals
 	<!-- Function Buttons -->
 	<button class="btn btn-success pull-right" data-toggle="modal" data-target="#startModal" (click)="clearCustInfo()">Start Rental</button>
 </h2>
@@ -26,7 +26,7 @@
 	      <div class="col-md-3 col-sm-6 col-xs-12 text-center" style="overflow-wrap:break-word;">
 	      	<b>Total:</b> <div>{{rental.total | currency:'CAD':'1.2-2'}}</div>
 	      	<hr>
-	      	<b>Bikes:</b> <div>{{rental.bikeId}}</div>
+	      	<b>Bikes Out:</b> <div>{{rental.bikeId.length}}</div>
 	      </div>
     	</div>
     	<hr>
@@ -120,13 +120,72 @@
 				</div>
 				<div class="form-group">
 					<label>Bike</label>
-					<label *ngFor="let inBike of inBikes" class="form-control">
-		        <input type="checkbox" (change)="updateChecked(inBike)"> ID: {{inBike._id}} | Model: {{inBike.model}}
-		    	</label>
+					<table
+						class="table table-bordered"
+						*ngIf="inBikeCount.length !== 0;else noBikes">
+						<tr>
+							<td class="text-center">
+						  	<b>Model</b>
+						  </td>
+						  <td class="text-center">
+						  	<b>Available</b>
+						  </td>
+						  <td class="text-center">
+						  	<b>Renting</b>
+						  </td>
+						</tr>
+						<tr *ngFor="let inBike of inBikeCount">
+							<td class="text-center">
+						  	{{inBike.model}}
+						  </td>
+						  <td class="text-center">
+						  	{{inBike.count}}
+						  </td>
+						  <td
+								class="text-center"
+								*ngIf="rentBikeCount[inBike.model];else zero">
+								<button
+									type="button"
+									class="btn btn-xs btn-success pull-left"
+									(click)="addBikeToRental(inBike)">
+									+
+								</button>
+								{{rentBikeCount[inBike.model]}}
+								<button
+									type="button"
+									class="btn btn-xs btn-danger pull-right"
+									(click)="removeBikeFromRental(inBike)">
+									-
+								</button>
+						  </td>
+							<ng-template #zero>
+								<td class="text-center">
+								<button
+									type="button"
+									class="btn btn-xs btn-success pull-left"
+									(click)="addBikeToRental(inBike)">
+									+
+								</button>
+								0
+								<button
+									type="button"
+									class="btn btn-xs btn-danger pull-right"
+									(click)="removeBikeFromRental(inBike)">
+									-
+								</button>
+							</td>
+							</ng-template>
+						</tr>
+					</table>
+					<ng-template #noBikes>
+						<div class="text-danger">
+							No Bikes Available :(
+						</div>
+					</ng-template>
 				</div>
       </div>
       <div class="modal-footer">
-        <button *ngIf="selectedBikes.length !== 0" type="button" class="btn btn-primary" (click)="onAddBikeSubmit()" data-dismiss="modal">Add Bike</button>
+        <button *ngIf="!isEmpty(rentBikeCount)" type="button" class="btn btn-primary" (click)="onAddBikeSubmit()" data-dismiss="modal">Add Bike</button>
       </div>
     </div>
   </div>
@@ -148,7 +207,7 @@
 				<div class="form-group">
 					<label>Customer Name:</label>
 					{{this.cust.name}}
-				</div>				
+				</div>
 				<div class="form-group">
 					<label>Date:</label>
 					{{this.rental.date | date:"medium"}}

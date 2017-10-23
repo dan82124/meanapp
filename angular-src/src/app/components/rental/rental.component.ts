@@ -21,11 +21,12 @@ export class RentalComponent implements OnInit {
   subTotal: number = 0;
   total: number = 0;
   editDate: Date;
-  inBikes: Bike[] = [];
+  currentTime: Date;
+  inBikeCount: any = [];
+  rentBikeCount: any = {};
   outBikes: Bike[] = [];
   selectedBikes: Bike[] = [];
   cust: Customer = new Customer();
-  currentTime: Date;
   selectAll: Boolean = false;
 
   constructor(
@@ -58,7 +59,7 @@ export class RentalComponent implements OnInit {
     }, err => {
       console.log(err);
       return false;
-    }); 
+    });
   }
 
   startRental(cust) {
@@ -77,7 +78,7 @@ export class RentalComponent implements OnInit {
     }, err => {
       console.log(err);
       return false;
-    }); 
+    });
   }
 
   onDelRental(rental) {
@@ -97,7 +98,7 @@ export class RentalComponent implements OnInit {
     }, err => {
       console.log(err);
       return false;
-    }); 
+    });
   }
 
   onAddBike(rental) {
@@ -108,9 +109,15 @@ export class RentalComponent implements OnInit {
     this.rental.date = new Date(rental.date);
     this.rental.bikeId = rental.bikeId;
 
-    this.bikeService.bikeByStatus({status: "Available"}).subscribe(data => {
+    this.bikeService.getBikeCountOfModels().subscribe(data => {
       if (data.success) {
-        this.inBikes = data.msg;
+        for (let bikeModel in data.msg) {
+          let bikeModelCount = {
+            model: bikeModel,
+            count: data.msg[bikeModel]
+          };
+          this.inBikeCount.push(bikeModelCount);
+        }
       } else {
         this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
       }
@@ -120,10 +127,36 @@ export class RentalComponent implements OnInit {
     });
   }
 
+  addBikeToRental(bike) {
+    let index = this.inBikeCount.indexOf(bike);
+    if (index !== -1 && this.inBikeCount[index]['count'] > 0) {
+      this.inBikeCount[index]['count']--;
+      if (!this.rentBikeCount[bike.model]) {
+        this.rentBikeCount[bike.model] = 1;
+      } else {
+        this.rentBikeCount[bike.model]++;
+      }
+    }
+  }
+
+  removeBikeFromRental(bike) {
+    let index = this.inBikeCount.indexOf(bike);
+    if (index !== -1 && this.rentBikeCount[bike.model] > 0)
+    {
+      this.inBikeCount[index]['count']++;
+      if (this.rentBikeCount[bike.model]) {
+        this.rentBikeCount[bike.model]--;
+        if (this.rentBikeCount[bike.model] === 0) {
+          delete this.rentBikeCount[bike.model];
+        }
+      }
+    }
+  }
+
   onAddBikeSubmit() {
     let add = {
       rentalId: this.rental._id,
-      bikes: this.selectedBikes
+      bikeCount: this.rentBikeCount
     }
     console.log(add);
     this.rentalService.addBike(add).subscribe(data => {
@@ -136,7 +169,7 @@ export class RentalComponent implements OnInit {
     }, err => {
       console.log(err);
       return false;
-    }); 
+    });
   }
 
   onDelBike(rental) {
@@ -179,7 +212,7 @@ export class RentalComponent implements OnInit {
     }, err => {
       console.log(err);
       return false;
-    }); 
+    });
   }
 
   onRetBike(rental) {
@@ -281,17 +314,24 @@ export class RentalComponent implements OnInit {
     }, err => {
       console.log(err);
       return false;
-    }); 
+    });
   }
 
   updateChecked(bike) {
     let index = this.selectedBikes.indexOf(bike);
     if (index === -1) {
       this.selectedBikes.push(bike);
+      if (this.selectedBikes.length === this.outBikes.length) {
+        this.selectAll = true;
+        document.getElementById('all').innerHTML = 'Deselect All';
+      }
     } else {
       this.selectedBikes.splice(index, 1);
+      if (this.selectedBikes.length === 0) {
+        this.selectAll = false;
+        document.getElementById('all').innerHTML = 'Select All';
+      }
     }
-    console.log(this.selectedBikes);
   }
 
   selectAllBikes() {
@@ -308,9 +348,13 @@ export class RentalComponent implements OnInit {
       this.clearSelectedBikes();
       document.getElementById('all').innerHTML = 'Select All';
     }
+    console.log(this.selectedBikes);
+    console.log(this.selectAll);
   }
 
   clearSelectedBikes() {
+    this.inBikeCount = [];
+    this.rentBikeCount = {};
     this.selectAll = false;
     this.selectedBikes.splice(0, this.selectedBikes.length);
     this.subTotal = 0;
@@ -322,5 +366,13 @@ export class RentalComponent implements OnInit {
   clearCustInfo() {
     this.cust.name = "";
     this.cust._id = null;
+  }
+  
+  isEmpty(obj) {
+    for(let key in obj) {
+      if(obj.hasOwnProperty(key))
+        return false;
+    }
+    return true;
   }
 }

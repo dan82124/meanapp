@@ -42,6 +42,12 @@ export class BikeService {
     return this.http.get('bikes/count', {headers: headers}).map(res => res.json());
   }
 
+  getBikeCountOfModels() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('bikes/inbikecount', {headers: headers}).map(res => res.json());
+  }
+
   bikeByStatus(status) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
