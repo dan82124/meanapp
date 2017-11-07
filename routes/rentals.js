@@ -3,26 +3,16 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
-const Rental = require('../models/rental');
-const Bike = require('../models/bike');
 const Customer = require('../models/customer');
 const bikeController = require('../controllers/bikeController');
+const rentalController = require('../controllers/rentalController');
 
 module.exports = router;
 
 // Start Rental
 router.post('/start', (req, res, next) => {
-	let newRental = new Rental({
-		customerId: req.body.customerId,
-		customerName: req.body.customerName,
-    date: new Date,
-    duration: 0,
-    status: true,
-    tax: 0,
-    total: 0
-	});
 
-	Rental.addRental(newRental, (err, rental) => {
+	rentalController.addRental(req, (err, rental) => {
 		if(err) {
 			res.json({success: false, msg: 'Failed to create rental: ' + err});
 		} else {
@@ -52,7 +42,7 @@ router.post('/ret', (req, res, next) => {
 		if(err || result.nModified == 0) {
 			res.json({success: false, msg: 'Failed to update bikes: ' + bikes});
 		} else {
-			Rental.removeBike(rentalId, bikes, (err, result) => {
+			rentalController.removeBike(rentalId, bikes, (err, result) => {
 				if(err || result.nModified == 0) {
 					res.json({success: false, msg: 'Failed to remove bike: ' + bikeIds});
 				} else {
@@ -77,7 +67,7 @@ router.post('/del', (req, res, next) => {
   const bikeStatus = "Available";
 
   if (bikes.length === 0) {
-		Rental.delRental(rentalId, (err, rental) => {
+		rentalController.delRental(rentalId, (err, rental) => {
 			if(err || rental.deletedCount == 0) {
 				res.json({success: false, msg: 'Failed to delete rental: ' + rentalId});
 			} else {
@@ -95,7 +85,7 @@ router.post('/del', (req, res, next) => {
 			if(err || result.nModified == 0) {
 				res.json({success: false, msg: 'Failed to update bikes: ' + bikes});
 			} else {
-				Rental.delRental(rentalId, (err, rental) => {
+				rentalController.delRental(rentalId, (err, rental) => {
 					if(err || rental.deletedCount == 0) {
 						res.json({success: false, msg: 'Failed to delete rental: ' + rentalId});
 					} else {
@@ -118,7 +108,7 @@ router.post('/edit', (req, res, next) => {
 	const id = req.body.rentalId;
   const date = req.body.date;
 
-	Rental.editDate(id, date, (err, result) => {
+	rentalController.editDate(id, date, (err, result) => {
 		if(err || result.nModified == 0) {
 			res.json({success: false, msg: 'Failed to edit date: ' + date + ' to rental: ' + id});
 		} else {
@@ -134,11 +124,13 @@ router.put('/add', async (req, res, next) => {
 
 	const bikes = await bikeController.getBikesByModelCount(bikeCount);
 
+	console.log(bikes);
+
   bikeController.updateBikes(bikes, id, (err, result) => {
 		if(err || result.nModified == 0) {
 			res.json({success: false, msg: 'Failed to update bikes: ' + bikeIds});
 		} else {
-			Rental.addBike(id, bikes, (err, result) => {
+			rentalController.addBike(id, bikes, (err, result) => {
 				if(err) {
 					res.json({success: false, msg: 'Failed to add bikes: ' + bikeIds});
 				} else {
@@ -164,7 +156,7 @@ router.put('/remove', (req, res, next) => {
 		if(err || result.nModified == 0) {
 			res.json({success: false, msg: 'Failed to update bikes: ' + bikeIds});
 		} else {
-			Rental.removeBike(id, bikes, (err, result) => {
+			rentalController.removeBike(id, bikes, (err, result) => {
 				if(err || result.nModified == 0) {
 					res.json({success: false, msg: 'Failed to remove bike: ' + bikeIds});
 				} else {
@@ -177,7 +169,7 @@ router.put('/remove', (req, res, next) => {
 
 // List Rentals
 router.get('/list', (req, res, next) => {
-	Rental.getRentalList((err, result) => {
+	rentalController.getRentalList((err, result) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get rental list'});
 		} else {
@@ -188,7 +180,7 @@ router.get('/list', (req, res, next) => {
 
 // Get Active Rentals
 router.get('/active', (req, res, next) => {
-	Rental.getRentalByStatus(true, (err, result) => {
+	rentalController.getRentalByStatus(true, (err, result) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get active rental list'});
 		} else {
@@ -207,7 +199,7 @@ router.post('/date', (req, res, next) => {
 
   console.log(startDate);
   console.log(endDate);
-	Rental.getRentalByDate(startDate, endDate, (err, result) => {
+	rentalController.getRentalByDate(startDate, endDate, (err, result) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get rentals of: ' + date});
 		} else {

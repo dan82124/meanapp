@@ -1,7 +1,14 @@
 const Bike = require('../models/bike');
 
 module.exports = {
-  addBike (newBike, callback) {
+  addBike (req, callback) {
+    let newBike = new Bike({
+      _id: req.body._id,
+      model: req.body.model,
+      status: req.body.status,
+      price: req.body.price
+    });
+
     newBike.save(callback);
   },
   delBike (id, callback) {
@@ -28,7 +35,7 @@ module.exports = {
     Bike.update(query, {$set: update}, {multi: true}, callback);
   },
   getBikeCount (callback) {
-    Bike.find().count(callback);
+  	Bike.find().count(callback);
   },
   async getBikeCountOfModels (callback) {
     try {
@@ -52,27 +59,27 @@ module.exports = {
     }
   },
   getBikeList (callback) {
-    Bike.find(callback).sort({_id: 1});
+  	Bike.find(callback).sort({_id: 1});
   },
   getBikeById (id, callback) {
-    const query = {_id: id};
+  	const query = {_id: id};
 
-    Bike.find(query, callback);
+  	Bike.find(query, callback);
   },
   getBikeByModel (model, callback) {
-    const query = {model: model};
+  	const query = {model: model};
 
-    Bike.find(query, callback).sort({model: 1});
+  	Bike.find(query, callback).sort({model: 1});
   },
   getBikeByStatus (status, callback) {
-    const query = {status: status};
+  	const query = {status: status};
 
-    Bike.find(query, callback).sort({model: 1});
+  	Bike.find(query, callback).sort({model: 1});
   },
   getBikeByPrice (price, callback) {
-    const query = {price: price};
+  	const query = {price: price};
 
-    Bike.find(query, callback);
+  	Bike.find(query, callback);
   },
   async getBikesByModelCount (bikeCount) {
     const status = "Available";

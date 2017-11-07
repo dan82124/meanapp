@@ -3,18 +3,13 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
-const Customer = require('../models/customer');
+const customerController = require('../controllers/customerController');
 
 module.exports = router;
 
-//Add Customer
+// Add Customer
 router.post('/add', (req, res, next) => {
-	let newCustomer = new Customer({
-		name: req.body.name,
-		info: req.body.info
-	});
-
-	Customer.addCustomer(newCustomer, (err, customer) => {
+	customerController.addCustomer(req, (err, customer) => {
 		if(err) {
 			res.json({success: false, msg: 'Failed to add customer: ' + err});
 		} else {
@@ -23,11 +18,11 @@ router.post('/add', (req, res, next) => {
 	});
 });
 
-//Delete Customer
+// Delete Customer
 router.post('/del', (req, res, next) => {
 	const id = req.body.id;
 
-	Customer.delCustomer(id, (err, result) => {
+	customerController.delCustomer(id, (err, result) => {
 		if(err || result.deletedCount == 0) {
 			res.json({success: false, msg: 'Failed to delete customer ' + id});
 		} else {
@@ -36,13 +31,13 @@ router.post('/del', (req, res, next) => {
 	});
 });
 
-//Update Customer Info
+// Update Customer Info
 router.post('/update', (req, res, next) => {
 	const id = req.body.id;
   const name = req.body.name;
 	const info = req.body.info;
 
-	Customer.updateCustomer(id, name, info, (err, result) => {
+	customerController.updateCustomer(id, name, info, (err, result) => {
 		if(err || result.nModified == 0) {
 			res.json({success: false, msg: 'Failed to update customer: ' + id});
 		} else {
@@ -51,12 +46,12 @@ router.post('/update', (req, res, next) => {
 	});
 });
 
-//Find Or Insert Customer By Name
+// Find Or Insert Customer By Name
 router.post('/find', (req, res, next) => {
   const name = req.body.name;
   const info = req.body.info;
 
-	Customer.getCustomerByName(name, info, (err, result) => {
+	customerController.getCustomerByName(name, info, (err, result) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get customer: ' + name});
 		} else {
@@ -65,9 +60,9 @@ router.post('/find', (req, res, next) => {
   });
 });
 
-//List Customers
+// List Customers
 router.get('/list', (req, res, next) => {
-	Customer.getCustomerList((err, result) => {
+	customerController.getCustomerList((err, result) => {
     if(err) {
 			res.json({success: false, msg: 'Failed to get customer list'});
 		} else {
@@ -75,4 +70,3 @@ router.get('/list', (req, res, next) => {
     }
   });
 });
-

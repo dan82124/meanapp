@@ -3,18 +3,13 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
-const Model = require('../models/model');
+const modelController = require('../controllers/modelController');
 
 module.exports = router;
 
-//Add Model
+// Add Model
 router.post('/add', (req, res, next) => {
-  let newModel = new Model({
-    name: req.body.name,
-    price: req.body.price
-  });
-
-  Model.addModel(newModel, (err, model) => {
+  modelController.addModel(req, (err, model) => {
     if(err) {
       res.json({success: false, msg: 'Failed to add model: ' + err});
     } else {
@@ -23,11 +18,11 @@ router.post('/add', (req, res, next) => {
   });
 });
 
-//Delete Model
+// Delete Model
 router.post('/del', (req, res, next) => {
   const name = req.body.name;
 
-  Model.delModel(name, (err, result) => {
+  modelController.delModel(name, (err, result) => {
     if(err || result.deletedCount == 0) {
       res.json({success: false, msg: 'Failed to delete model: ' + name});
     } else {
@@ -36,12 +31,12 @@ router.post('/del', (req, res, next) => {
   });
 });
 
-//Update Model
+// Update Model
 router.post('/update', (req, res, next) => {
   const name = req.body.name;
   const price = req.body.price;
 
-  Model.updateModel(name, price, (err, result) => {
+  modelController.updateModel(name, price, (err, result) => {
     if(err || result.nModified == 0) {
       res.json({success: false, msg: 'Failed to update model: ' + name});
     } else {
@@ -50,9 +45,9 @@ router.post('/update', (req, res, next) => {
   });
 });
 
-//List Models
+// List Models
 router.get('/list', (req, res, next) => {
-  Model.getModelList((err, result) => {
+  modelController.getModelList((err, result) => {
     if(err) {
       res.json({success: false, msg: 'Failed to get model list'});
     } else {

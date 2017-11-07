@@ -3,22 +3,15 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
-const Bike = require('../models/bike');
-const Model = require('../models/model');
+const modelController = require('../controllers/modelController');
 const bikeController = require('../controllers/bikeController');
 
 module.exports = router;
 
 // Add Bike
 router.post('/add', (req, res, next) => {
-	let newBike = new Bike({
-		_id: req.body._id,
-		model: req.body.model,
-		status: req.body.status,
-		price: req.body.price
-	});
 
-	bikeController.addBike(newBike, (err, bike) => {
+	bikeController.addBike(req, (err, bike) => {
 		if(err) {
 			res.json({success: false, msg: 'Failed to add bike: ' + err});
 		} else {
@@ -68,7 +61,7 @@ router.post('/update', (req, res, next) => {
 			res.json({success: false, msg: 'Failed to update ' + model + ' bikes'});
 		} else {
 			// Update price in model list
-			Model.updateModel(model, price, (err, log) => {
+			modelController.updateModel(model, price, (err, log) => {
 		    if(err || log.nModified == 0) {
 		      res.json({success: false, msg: 'Failed to update model: ' + model});
 		    } else {
