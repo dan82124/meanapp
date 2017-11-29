@@ -28,10 +28,10 @@ export class RentalService {
     return this.http.post('rentals/date', date, {headers: headers}).map(res => res.json());
   }
 
-  startRental(custId) {
+  startRental(cust) {
   	let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
-  	return this.http.post('rentals/start', custId, {headers: headers}).map(res => res.json());
+  	return this.http.post('rentals/start', cust, {headers: headers}).map(res => res.json());
   }
 
   returnRental(rental) {

@@ -21,6 +21,12 @@ export class CustomerService {
   	return this.http.post('customers/find', name, {headers: headers}).map(res => res.json());		
 	}
 
+  addCustomer(name) {
+		let headers = new Headers();
+  	headers.append('Content-Type', 'application/json');
+  	return this.http.post('/customers/add', name, {headers: headers}).map(res => res.json());	
+	}
+
 	delCustomer(custId) {
 		let headers = new Headers();
   	headers.append('Content-Type', 'application/json');

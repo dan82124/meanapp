@@ -2,18 +2,16 @@ const Customer = require('../models/customer');
 
 module.exports = {
   getCustomerList (callback) {
-	  Customer.find(callback).sort({name: 1});
+    Customer.find(callback).sort({name: 1});
   },
-  getCustomerByName (name, info, callback) {
-  	const query = {name: name};
-  	const update = {name: name};
+  getCustomerByName (name, callback) {
+    const query = {name: name};
 
-  	Customer.findOneAndUpdate(query, update, {upsert: true, new: true}, callback);
+    Customer.findOne(query, callback);
   },
   addCustomer (req, callback) {
     let newCustomer = new Customer({
-      name: req.body.name,
-      info: req.body.info
+      name: req.body.name
     });
 
     newCustomer.save(callback);

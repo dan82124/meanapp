@@ -27,6 +27,8 @@ export class RentalComponent implements OnInit {
   outBikes: Bike[] = [];
   selectedBikes: Bike[] = [];
   cust: Customer = new Customer();
+  searchName: String;
+  custFound: Boolean;
   selectAll: Boolean = false;
 
   constructor(
@@ -47,12 +49,31 @@ export class RentalComponent implements OnInit {
 
   getCustId() {
     let query = {
-      name: this.cust.name.toUpperCase()
+      name: this.searchName.toUpperCase()
     }
 
     this.customerService.getCustId(query).subscribe(data => {
       if (data.success) {
-        this.startRental(data.msg);
+        this.cust = data.msg;
+        this.custFound = true;
+      } else {
+        this.custFound = false;
+      }
+    }, err => {
+      console.log(err);
+      return false;
+    });
+  }
+
+  addCustStartRental() {
+    let query = {
+      name: this.searchName.toUpperCase()
+    }
+
+    this.customerService.addCustomer(query).subscribe(data => {
+      if (data.success) {
+        this.cust = data.msg;
+        this.startRental(this.cust);
       } else {
         this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
       }
@@ -63,11 +84,7 @@ export class RentalComponent implements OnInit {
   }
 
   startRental(cust) {
-    let start = {
-      customerId: cust._id,
-      customerName: cust.name
-    }
-    this.rentalService.startRental(start).subscribe(data => {
+    this.rentalService.startRental(cust).subscribe(data => {
       if (data.success) {
         console.log(data);
         this.flashMessage.show("Rental created for: " + this.cust.name.toUpperCase(), {cssClass: 'alert-success'});
@@ -364,10 +381,11 @@ export class RentalComponent implements OnInit {
   }
 
   clearCustInfo() {
-    this.cust.name = "";
-    this.cust._id = null;
+    this.searchName = "";
+    this.custFound = null;
+    this.cust = null;
   }
-  
+
   isEmpty(obj) {
     for(let key in obj) {
       if(obj.hasOwnProperty(key))

@@ -50,17 +50,38 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Customer Info</h4>
+        <h4 class="modal-title" id="myModalLabel">Search Customer</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
 					<label>Name</label>
-					<input type="text" [(ngModel)]="cust.name" name="custName" class="form-control">
+					<input type="text" [(ngModel)]="searchName" name="custName" class="form-control">
+				</div>
+				<div *ngIf="custFound == true" class="text-center">
+					<hr>
+					<div *ngIf="cust">
+						<strong>Customer Name:</strong>
+						{{cust.name}}
+						<br>
+						<strong>Visits:</strong>
+						{{cust.rentalId.length}}
+						<div *ngIf="cust.info">
+							<strong>Note:</strong>
+							{{cust.info}}
+						</div>
+					</div>
+					<br>
+					<button type="button" class="btn btn-success" (click)="startRental(cust)" data-dismiss="modal">Create Rental</button>
+				</div>
+				<div *ngIf="custFound == false" class="text-center">
+					<h2>Customer Not Found :(</h2>
+					<br>
+					<button type="button" class="btn btn-success" (click)="addCustStartRental()" data-dismiss="modal">Add Customer and Create Rental</button>
 				</div>
       </div>
       <div class="modal-footer">
-        <button *ngIf="cust.name" type="button" class="btn btn-default" (click)="clearCustInfo()">Clear</button>
-        <button *ngIf="cust.name" type="button" class="btn btn-primary" (click)="getCustId()" data-dismiss="modal">Create Rental</button>
+        <button *ngIf="searchName" type="button" class="btn btn-default" (click)="clearCustInfo()">Clear</button>
+        <button *ngIf="searchName" type="button" class="btn btn-primary" (click)="getCustId()">Find Customer</button>
       </div>
     </div>
   </div>
@@ -79,7 +100,7 @@
 					<label>Rental ID:</label>
 					{{this.rental._id}}
 				</div>
-				<div class="form-group">
+				<div *ngIf="cust" class="form-group">
 					<label>Customer Name:</label>
 					{{this.cust.name}}
 				</div>
@@ -110,7 +131,7 @@
 					<label>Rental ID:</label>
 					{{this.rental._id}}
 				</div>
-				<div class="form-group">
+				<div *ngIf="cust" class="form-group">
 					<label>Customer Name:</label>
 					{{this.cust.name}}
 				</div>
@@ -204,7 +225,7 @@
 					<label>Rental ID:</label>
 					{{this.rental._id}}
 				</div>
-				<div class="form-group">
+				<div *ngIf="cust" class="form-group">
 					<label>Customer Name:</label>
 					{{this.cust.name}}
 				</div>
@@ -239,7 +260,7 @@
 					<label>Rental ID:</label>
 					{{this.rental._id}}
 				</div>
-				<div class="form-group">
+				<div *ngIf="cust" class="form-group">
 					<label>Customer Name:</label>
 					{{this.cust.name}}
 				</div>

@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
-const Customer = require('../models/customer');
+const customerController = require('../controllers/customerController');
 const bikeController = require('../controllers/bikeController');
 const rentalController = require('../controllers/rentalController');
 
@@ -16,7 +16,7 @@ router.post('/start', (req, res, next) => {
 		if(err) {
 			res.json({success: false, msg: 'Failed to create rental: ' + err});
 		} else {
-			Customer.addRental(rental.customerId, rental._id, (err, result) => {
+			customerController.addRental(rental.customerId, rental._id, (err, result) => {
 				if(err || result.nModified == 0) {
 					res.json({success: false, msg: 'Failed to add rental: ' + rental._id});
 				} else {
@@ -71,7 +71,7 @@ router.post('/del', (req, res, next) => {
 			if(err || rental.deletedCount == 0) {
 				res.json({success: false, msg: 'Failed to delete rental: ' + rentalId});
 			} else {
-				Customer.removeRental(custId, rentalId, (err, result) => {
+				customerController.removeRental(custId, rentalId, (err, result) => {
 			    if(err || result.nModified == 0) {
 						res.json({success: false, msg: 'Failed to remove rental from: ' + custId});
 					} else {
@@ -89,7 +89,7 @@ router.post('/del', (req, res, next) => {
 					if(err || rental.deletedCount == 0) {
 						res.json({success: false, msg: 'Failed to delete rental: ' + rentalId});
 					} else {
-						Customer.removeRental(custId, rentalId, (err, result) => {
+						customerController.removeRental(custId, rentalId, (err, result) => {
 					    if(err || result.nModified == 0) {
 								res.json({success: false, msg: 'Failed to remove rental from: ' + custId});
 							} else {

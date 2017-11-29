@@ -46,13 +46,13 @@ router.post('/update', (req, res, next) => {
 	});
 });
 
-// Find Or Insert Customer By Name
+// Find Customer By Name
 router.post('/find', (req, res, next) => {
   const name = req.body.name;
   const info = req.body.info;
 
-	customerController.getCustomerByName(name, info, (err, result) => {
-    if(err) {
+	customerController.getCustomerByName(name, (err, result) => {
+    if(err || result == null) {
 			res.json({success: false, msg: 'Failed to get customer: ' + name});
 		} else {
       res.json({success: true, msg: result});

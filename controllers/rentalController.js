@@ -3,15 +3,15 @@ const Rental = require('../models/rental');
 module.exports = {
   addRental (req, callback) {
     let newRental = new Rental({
-      customerId: req.body.customerId,
-      customerName: req.body.customerName,
+      customerId: req.body._id,
+      customerName: req.body.name,
       date: new Date,
       duration: 0,
       status: true,
       tax: 0,
       total: 0
     });
-    
+
     newRental.save(callback);
   },
   delRental (id, callback) {
