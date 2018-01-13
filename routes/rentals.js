@@ -46,7 +46,7 @@ router.post('/ret', (req, res, next) => {
 				if(err || result.nModified == 0) {
 					res.json({success: false, msg: 'Failed to remove bike: ' + bikeIds});
 				} else {
-		      Rental.retRental(rentalId, endDate, duration, rentalStatus, tax, total, (err, rental) => {
+		      rentalController.retRental(rentalId, endDate, duration, rentalStatus, tax, total, (err, rental) => {
 						if(err || rental.deletedCount == 0) {
 							res.json({success: false, msg: 'Failed to return rental: ' + rentalId});
 						} else {
