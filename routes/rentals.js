@@ -57,6 +57,12 @@ router.post('/ret', (req, res, next) => {
 			});
 		}
 	});
+
+	if (rentalStatus == true) {
+		//increment discount to customer
+	}
+
+	//if discount used, decrement discount to customer
 });
 
 // Delete Rental
