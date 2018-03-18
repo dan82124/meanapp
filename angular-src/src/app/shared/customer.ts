@@ -3,4 +3,6 @@ export class Customer {
   name: String;
   info: String;
   rentalId: String;
+  created: Date;
+  discount: Number;
 }

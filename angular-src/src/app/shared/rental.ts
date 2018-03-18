@@ -1,5 +1,5 @@
 export class Rental {
-	_id: String;
+  _id: String;
   customerId: String;
   customerName: String;
   bikeId: Number[];
@@ -7,6 +7,7 @@ export class Rental {
   endDate: Date;
   duration: Number;
   status: Boolean;
+  discountUsed: Boolean;
   tax: Number;
   discount: Number;
   total: Number;

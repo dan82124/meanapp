@@ -15,7 +15,7 @@ export class CustomerService {
   	return this.http.get('customers/list', {headers: headers}).map(res => res.json());
 	}
 
-	getCustId(name) {
+	getCust(name) {
 		let headers = new Headers();
   	headers.append('Content-Type', 'application/json');
   	return this.http.post('customers/find', name, {headers: headers}).map(res => res.json());		

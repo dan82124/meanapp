@@ -12,7 +12,8 @@ module.exports = {
   addCustomer (req, callback) {
     let newCustomer = new Customer({
       name: req.body.name,
-      discounts: 0
+      created: new Date,
+      discount: 0
     });
 
     newCustomer.save(callback);
@@ -28,17 +29,17 @@ module.exports = {
 
     Customer.update(query, {$set: update}, callback);
   },
-  increaseDiscount (id, discounts, callback) {
+  increaseDiscount (id, callback) {
     const query = {_id: id};
-    const update = {discounts: discounts};
-    // need implement
-    Customer.update(query, {$set: update}, callback);
+    const update = {discount: 1};
+
+    Customer.update(query, {$inc: update}, callback);
   },
-  decreaseDiscount (id, discounts, callback) {
+  decreaseDiscount (id, callback) {
     const query = {_id: id};
-    const update = {discounts: discounts};
-    // need implement
-    Customer.update(query, {$set: update}, callback);
+    const update = {discount: -1};
+
+    Customer.update(query, {$inc: update}, callback);
   },
   addRental (custId, rentalId, callback) {
     const query = {_id: custId};

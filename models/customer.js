@@ -8,7 +8,8 @@ const CustomerSchema = mongoose.Schema({
 	},
 	rentalId: [mongoose.Schema.Types.ObjectId],
 	info: String,
-  discounts: Number
+  created: Date,
+  discount: Number
 });
 
 const Customer = module.exports = mongoose.model('Customer', CustomerSchema);

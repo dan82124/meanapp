@@ -9,40 +9,41 @@ import { Customer }  from '../../shared/customer';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit {
-	customers: Customer[];
+  customers: Customer[];
   customerfilter: Customer = new Customer();
   currCust: Customer = new Customer();
   prevCust: Customer = new Customer();
 
   constructor(
-  	private customerService: CustomerService,
-  	private flashMessage: FlashMessagesService) { }
+    private customerService: CustomerService,
+    private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
-  	this.customerService.getCustList().subscribe(data => {
-  		this.customers = data.msg;
-  	}, err => {
-  		console.log(err);
-  		return false;
-  	});
+    this.customerService.getCustList().subscribe(data => {
+      console.log(data.msg);
+      this.customers = data.msg;
+    }, err => {
+      console.log(err);
+      return false;
+    });
   }
 
   onDelCust(cust) {
-  	let del = {
-  		id: cust._id
-  	}
+    let del = {
+      id: cust._id
+    }
 
-  	this.customerService.delCustomer(del).subscribe(data => {
-  		if (data.success) {
-  			this.flashMessage.show(data.msg, {cssClass: 'alert-success'});
-  			this.ngOnInit();
-  		} else {
-  			this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
-  		}
-  	}, err => {
-  		console.log(err);
-  		return false;
-  	});
+    this.customerService.delCustomer(del).subscribe(data => {
+      if (data.success) {
+        this.flashMessage.show(data.msg, {cssClass: 'alert-success'});
+        this.ngOnInit();
+      } else {
+        this.flashMessage.show(data.msg, {cssClass: 'alert-danger'});
+      }
+    }, err => {
+      console.log(err);
+      return false;
+    });
   }
 
   onEditCust(cust) {

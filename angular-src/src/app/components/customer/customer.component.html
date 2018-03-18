@@ -53,6 +53,15 @@
 	      	<b>Rentals:</b> <div>{{cust.rentalId.length}}</div>
 	      </div>
     	</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+					<b>Customer Since:</b> <div>{{cust.created | date: medium}}</div>
+				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
+					<b>Discount Available:</b> <div>{{cust.discount}}</div>
+				</div>
+			</div>
     	<hr>
     	<div class="row">
 	      <div class="col-md-12 col-sm-12 col-xs-12 text-center">

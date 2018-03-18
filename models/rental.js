@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 //Rental Schema
 const RentalSchema = mongoose.Schema({
 
-	customerId: {
-		type: mongoose.Schema.Types.ObjectId,
-		required: true
-	},
+  customerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
+  },
   customerName: {
     type: String,
     required: true
@@ -16,6 +16,7 @@ const RentalSchema = mongoose.Schema({
   endDate: Date,
   duration: Number,
   status: Boolean,
+  discountUsed: Boolean,
   tax: Number,
   total: Number
 });

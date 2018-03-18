@@ -8,6 +8,7 @@ module.exports = {
       date: new Date,
       duration: 0,
       status: true,
+      discountUsed: false,
       tax: 0,
       total: 0
     });
@@ -37,9 +38,9 @@ module.exports = {
 
     Rental.update(query, {$set: update}, callback);
   },
-  retRental (id, endDate, duration, status, tax, total, callback) {
+  retRental (id, endDate, duration, status, tax, total, discountUsed, callback) {
     const query = {_id: id};
-    const update = {endDate: endDate, duration: duration, status: status, tax: tax, total: total};
+    const update = {endDate: endDate, duration: duration, status: status, tax: tax, total: total, discountUsed: discountUsed};
 
     Rental.update(query, {$set: update}, callback);
   },

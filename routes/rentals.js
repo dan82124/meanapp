@@ -30,6 +30,8 @@ router.post('/start', (req, res, next) => {
 // Return Rental
 router.post('/ret', (req, res, next) => {
 	const rentalId = req.body.rental._id;
+	const discountUsed = req.body.rental.discountUsed;
+	const cust = req.body.cust;
 	const endDate = req.body.endDate;
 	const duration = req.body.rental.duration;
 	const rentalStatus = req.body.rental.status;
@@ -44,25 +46,42 @@ router.post('/ret', (req, res, next) => {
 		} else {
 			rentalController.removeBike(rentalId, bikes, (err, result) => {
 				if(err || result.nModified == 0) {
-					res.json({success: false, msg: 'Failed to remove bike: ' + bikeIds});
+					res.json({success: false, msg: 'Failed to remove bike: ' + bikes});
 				} else {
-		      rentalController.retRental(rentalId, endDate, duration, rentalStatus, tax, total, (err, rental) => {
+		      rentalController.retRental(rentalId, endDate, duration, rentalStatus, tax, total, discountUsed, (err, rental) => {
 						if(err || rental.deletedCount == 0) {
 							res.json({success: false, msg: 'Failed to return rental: ' + rentalId});
 						} else {
-							res.json({success: true, msg: 'Returned rental: ' + rentalId});
+							if (rentalStatus == false) {
+								customerController.increaseDiscount(cust._id, (err, result) => {
+									if (err || result.nModified == 0) {
+										console.log('Increase discount failed for ' + cust._id);
+									} else {
+										console.log('Increase discount success for ' + cust._id);
+									}
+								});
+								res.json({success: true, msg: 'Returned all bikes for rental: ' + rentalId});
+							} else {
+								res.json({success: true, msg: 'Returned bikes: ' + bikes.length + ' for rental: ' + rentalId});
+							}
+							console.log(discountUsed);
+							//if discount used, decrement discount to customer
+							if (discountUsed == true) {
+								customerController.decreaseDiscount(cust._id, (err, result) => {
+									if (err || result.nModified == 0) {
+										console.log('Decrease discount failed for ' + cust._id);
+									} else {
+										console.log('Decrease discount success for ' + cust._id);
+									}
+								});
+							}
+
 				    }
 					});
 		    }
 			});
 		}
 	});
-
-	if (rentalStatus == true) {
-		//increment discount to customer
-	}
-
-	//if discount used, decrement discount to customer
 });
 
 // Delete Rental

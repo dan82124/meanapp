@@ -1,78 +1,66 @@
-webpackJsonp([1,4],{
+webpackJsonp(["main"],{
 
-/***/ 100:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Bike; });
-var Bike = /** @class */ (function () {
-    function Bike() {
-    }
-    return Bike;
-}());
-
-//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/bike.js.map
-
-/***/ }),
-
-/***/ 101:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Customer; });
-var Customer = /** @class */ (function () {
-    function Customer() {
-    }
-    return Customer;
-}());
-
-//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/customer.js.map
-
-/***/ }),
-
-/***/ 153:
+/***/ "./src/$$_gendir lazy recursive":
 /***/ (function(module, exports) {
 
-function webpackEmptyContext(req) {
-	throw new Error("Cannot find module '" + req + "'.");
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
 }
-webpackEmptyContext.keys = function() { return []; };
-webpackEmptyContext.resolve = webpackEmptyContext;
-module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 153;
-
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = "./src/$$_gendir lazy recursive";
 
 /***/ }),
 
-/***/ 154:
+/***/ "./src/app/animations/fade-in.animation.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(180);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(163);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return fadeInAnimation; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_animations__ = __webpack_require__("./node_modules/@angular/animations/@angular/animations.es5.js");
 
-
-
-
-if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].production) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["enableProdMode"])();
-}
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/main.js.map
+var fadeInAnimation = 
+// trigger name for attaching this animation to an element using the [@triggerName] syntax
+Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["i" /* trigger */])('fadeInAnimation', [
+    // route 'enter' transition
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* transition */])(':enter', [
+        // css styles at start of transition
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["g" /* style */])({ opacity: 0 }),
+        // animation and styles at end of transition
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["e" /* animate */])('.5s', Object(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["g" /* style */])({ opacity: 1 }))
+    ])
+]);
+//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/fade-in.animation.js.map
 
 /***/ }),
 
-/***/ 162:
+/***/ "./src/app/app.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/app.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<app-navbar></app-navbar>\n<div class=\"container\">\n\t<flash-messages></flash-messages>\n\t<router-outlet></router-outlet>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/app.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_bike_service__ = __webpack_require__(42);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_bike_service__ = __webpack_require__("./src/app/services/bike.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -95,10 +83,10 @@ var AppComponent = /** @class */ (function () {
         this.bikeService.getModelList();
     };
     AppComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
-            template: __webpack_require__(350),
-            styles: [__webpack_require__(338)]
+            template: __webpack_require__("./src/app/app.component.html"),
+            styles: [__webpack_require__("./src/app/app.component.css")]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_bike_service__["a" /* BikeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_bike_service__["a" /* BikeService */]) === "function" && _b || Object])
     ], AppComponent);
@@ -110,39 +98,39 @@ var AppComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 163:
+/***/ "./src/app/app.module.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_flash_messages__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__ = __webpack_require__(161);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(162);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_navbar_navbar_component__ = __webpack_require__(170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_login_login_component__ = __webpack_require__(169);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_register_register_component__ = __webpack_require__(172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_home_home_component__ = __webpack_require__(167);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_dashboard_dashboard_component__ = __webpack_require__(166);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_profile_profile_component__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_inventory_inventory_component__ = __webpack_require__(168);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_rental_rental_component__ = __webpack_require__(173);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_customer_customer_component__ = __webpack_require__(165);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_sales_sales_component__ = __webpack_require__(174);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_checkout_checkout_component__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_customer_service__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_rental_service__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_bike_service__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_validate_service__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_auth_service__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__guards_auth_guard__ = __webpack_require__(175);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__shared_bikefilter_pipe__ = __webpack_require__(176);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__shared_customerfilter_pipe__ = __webpack_require__(177);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_flash_messages__ = __webpack_require__("./node_modules/angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__ = __webpack_require__("./node_modules/@angular/platform-browser/@angular/platform-browser/animations.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_navbar_navbar_component__ = __webpack_require__("./src/app/components/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_login_login_component__ = __webpack_require__("./src/app/components/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_register_register_component__ = __webpack_require__("./src/app/components/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_home_home_component__ = __webpack_require__("./src/app/components/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_dashboard_dashboard_component__ = __webpack_require__("./src/app/components/dashboard/dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_profile_profile_component__ = __webpack_require__("./src/app/components/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_inventory_inventory_component__ = __webpack_require__("./src/app/components/inventory/inventory.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_rental_rental_component__ = __webpack_require__("./src/app/components/rental/rental.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_customer_customer_component__ = __webpack_require__("./src/app/components/customer/customer.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_sales_sales_component__ = __webpack_require__("./src/app/components/sales/sales.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_checkout_checkout_component__ = __webpack_require__("./src/app/components/checkout/checkout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__services_rental_service__ = __webpack_require__("./src/app/services/rental.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_bike_service__ = __webpack_require__("./src/app/services/bike.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_validate_service__ = __webpack_require__("./src/app/services/validate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__guards_auth_guard__ = __webpack_require__("./src/app/guards/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__shared_bikefilter_pipe__ = __webpack_require__("./src/app/shared/bikefilter.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__shared_customerfilter_pipe__ = __webpack_require__("./src/app/shared/customerfilter.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -192,7 +180,7 @@ var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__components_navbar_navbar_component__["a" /* NavbarComponent */],
@@ -213,7 +201,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["HttpModule"],
-                __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* RouterModule */].forRoot(appRoutes),
+                __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* RouterModule */].forRoot(appRoutes),
                 __WEBPACK_IMPORTED_MODULE_5_angular2_flash_messages__["FlashMessagesModule"],
                 __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */]
             ],
@@ -237,16 +225,30 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 164:
+/***/ "./src/app/components/checkout/checkout.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/checkout/checkout.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"this.rentalService.returnDetails\" id=\"rentalDetails\">\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\">\n      <div class=\"row\">\n        <div class=\"col-md-6 col-sm-6 col-xs-12 text-center\">\n          <b>Rental ID</b> <div>{{rentalService.returnDetails.rental._id}}</div>\n        </div>\n        <div class=\"col-md-6 col-sm-6 col-xs-12 text-center\">\n          <b>Customer Name</b> <div>{{rentalService.returnDetails.cust.name}}</div>\n        </div>\n      </div>\n      <hr>\n      <div class=\"row\">\n        <div class=\"col-md-4 col-sm-4 col-xs-12 text-center\">\n          <b>Start Time</b> <div>{{rentalService.returnDetails.rental.date | date:\"medium\"}}</div>\n        </div>\n        <div class=\"col-md-4 col-sm-4 col-xs-12 text-center\">\n          <b>Return Time</b> <div>{{rentalService.returnDetails.endDate | date:\"medium\"}}</div>\n        </div>\n        <div class=\"col-md-4 col-sm-4 col-xs-12 text-center\">\n          <b>Duration (Minutes)</b> <div>{{rentalService.returnDetails.rental.duration}}</div>\n        </div>\n      </div>\n    </li>\n    <br>\n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th><b>Bike ID</b></th>\n          <th><b>Model</b></th>\n          <th><b>Rate</b></th>\n          <th><b>Subtotal</b></th>\n          <th><b>Tax</b></th>\n          <th><b>Total</b></th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let bikeDetail of rentalService.returnDetails.bikeCostDetails\">\n          <td>{{bikeDetail.bike._id}}</td>\n          <td>{{bikeDetail.bike.model}}</td>\n          <td>{{bikeDetail.bike.price}}</td>\n          <td>{{bikeDetail.subTotal | currency:'CAD':'1.2-2'}}</td>\n          <td>{{bikeDetail.tax | currency:'CAD':'1.2-2'}}</td>\n          <td>{{bikeDetail.total | currency:'CAD':'1.2-2'}}</td>\n        </tr>\n      </tbody>\n    </table>\n    <br>\n    <li class=\"list-group-item\">\n      <div class=\"row\">\n        <div class=\"col-md-4 col-sm-4 col-xs-12 text-center\">\n          <b>Subtotal</b> <div>{{rentalService.returnDetails.subTotal | currency:'CAD':'1.2-2'}}</div>\n        </div>\n        <div class=\"col-md-4 col-sm-4 col-xs-12 text-center\">\n          <b>Tax</b> <div>{{rentalService.returnDetails.taxTotal | currency:'CAD':'1.2-2'}}</div>\n        </div>\n        <div class=\"col-md-4 col-sm-4 col-xs-12 text-center\">\n          <b>Total</b> <div>{{rentalService.returnDetails.total | currency:'CAD':'1.2-2'}}</div>\n        </div>\n      </div>\n    </li>\n  </ul>\n</div>\n\n<div class=\"row\">\n  <div class=\"col-md-12 col-sm-12 col-xs-12 text-center\">\n    <button type=\"button\" class=\"btn btn-default\" (click)=\"rentalService.print('rentalDetails')\">Print Page</button>\n    <button [disabled]=\"this.rentalService.returnDetails.rental.discountUsed == true || this.rentalService.returnDetails.cust.discount <= 0\" type=\"button\" class=\"btn btn-info\" (click)=\"applyDiscount()\">Discount $5</button>\n    <button *ngIf=\"this.rentalService.returnDetails\" type=\"button\" class=\"btn btn-primary\" (click)=\"onRetSubmit()\">Return Bike</button>\n    <button type=\"button\" class=\"btn btn-danger btn-xs pull-right\" (click)=\"goBack()\">Go Back</button>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/checkout/checkout.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_rental_service__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CheckoutComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_rental_service__ = __webpack_require__("./src/app/services/rental.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("./node_modules/angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -268,6 +270,12 @@ var CheckoutComponent = /** @class */ (function () {
     }
     CheckoutComponent.prototype.ngOnInit = function () {
     };
+    CheckoutComponent.prototype.applyDiscount = function () {
+        console.log(this.rentalService.returnDetails);
+        this.rentalService.returnDetails.rental.discountUsed = true;
+        this.rentalService.returnDetails.total = this.rentalService.returnDetails.total - 5.0;
+        console.log(this.rentalService.returnDetails.rental.discountUsed);
+    };
     CheckoutComponent.prototype.goBack = function () {
         this.router.navigate(['/rental']);
     };
@@ -275,6 +283,7 @@ var CheckoutComponent = /** @class */ (function () {
         var _this = this;
         this.rentalService.returnRental(this.rentalService.returnDetails).subscribe(function (data) {
             if (data.success) {
+                _this.flashMessage.show(data.msg, { cssClass: 'alert-success' });
                 _this.router.navigate(['/rental']);
             }
             else {
@@ -286,12 +295,12 @@ var CheckoutComponent = /** @class */ (function () {
         });
     };
     CheckoutComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-checkout',
-            template: __webpack_require__(351),
-            styles: [__webpack_require__(339)]
+            template: __webpack_require__("./src/app/components/checkout/checkout.component.html"),
+            styles: [__webpack_require__("./src/app/components/checkout/checkout.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_rental_service__["a" /* RentalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_rental_service__["a" /* RentalService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_rental_service__["a" /* RentalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_rental_service__["a" /* RentalService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
     ], CheckoutComponent);
     return CheckoutComponent;
     var _a, _b, _c;
@@ -301,16 +310,30 @@ var CheckoutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 165:
+/***/ "./src/app/components/customer/customer.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/customer/customer.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h2 class=\"page-header\">Customers</h2>\n\n<div *ngIf=\"customers\">\n\t<ul class=\"list-group\">\n\t\t<!-- Customer List Filter-->\n\t\t<li class=\"list-group-item\">\n\t\t\t<div class=\"row\">\n\t\t\t  <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t\t    <input\n\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t[(ngModel)]=\"customerfilter._id\"\n\t\t\t\t\t\tplaceholder=\"ID\">\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t\t    <input\n\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t[(ngModel)]=\"customerfilter.name\"\n\t\t\t\t\t\tplaceholder=\"Name\">\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t\t    <input\n\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t[(ngModel)]=\"customerfilter.info\"\n\t\t\t\t\t\tplaceholder=\"Info\">\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t\t    <input\n\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t[(ngModel)]=\"customerfilter.rentalId\"\n\t\t\t\t\t\tplaceholder=\"Rental ID\">\n\t\t\t  </div>\n\t\t  </div>\n\t\t</li>\n\t\t<!-- Customer List -->\n\t\t<li\n\t\t\tclass=\"list-group-item\"\n\t\t\t*ngFor=\"let cust of customers | cfilter:customerfilter\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Customer ID:</b> <div>{{cust._id}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Name:</b> <div>{{cust.name}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Note:</b> <div>{{cust.info}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Rentals:</b> <div>{{cust.rentalId.length}}</div>\n\t      </div>\n    \t</div>\n\t\t\t<hr>\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t\t\t\t\t<b>Customer Since:</b> <div>{{cust.created | date: medium}}</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t\t\t\t\t<b>Discount Available:</b> <div>{{cust.discount}}</div>\n\t\t\t\t</div>\n\t\t\t</div>\n    \t<hr>\n    \t<div class=\"row\">\n\t      <div class=\"col-md-12 col-sm-12 col-xs-12 text-center\">\n\t      \t<button\n\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\tclass=\"btn btn-primary btn-xs\"\n\t\t\t\t\t\t(click)=\"onEditCust(cust)\"\n\t\t\t\t\t\tdata-toggle=\"modal\"\n\t\t\t\t\t\tdata-target=\"#editModal\">\n\t\t\t\t\t\tEdit Note\n\t\t\t\t\t</button>\n\t      \t<button\n\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\tclass=\"btn btn-danger btn-xs pull-right\"\n\t\t\t\t\t\t(click)=\"onDelCust(cust)\">\n\t\t\t\t\t\tDelete Customer\n\t\t\t\t\t</button>\n\t      </div>\n    \t</div>\n    </li>\n\t</ul>\n</div>\n\n<!-- Edit Customer Modal -->\n<div\n\tclass=\"modal fade\"\n\tid=\"editModal\"\n\ttabindex=\"-1\"\n\trole=\"dialog\"\n\taria-labelledby=\"myModalLabel\">\n  <div\n\t\tclass=\"modal-dialog\"\n\t\trole=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button\n\t\t\t\t\ttype=\"button\"\n\t\t\t\t\tclass=\"close\"\n\t\t\t\t\tdata-dismiss=\"modal\"\n\t\t\t\t\taria-label=\"Close\">\n\t\t\t\t\t<span aria-hidden=\"true\">\n\t\t\t\t\t\t&times;\n\t\t\t\t\t</span>\n\t\t\t\t</button>\n        <h4\n\t\t\t\t\tclass=\"modal-title\"\n\t\t\t\t\tid=\"myModalLabel\">\n\t\t\t\t\tCustomer Info\n\t\t\t\t</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Customer ID:</label>\n\t\t\t\t\t{{this.currCust._id}}\n\t\t\t\t</div>\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Name:</label>\n\t\t\t\t\t{{this.currCust.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Note</label>\n\t\t\t\t\t<input\n\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t[(ngModel)]=\"this.currCust.info\"\n\t\t\t\t\t\tname=\"custInfo\"\n\t\t\t\t\t\tclass=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button\n\t\t\t\t\ttype=\"button\"\n\t\t\t\t\tclass=\"btn btn-default\"\n\t\t\t\t\t(click)=\"resetEdit()\">\n\t\t\t\t\tReset Changes\n\t\t\t\t</button>\n        <button\n\t\t\t\t\ttype=\"button\"\n\t\t\t\t\tclass=\"btn btn-primary\"\n\t\t\t\t\t(click)=\"onEditSubmit()\"\n\t\t\t\t\tdata-dismiss=\"modal\">\n\t\t\t\t\tSave Changes\n\t\t\t\t</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/customer/customer.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_customer_service__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_customer__ = __webpack_require__(101);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__("./node_modules/angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_customer__ = __webpack_require__("./src/app/shared/customer.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -335,6 +358,7 @@ var CustomerComponent = /** @class */ (function () {
     CustomerComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.customerService.getCustList().subscribe(function (data) {
+            console.log(data.msg);
             _this.customers = data.msg;
         }, function (err) {
             console.log(err);
@@ -391,10 +415,10 @@ var CustomerComponent = /** @class */ (function () {
         this.currCust.info = this.prevCust.info;
     };
     CustomerComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-customer',
-            template: __webpack_require__(352),
-            styles: [__webpack_require__(340)]
+            template: __webpack_require__("./src/app/components/customer/customer.component.html"),
+            styles: [__webpack_require__("./src/app/components/customer/customer.component.css")]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_customer_service__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_customer_service__["a" /* CustomerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object])
     ], CustomerComponent);
@@ -406,17 +430,31 @@ var CustomerComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 166:
+/***/ "./src/app/components/dashboard/dashboard.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ".panel {\n\tpadding:0;\n}\n\n#countPanels {\n\t padding-left: 10%;\n\t padding-right: 10%;\n}"
+
+/***/ }),
+
+/***/ "./src/app/components/dashboard/dashboard.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h2 class=\"page-header\">Dashboard</h2>\n\n<div class=\"col-lg-12\">\n\t<!-- Current Counts -->\n\t<div\n\t\tclass=\"row text-center\"\n\t\tid=\"countPanels\">\n\t\t\t<div class=\"panel panel-success col-md-5 col-xs-12\">\n\t\t\t\t<div class=\"panel-heading\">\n\t\t\t    <h2 class=\"panel-title\">Current Active Rentals</h2>\n\t\t\t  </div>\n\t\t\t  <div class=\"panel-body\">\n\t\t\t\t\t<h1>\n\t\t\t    \t{{this.rentalCount}}\n\t\t\t    </h1>\n\t\t\t  </div>\n\t\t\t</div>\n\n\t\t\t<div class=\"panel panel-success col-md-5 col-md-offset-1 col-xs-12 pull-right\">\n\t\t\t  <div class=\"panel-heading\">\n\t\t\t    <h2 class=\"panel-title\">Current Available Bikes</h2>\n\t\t\t  </div>\n\t\t\t  <div class=\"panel-body\">\n\t\t\t    <h1>\n\t\t\t    \t{{this.availBikeCount}} / {{this.totalBikeCount}}\n\t\t\t    </h1>\n\t\t\t  </div>\n\t\t\t</div>\n\t</div>\n\n\t<div\n\t\t*ngIf=\"rentalList\" \n\t\tclass=\"row\">\n\t\t<h3>Active Rentals</h3>\n\t\t<ul class=\"list-group\">\n\t\t\t<!-- Rental List -->\n\t\t\t<li\n\t\t\t\tclass=\"list-group-item\"\n\t\t\t\t*ngFor=\"let rental of rentalList\">\n\t\t\t\t<div class=\"row text-center\">\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t\t\t\t\t<b>Rental ID:</b>\n\t\t\t\t\t\t<div>{{rental._id}}</div>\n\t\t      \t<hr>\n\t\t      \t<b>Status:</b>\n\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t*ngIf=\"rental.status\"\n\t\t\t\t\t\t\tclass=\"text-success\">\n\t\t\t\t\t\t\tActive\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t*ngIf=\"!rental.status\"\n\t\t\t\t\t\t\tclass=\"text-danger\">\n\t\t\t\t\t\t\tReturned\n\t\t\t\t\t\t</div>\n\t\t      </div>\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t      \t<b>Customer ID:</b>\n\t\t\t\t\t\t<div>{{rental.customerId}}</div>\n\t\t      \t<hr>\n\t\t      \t<b>Customer Name:</b>\n\t\t\t\t\t\t<div>{{rental.customerName}}</div>\n\t\t      </div>\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t      \t<b>Start Date:</b>\n\t\t\t\t\t\t<div>{{rental.date | date:\"medium\"}}</div>\n\t\t      \t<hr>\n\t\t      \t<b>Duration (Minutes):</b>\n\t\t\t\t\t\t<div>{{rental.duration}}</div>\n\t\t      </div>\n\t\t      <div\n\t\t\t\t\t\tclass=\"col-md-3 col-sm-6 col-xs-12\"\n\t\t\t\t\t\tstyle=\"overflow-wrap:break-word;\">\n\t\t\t\t\t\t<b>Total:</b>\n\t\t\t\t\t\t<div>{{rental.total}}</div>\n\t\t\t\t\t\t<hr>\n\t\t\t\t\t\t<b>Bikes:</b>\n\t\t\t\t\t\t<div>{{rental.bikeId.length}}</div>\n\t\t      </div>\n\t    \t</div>\n\t    </li>\n\t\t</ul>\n\t</div>\n\n\t<div\n\t\t*ngIf=\"this.availBikeCount !== 0\"\n\t\tclass=\"row\">\n\t\t<h3>Available Bikes</h3>\n\t\t<ul class=\"list-group\">\n\t\t\t<!-- Bike List -->\n\t\t\t<li\n\t\t\t\tclass=\"list-group-item\"\n\t\t\t\t*ngFor=\"let bike of bikeList | bfilter:bikefilter\">\n\t\t\t\t<div class=\"row text-center\">\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t      <b>ID:</b> {{bike._id}}\n\t\t      </div>\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t      <b>Model:</b> {{bike.model}}\n\t\t      </div>\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t      <b>Status:</b> {{bike.status}}\n\t\t      </div>\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t      <b>Price:</b> {{bike.price}}\n\t\t      </div>\n\t    \t</div>\n\t    </li>\n\t\t</ul>\n\t</div>\n\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/dashboard/dashboard.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_bike_service__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_rental_service__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_bike__ = __webpack_require__(100);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__("./node_modules/angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_bike_service__ = __webpack_require__("./src/app/services/bike.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_rental_service__ = __webpack_require__("./src/app/services/rental.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_bike__ = __webpack_require__("./src/app/shared/bike.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -465,10 +503,10 @@ var DashboardComponent = /** @class */ (function () {
         });
     };
     DashboardComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-dashboard',
-            template: __webpack_require__(353),
-            styles: [__webpack_require__(341)]
+            template: __webpack_require__("./src/app/components/dashboard/dashboard.component.html"),
+            styles: [__webpack_require__("./src/app/components/dashboard/dashboard.component.css")]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_bike_service__["a" /* BikeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_bike_service__["a" /* BikeService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__services_rental_service__["a" /* RentalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_rental_service__["a" /* RentalService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
     ], DashboardComponent);
@@ -480,15 +518,29 @@ var DashboardComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 167:
+/***/ "./src/app/components/home/home.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/home/home.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"jumbotron text-center\" [@fadeInAnimation]>\n\t<h2>Bike Rental</h2>\n\t<div>\n\t\t<a class=\"btn btn-default\" [routerLink]=\"['/login']\">Login</a>\n\t</div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/home/home.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__animations_fade_in_animation__ = __webpack_require__(68);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__animations_fade_in_animation__ = __webpack_require__("./src/app/animations/fade-in.animation.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -513,14 +565,14 @@ var HomeComponent = /** @class */ (function () {
         }
     };
     HomeComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-home',
-            template: __webpack_require__(354),
-            styles: [__webpack_require__(342)],
+            template: __webpack_require__("./src/app/components/home/home.component.html"),
+            styles: [__webpack_require__("./src/app/components/home/home.component.css")],
             animations: [__WEBPACK_IMPORTED_MODULE_3__animations_fade_in_animation__["a" /* fadeInAnimation */]],
             host: { '[@fadeInAnimation]': '' }
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _b || Object])
     ], HomeComponent);
     return HomeComponent;
     var _a, _b;
@@ -530,17 +582,31 @@ var HomeComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 168:
+/***/ "./src/app/components/inventory/inventory.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/inventory/inventory.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h2 class=\"page-header\">\n\tBikes\n\t<!-- Function Buttons --> \n\t<a class=\"btn btn-success pull-right\" data-toggle=\"modal\" data-target=\"#addModal\" (click)=\"clearBikeInfo();clearModelInfo()\">Add Bike</a>\n\t<a class=\"btn btn-primary pull-right\" data-toggle=\"modal\" data-target=\"#editModelModal\" (click)=\"clearModelInfo()\">Edit Price</a>\n\t<a class=\"btn btn-danger pull-right\" data-toggle=\"modal\" data-target=\"#delModelModal\" (click)=\"clearModelInfo()\">Delete Model</a>\n\t<a class=\"btn btn-success pull-right\" data-toggle=\"modal\" data-target=\"#addModelModal\" (click)=\"clearModelInfo()\">Add Model</a>\n</h2>\n\n<div *ngIf=\"list\">\n\t<ul class=\"list-group\">\n\t\t<!-- Bike List Filter-->\n\t\t<li class=\"list-group-item\">\n\t\t\t<div class=\"row\">\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <select class=\"form-control\" [(ngModel)]=\"bikefilter._id\">\n\t\t\t    \t<option selected=\"selected\" [ngValue]=\"null\">All</option>\n\t\t\t\t    <option *ngFor=\"let tag of bikeService.idTags\" [ngValue]=\"tag\">Group {{tag}}</option>\n\t\t\t    </select>\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <select class=\"form-control\" [(ngModel)]=\"bikefilter.model\">\n\t\t\t    \t<option selected=\"selected\" [ngValue]=\"null\">All</option>\n\t\t\t\t    <option *ngFor=\"let model of bikeService.modelList\" [ngValue]=\"model.name\">{{model.name}}</option>\n\t\t\t    </select>\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <select class=\"form-control\" [(ngModel)]=\"bikefilter.status\">\n\t\t\t    \t<option selected=\"selected\" [ngValue]=\"null\">All</option>\n\t\t\t\t    <option *ngFor=\"let status of bikeService.bikeStatus\" [ngValue]=\"status\">{{status}}</option>\n\t\t\t    </select>\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <input class=\"form-control\" type=\"number\" step=\"0.5\" [(ngModel)]=\"bikefilter.price\" placeholder=\"Price\">\n\t\t\t  </div>\n\t\t  </div>\n\t\t</li>\n\t\t<!-- Bike List -->\n\t\t<li class=\"list-group-item\" *ngFor=\"let bike of list | bfilter:bikefilter\">\n\t\t\t<div class=\"row\">\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>ID:</b> {{bike._id}}\n\t      </div>\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>Model:</b> {{bike.model}}\n\t      </div>\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>Status:</b> {{bike.status}}\n\t      </div>\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>Price:</b> {{bike.price}}\n\t      </div>\n\t      <div class=\"col-md-4 col-sm-12 col-xs-12 text-center\"> \n\t      \t<button type=\"button\" class=\"btn btn-primary btn-xs pull-left\" (click)=\"onEditBike(bike)\" data-toggle=\"modal\" data-target=\"#editModal\">Edit Bike</button>\n\t      \t<button type=\"button\" class=\"btn btn-danger btn-xs pull-right\" (click)=\"onDelBike(bike)\">Delete Bike</button>\n\t      </div>\n    \t</div>\n    </li>\n\t</ul>\n</div>\n\n<!-- Add Bike Modal -->\n<div class=\"modal fade\" id=\"addModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearBikeInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Add Bike</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>ID</label>\n\t\t\t\t\t<input type=\"number\" [(ngModel)]=\"currBike._id\" name=\"id\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"selectModel\">\n\t\t\t\t    <option *ngFor=\"let model of bikeService.modelList\" [ngValue]=\"model\">{{model.name}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<br>\n\t\t\t\t\t{{selectModel.price}}\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"clearBikeInfo()\">Clear</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"currBike._id\" (click)=\"onAddSubmit()\" data-dismiss=\"modal\">Add Bike</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Edit Bike Modal -->\n<div class=\"modal fade\" id=\"editModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearBikeInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Edit Bike {{currBike._id}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"prevBike.status === 'Available' || prevBike.status === 'Maintenance'\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" (change)=\"updateEdit(currBike.model)\" [(ngModel)]=\"currBike.model\">\n\t\t\t\t    <option *ngFor=\"let model of bikeService.modelList\" [ngValue]=\"model.name\">{{model.name}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Status</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"currBike.status\">\n\t\t\t\t    <option *ngFor=\"let status of bikeService.bikeStatus\" [ngValue]=\"status\">{{status}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"number\" [(ngModel)]=\"currBike.price\" name=\"price\" step=\"0.5\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"prevBike.status !== 'Available' && prevBike.status !== 'Maintenance'\">\n      \t<h3 class=\"text-danger\">Bike is currently out and cannot be modified.</h3>\n      </div>\n      <div class=\"modal-footer\" *ngIf=\"prevBike.status === 'Available' || prevBike.status === 'Maintenance'\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"undoEdit()\">Reset</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"currBike.model && currBike.status && currBike.price\" (click)=\"onEditSubmit()\" data-dismiss=\"modal\">Save changes</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Add Model Modal -->\n<div class=\"modal fade\" id=\"addModelModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearModelInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Add Model</h4>\n      </div>\n      <div class=\"modal-body\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"selectModel.name\" name=\"model\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"number\" [(ngModel)]=\"selectModel.price\" name=\"price\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"clearModelInfo()\">Clear</button>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onAddModelSubmit()\" data-dismiss=\"modal\">Add Model</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Delete Model Modal -->\n<div class=\"modal fade\" id=\"delModelModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearModelInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Delete Model</h4>\n      </div>\n      <div class=\"modal-body\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"selectModel\">\n\t\t\t\t    <option *ngFor=\"let model of bikeService.modelList\" [ngValue]=\"model\">{{model.name}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t</div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onDelModelSubmit()\" data-dismiss=\"modal\">Delete Model</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Edit Model Modal -->\n<div class=\"modal fade\" id=\"editModelModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearModelInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Edit Price</h4>\n      </div>\n      <div class=\"modal-body\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"selectModel\">\n\t\t\t\t    <option *ngFor=\"let model of bikeService.modelList\" [ngValue]=\"model\">{{model.name}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"number\" [(ngModel)]=\"selectModel.price\" name=\"price\" step=\"0.5\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t</div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onEditModelSubmit()\" data-dismiss=\"modal\">Update Price</button>\n      </div>\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/components/inventory/inventory.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_bike_service__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_bike__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_model__ = __webpack_require__(178);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InventoryComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__("./node_modules/angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_bike_service__ = __webpack_require__("./src/app/services/bike.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_bike__ = __webpack_require__("./src/app/shared/bike.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_model__ = __webpack_require__("./src/app/shared/model.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -707,10 +773,10 @@ var InventoryComponent = /** @class */ (function () {
         this.ngOnInit();
     };
     InventoryComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-inventory',
-            template: __webpack_require__(355),
-            styles: [__webpack_require__(343)]
+            template: __webpack_require__("./src/app/components/inventory/inventory.component.html"),
+            styles: [__webpack_require__("./src/app/components/inventory/inventory.component.css")]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_bike_service__["a" /* BikeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_bike_service__["a" /* BikeService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object])
     ], InventoryComponent);
@@ -722,18 +788,32 @@ var InventoryComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 169:
+/***/ "./src/app/components/login/login.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/login/login.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12\" id=\"loginForm\" [@fadeInAnimation]>\t\n\t<h2 class=\"page-header\">Login</h2>\n\t<form class=\"text-center\" (submit)=\"onLoginSubmit()\">\n\t\t<div class=\"form-group\">\n\t\t\t<input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\" placeholder=\"Username\">\n\t\t</div>\n\t\t<div class=\"form-group\">\n\t\t\t<input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Password\">\n\t\t</div>\n\t\t<input type=\"submit\" class=\"btn btn-success\" value=\"Login\" style=\"width: 30%\">\n\t</form>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/components/login/login.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_validate_service__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__animations_fade_in_animation__ = __webpack_require__(68);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_validate_service__ = __webpack_require__("./src/app/services/validate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("./node_modules/angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__animations_fade_in_animation__ = __webpack_require__("./src/app/animations/fade-in.animation.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -781,14 +861,14 @@ var LoginComponent = /** @class */ (function () {
         });
     };
     LoginComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-login',
-            template: __webpack_require__(356),
-            styles: [__webpack_require__(344)],
+            template: __webpack_require__("./src/app/components/login/login.component.html"),
+            styles: [__webpack_require__("./src/app/components/login/login.component.css")],
             animations: [__WEBPACK_IMPORTED_MODULE_5__animations_fade_in_animation__["a" /* fadeInAnimation */]],
             host: { '[@fadeInAnimation]': '' }
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_validate_service__["a" /* ValidateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_validate_service__["a" /* ValidateService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_validate_service__["a" /* ValidateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_validate_service__["a" /* ValidateService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */]) === "function" && _d || Object])
     ], LoginComponent);
     return LoginComponent;
     var _a, _b, _c, _d;
@@ -798,16 +878,30 @@ var LoginComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 170:
+/***/ "./src/app/components/navbar/navbar.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/navbar/navbar.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar navbar-inverse\" role=\"navigation\">\n  <div class=\"navbar-header\">\n    <button\n      type=\"button\"\n      class=\"navbar-toggle\"\n      data-toggle=\"collapse\"\n      data-target=\".navbar-ex1-collapse\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n    </button>\n    <a\n      class=\"navbar-brand\"\n      [routerLink]=\"['/']\">\n      Bike Rental\n    </a>\n  </div>\n\n  <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\n    <ul\n      id=\"active\"\n      class=\"nav navbar-nav side-nav\">\n        <li\n        *ngIf=\"!authService.loggedIn()\"\n        [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/register']\">\n          Register\n        </a>\n      </li>\n      <li\n        *ngIf=\"authService.loggedIn()\"\n        [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/dashboard']\">\n          Dashboard\n        </a>\n      </li>\n      <li\n        *ngIf=\"authService.loggedIn()\"\n        [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/inventory']\">\n          Bikes\n        </a>\n      </li>\n      <li\n        *ngIf=\"authService.loggedIn()\"\n        [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/rental']\">\n          Rentals\n        </a>\n      </li>\n      <li\n        *ngIf=\"authService.loggedIn()\"\n        [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/customer']\">\n          Customers\n        </a>\n      </li>\n      <li\n        *ngIf=\"authService.loggedIn()\"\n        [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/sales']\">\n          Sales\n        </a>\n      </li>\n\n    </ul>\n    <ul class=\"nav navbar-nav navbar-right navbar-user\">\n      <li\n        *ngIf=\"authService.loggedIn()\"\n        class=\"dropdown user-dropdown\">\n        <a\n          href=\"#\"\n          class=\"dropdown-toggle\"\n          data-toggle=\"dropdown\">\n          {{authService.user?.name}}\n          <b class=\"caret\"></b>\n        </a>\n        <ul class=\"dropdown-menu\">\n          <li>\n            <a [routerLink]=\"['/profile']\">\n              <i class=\"fa fa-user\"></i>\n              Profile\n            </a>\n          </li>\n          <li class=\"divider\"></li>\n          <li>\n            <a\n              href=\"#\"\n              (click)=\"onLogoutClick()\">\n              <i class=\"fa fa-power-off\"></i>\n              Log Out\n            </a>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/navbar/navbar.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(27);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavbarComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__("./node_modules/angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -835,12 +929,12 @@ var NavbarComponent = /** @class */ (function () {
         return false;
     };
     NavbarComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-navbar',
-            template: __webpack_require__(357),
-            styles: [__webpack_require__(345)]
+            template: __webpack_require__("./src/app/components/navbar/navbar.component.html"),
+            styles: [__webpack_require__("./src/app/components/navbar/navbar.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]) === "function" && _c || Object])
     ], NavbarComponent);
     return NavbarComponent;
     var _a, _b, _c;
@@ -850,15 +944,29 @@ var NavbarComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 171:
+/***/ "./src/app/components/profile/profile.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/profile/profile.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"user\">\n\t<h2 class=\"page-header\">Profile</h2>\n\t<ul class=\"list-group\">\n\t\t<li class=\"list-group-item\"><b>Username:</b> {{user.username}}</li>\n\t\t<li class=\"list-group-item\"><b>Email:</b> {{user.email}}</li>\n\t\t<li class=\"list-group-item\"><b>Last Login:</b> {{user.lastLogin | date:\"medium\"}}</li>\n\t</ul>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/components/profile/profile.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__("./node_modules/angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -880,10 +988,10 @@ var ProfileComponent = /** @class */ (function () {
         this.user = this.authService.user;
     };
     ProfileComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-profile',
-            template: __webpack_require__(358),
-            styles: [__webpack_require__(346)]
+            template: __webpack_require__("./src/app/components/profile/profile.component.html"),
+            styles: [__webpack_require__("./src/app/components/profile/profile.component.css")]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object])
     ], ProfileComponent);
@@ -895,18 +1003,32 @@ var ProfileComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 172:
+/***/ "./src/app/components/register/register.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/register/register.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\" [@fadeInAnimation]>\n\t<h2 class=\"page-header\">Register</h2>\n\t<form (submit)=\"onRegisterSubmit()\">\n\t\t<div class=\"form-group\">\n\t\t\t<label>Name</label>\n\t\t\t<input type=\"text\" [(ngModel)]=\"name\" name=\"name\" class=\"form-control\">\n\t\t</div>\n\t\t<div class=\"form-group\">\n\t\t\t<label>Username</label>\n\t\t\t<input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\n\t\t</div>\n\t\t<div class=\"form-group\">\n\t\t\t<label>Email</label>\n\t\t\t<input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\">\n\t\t</div>\n\t\t<div class=\"form-group\">\n\t\t\t<label>Password</label>\n\t\t\t<input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\n\t\t</div>\n\t\t<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n\t</form>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/components/register/register.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_validate_service__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__animations_fade_in_animation__ = __webpack_require__(68);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_validate_service__ = __webpack_require__("./src/app/services/validate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("./node_modules/angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__animations_fade_in_animation__ = __webpack_require__("./src/app/animations/fade-in.animation.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -960,14 +1082,14 @@ var RegisterComponent = /** @class */ (function () {
         });
     };
     RegisterComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-register',
-            template: __webpack_require__(359),
-            styles: [__webpack_require__(347)],
+            template: __webpack_require__("./src/app/components/register/register.component.html"),
+            styles: [__webpack_require__("./src/app/components/register/register.component.css")],
             animations: [__WEBPACK_IMPORTED_MODULE_5__animations_fade_in_animation__["a" /* fadeInAnimation */]],
             host: { '[@fadeInAnimation]': '' }
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */]) === "function" && _d || Object])
     ], RegisterComponent);
     return RegisterComponent;
     var _a, _b, _c, _d;
@@ -977,20 +1099,34 @@ var RegisterComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 173:
+/***/ "./src/app/components/rental/rental.component.css":
+/***/ (function(module, exports) {
+
+module.exports = "#all {\n\tfont-weight: bold;\n}"
+
+/***/ }),
+
+/***/ "./src/app/components/rental/rental.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h2 class=\"page-header\">Rentals\n\t<!-- Function Buttons -->\n\t<button class=\"btn btn-success pull-right\" data-toggle=\"modal\" data-target=\"#startModal\" (click)=\"clearCustInfo()\">Start Rental</button>\n</h2>\n\n<!-- Rental List -->\n<div *ngIf=\"rentals\">\n\t<ul class=\"list-group\">\n\t\t<li class=\"list-group-item\" *ngFor=\"let rental of rentals\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Rental ID:</b> <div>{{rental._id}}</div>\n\t      \t<hr>\n\t      \t<b>Status:</b> <div *ngIf=\"rental.status\" class=\"text-success\">Active</div> <div *ngIf=\"!rental.status\" class=\"text-danger\">Returned</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Customer ID:</b> <div>{{rental.customerId}}</div>\n\t      \t<hr>\n\t      \t<b>Customer Name:</b> <div>{{rental.customerName}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Start Date:</b> <div>{{rental.date | date:\"medium\"}}</div>\n\t      \t<hr>\n\t      \t<b>Duration (Minutes):</b> <div>{{rental.duration}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\" style=\"overflow-wrap:break-word;\">\n\t      \t<b>Total:</b> <div>{{rental.total | currency:'CAD':'1.2-2'}}</div>\n\t      \t<hr>\n\t      \t<b>Bikes Out:</b> <div>{{rental.bikeId.length}}</div>\n\t      </div>\n    \t</div>\n    \t<hr>\n    \t<!-- Function Buttons -->\n    \t<div class=\"row\">\n\t      <div class=\"col-md-12 col-sm-12 col-xs-12 text-center\">\n\t      \t<button *ngIf=\"rental.status\" type=\"button\" class=\"btn btn-primary btn-xs\" (click)=\"onAddBike(rental)\" data-toggle=\"modal\" data-target=\"#addBikeModal\">Add Bike</button>\n\t      \t<button *ngIf=\"rental.status\" type=\"button\" class=\"btn btn-primary btn-xs\" (click)=\"onDelBike(rental)\" data-toggle=\"modal\" data-target=\"#delBikeModal\">Remove Bike</button>\n\t      \t<button *ngIf=\"rental.status\" type=\"button\" class=\"btn btn-primary btn-xs\" (click)=\"onEditRental(rental)\" data-toggle=\"modal\" data-target=\"#editModal\">Edit Time</button>\n\t      \t<button *ngIf=\"rental.status\" type=\"button\" class=\"btn btn-primary btn-xs\" (click)=\"onRetBike(rental)\" data-toggle=\"modal\" data-target=\"#retBikeModal\">Return Bike</button>\n\t      \t<button type=\"button\" class=\"btn btn-danger btn-xs pull-right\" (click)=\"onDelRental(rental)\">Delete Rental</button>\n\t      </div>\n    \t</div>\n    </li>\n\t</ul>\n</div>\n\n<!-- Start Rental Modal -->\n<div class=\"modal fade\" id=\"startModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Search Customer</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Name</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"searchName\" name=\"custName\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"custFound == true\" class=\"text-center\">\n\t\t\t\t\t<hr>\n\t\t\t\t\t<div *ngIf=\"cust\">\n\t\t\t\t\t\t<strong>Customer Name:</strong>\n\t\t\t\t\t\t{{cust.name}}\n\t\t\t\t\t\t<br>\n\t\t\t\t\t\t<strong>Visits:</strong>\n\t\t\t\t\t\t{{cust.rentalId.length}}\n\t\t\t\t\t\t<div *ngIf=\"cust.info\">\n\t\t\t\t\t\t\t<strong>Note:</strong>\n\t\t\t\t\t\t\t{{cust.info}}\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<br>\n\t\t\t\t\t<button type=\"button\" class=\"btn btn-success\" (click)=\"startRental(cust)\" data-dismiss=\"modal\">Create Rental</button>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"custFound == false\" class=\"text-center\">\n\t\t\t\t\t<h2>Customer Not Found :(</h2>\n\t\t\t\t\t<br>\n\t\t\t\t\t<button type=\"button\" class=\"btn btn-success\" (click)=\"addCustStartRental()\" data-dismiss=\"modal\">Add Customer and Create Rental</button>\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button *ngIf=\"searchName\" type=\"button\" class=\"btn btn-default\" (click)=\"clearCustInfo()\">Clear</button>\n        <button *ngIf=\"searchName\" type=\"button\" class=\"btn btn-primary\" (click)=\"getCust(searchName)\">Find Customer</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Edit Rental Modal -->\n<div class=\"modal fade\" id=\"editModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Rental Info</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Rental ID:</label>\n\t\t\t\t\t{{this.rental._id}}\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"cust\" class=\"form-group\">\n\t\t\t\t\t<label>Customer Name:</label>\n\t\t\t\t\t{{this.cust.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Date (Please change according to format)</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"editDate\" id=\"rentalDate\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n      \t<button type=\"button\" class=\"btn btn-default\" (click)=\"editToCurrent()\">Use Current Time</button>\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"resetEdit()\">Reset Change</button>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onEditSubmit()\" data-dismiss=\"modal\">Change Time</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Add Bike Modal -->\n<div class=\"modal fade\" id=\"addBikeModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearSelectedBikes()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Rental Info</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Rental ID:</label>\n\t\t\t\t\t{{this.rental._id}}\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"cust\" class=\"form-group\">\n\t\t\t\t\t<label>Customer Name:</label>\n\t\t\t\t\t{{this.cust.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Date:</label>\n\t\t\t\t\t{{this.rental.date | date:\"medium\"}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Bike</label>\n\t\t\t\t\t<table\n\t\t\t\t\t\tclass=\"table table-bordered\"\n\t\t\t\t\t\t*ngIf=\"inBikeCount.length !== 0;else noBikes\">\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td class=\"text-center\">\n\t\t\t\t\t\t  \t<b>Model</b>\n\t\t\t\t\t\t  </td>\n\t\t\t\t\t\t  <td class=\"text-center\">\n\t\t\t\t\t\t  \t<b>Available</b>\n\t\t\t\t\t\t  </td>\n\t\t\t\t\t\t  <td class=\"text-center\">\n\t\t\t\t\t\t  \t<b>Renting</b>\n\t\t\t\t\t\t  </td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr *ngFor=\"let inBike of inBikeCount\">\n\t\t\t\t\t\t\t<td class=\"text-center\">\n\t\t\t\t\t\t  \t{{inBike.model}}\n\t\t\t\t\t\t  </td>\n\t\t\t\t\t\t  <td class=\"text-center\">\n\t\t\t\t\t\t  \t{{inBike.count}}\n\t\t\t\t\t\t  </td>\n\t\t\t\t\t\t  <td\n\t\t\t\t\t\t\t\tclass=\"text-center\"\n\t\t\t\t\t\t\t\t*ngIf=\"rentBikeCount[inBike.model];else zero\">\n\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\t\t\t\tclass=\"btn btn-xs btn-success pull-left\"\n\t\t\t\t\t\t\t\t\t(click)=\"addBikeToRental(inBike)\">\n\t\t\t\t\t\t\t\t\t+\n\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t{{rentBikeCount[inBike.model]}}\n\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\t\t\t\tclass=\"btn btn-xs btn-danger pull-right\"\n\t\t\t\t\t\t\t\t\t(click)=\"removeBikeFromRental(inBike)\">\n\t\t\t\t\t\t\t\t\t-\n\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t  </td>\n\t\t\t\t\t\t\t<ng-template #zero>\n\t\t\t\t\t\t\t\t<td class=\"text-center\">\n\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\t\t\t\tclass=\"btn btn-xs btn-success pull-left\"\n\t\t\t\t\t\t\t\t\t(click)=\"addBikeToRental(inBike)\">\n\t\t\t\t\t\t\t\t\t+\n\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t0\n\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\t\t\t\tclass=\"btn btn-xs btn-danger pull-right\"\n\t\t\t\t\t\t\t\t\t(click)=\"removeBikeFromRental(inBike)\">\n\t\t\t\t\t\t\t\t\t-\n\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</ng-template>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</table>\n\t\t\t\t\t<ng-template #noBikes>\n\t\t\t\t\t\t<div class=\"text-danger\">\n\t\t\t\t\t\t\tNo Bikes Available :(\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ng-template>\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button *ngIf=\"!isEmpty(rentBikeCount)\" type=\"button\" class=\"btn btn-primary\" (click)=\"onAddBikeSubmit()\" data-dismiss=\"modal\">Add Bike</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Remove Bike Modal -->\n<div class=\"modal fade\" id=\"delBikeModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearSelectedBikes()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Remove Bike</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Rental ID:</label>\n\t\t\t\t\t{{this.rental._id}}\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"cust\" class=\"form-group\">\n\t\t\t\t\t<label>Customer Name:</label>\n\t\t\t\t\t{{this.cust.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Date:</label>\n\t\t\t\t\t{{this.rental.date | date:\"medium\"}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Bike</label>\n\t\t\t\t\t<label *ngFor=\"let outBike of outBikes\" class=\"form-control\">\n\t\t        <input type=\"checkbox\" (change)=\"updateChecked(outBike)\"> ID: {{outBike._id}} | Model: {{outBike.model}}\n\t\t    \t</label>\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button *ngIf=\"selectedBikes.length !== 0\" type=\"button\" class=\"btn btn-primary\" (click)=\"onDelBikeSubmit()\" data-dismiss=\"modal\">Remove Bike</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Return Bike Modal -->\n<div class=\"modal fade\" id=\"retBikeModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearSelectedBikes()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Return Bike</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Rental ID:</label>\n\t\t\t\t\t{{this.rental._id}}\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"cust\" class=\"form-group\">\n\t\t\t\t\t<label>Customer Name:</label>\n\t\t\t\t\t{{this.cust.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Date:</label>\n\t\t\t\t\t{{this.rental.date | date:\"medium\"}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Duration:</label>\n\t\t\t\t\t{{this.rental.duration}} minutes\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Bike</label>\n\t\t\t\t\t<label *ngFor=\"let outBike of outBikes\" class=\"form-control\">\n\t\t        <input type=\"checkbox\" [checked]=\"selectAll\" (change)=\"updateChecked(outBike)\"> ID: {{outBike._id}} | Model: {{outBike.model}}\n\t\t    \t</label>\n\t\t    \t<button type=\"button\" class=\"form-control\" id=\"all\" (click)=\"selectAllBikes();\">Select All</button>\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n\t\t\t\t<div class=\"pull-right\">\n        \t<button *ngIf=\"selectedBikes.length !== 0\" type=\"button\" class=\"btn btn-primary\" (click)=\"onRetBikeSubmit()\" data-dismiss=\"modal\">Return Bike</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/rental/rental.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_customer_service__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_rental_service__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_bike_service__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_customer__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_rental__ = __webpack_require__(179);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__(27);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RentalComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__("./node_modules/angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_customer_service__ = __webpack_require__("./src/app/services/customer.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_rental_service__ = __webpack_require__("./src/app/services/rental.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_bike_service__ = __webpack_require__("./src/app/services/bike.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_customer__ = __webpack_require__("./src/app/shared/customer.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_rental__ = __webpack_require__("./src/app/shared/rental.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1035,12 +1171,12 @@ var RentalComponent = /** @class */ (function () {
             return false;
         });
     };
-    RentalComponent.prototype.getCustId = function () {
+    RentalComponent.prototype.getCust = function (name) {
         var _this = this;
         var query = {
-            name: this.searchName.toUpperCase()
+            name: name.toUpperCase()
         };
-        this.customerService.getCustId(query).subscribe(function (data) {
+        this.customerService.getCust(query).subscribe(function (data) {
             if (data.success) {
                 _this.cust = data.msg;
                 _this.custFound = true;
@@ -1224,15 +1360,10 @@ var RentalComponent = /** @class */ (function () {
     RentalComponent.prototype.onRetBike = function (rental) {
         var _this = this;
         this.clearSelectedBikes();
-        this.cust._id = rental.customerId;
-        this.cust.name = rental.customerName;
-        this.rental._id = rental._id;
-        this.rental.date = new Date(rental.date);
-        this.rental.bikeId = rental.bikeId;
-        this.rental.tax = rental.tax;
-        this.rental.total = rental.total;
+        this.getCust(rental.customerName);
+        this.rental = rental;
         this.currentTime = new Date();
-        var duration = Math.round((this.currentTime.getTime() - this.rental.date.getTime()) / (1000 * 60));
+        var duration = Math.round((this.currentTime.getTime() - new Date(this.rental.date).getTime()) / (1000 * 60));
         this.rental.duration = duration;
         var rented = {
             status: this.rental._id
@@ -1278,6 +1409,7 @@ var RentalComponent = /** @class */ (function () {
             subTotal: this.subTotal,
             total: this.total
         };
+        console.log(this.rentalService.returnDetails);
         this.router.navigate(['/checkout']);
     };
     RentalComponent.prototype.onEditRental = function (rental) {
@@ -1345,8 +1477,8 @@ var RentalComponent = /** @class */ (function () {
             this.clearSelectedBikes();
             document.getElementById('all').innerHTML = 'Select All';
         }
-        console.log(this.selectedBikes);
-        console.log(this.selectAll);
+        // console.log(this.selectedBikes);
+        // console.log(this.selectAll);
     };
     RentalComponent.prototype.clearSelectedBikes = function () {
         this.inBikeCount = [];
@@ -1371,12 +1503,12 @@ var RentalComponent = /** @class */ (function () {
         return true;
     };
     RentalComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-rental',
-            template: __webpack_require__(360),
-            styles: [__webpack_require__(348)]
+            template: __webpack_require__("./src/app/components/rental/rental.component.html"),
+            styles: [__webpack_require__("./src/app/components/rental/rental.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_customer_service__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_customer_service__["a" /* CustomerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_bike_service__["a" /* BikeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_bike_service__["a" /* BikeService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_rental_service__["a" /* RentalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_rental_service__["a" /* RentalService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_7__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__angular_router__["b" /* Router */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_customer_service__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_customer_service__["a" /* CustomerService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__services_bike_service__["a" /* BikeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_bike_service__["a" /* BikeService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_rental_service__["a" /* RentalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_rental_service__["a" /* RentalService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_7__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__angular_router__["a" /* Router */]) === "function" && _e || Object])
     ], RentalComponent);
     return RentalComponent;
     var _a, _b, _c, _d, _e;
@@ -1386,15 +1518,29 @@ var RentalComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 174:
+/***/ "./src/app/components/sales/sales.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/sales/sales.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h2 class=\"page-header\">Sales</h2>\n\n<!-- Search Date -->\n<div>\n\t<input \n\t\ttype=\"date\" \n\t\t(change)=\"changeDate(date);\"\n\t\t[(ngModel)]=\"date\" \n\t\tname=\"date\" \n\t\tclass=\"form-control\" \n\t\tstyle=\"width:170px;\">\n</div>\n<br>\n\n<!-- Sales Report -->\n<table class=\"table table-bordered\">\n\t<div class=\"row\">\n\t\t<div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t  \t<b>Number of Rentals:</b> \n\t\t\t<div>{{totalRentals}}</div>\n\t  </div>\n\t  <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t  \t<b>Total Sales:</b> \n\t\t\t<div>{{revenue | currency:'CAD':'1.2-2'}}</div>\n\t  </div>\n\t  <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t  \t<b>Tax:</b> \n\t\t\t<div>{{tax | currency:'CAD':'1.2-2'}}</div>\n\t  </div>\n\t  <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t  \t<b>Average Rental Sale:</b> \n\t\t\t<div>{{avgRental | currency:'CAD':'1.2-2'}}</div>\n\t  </div>\n\t</div>\n</table>\n\n<!-- Rental List -->\n<div *ngIf=\"rentals\">\n\t<ul class=\"list-group\">\n\t\t<li \n\t\t\tclass=\"list-group-item\" \n\t\t\t*ngFor=\"let rental of rentals\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Rental ID:</b> \n\t\t\t\t\t<div>{{rental._id}}</div>\n\t      \t<hr>\n\t      \t<b>Status:</b> \n\t\t\t\t\t<div \n\t\t\t\t\t\t*ngIf=\"rental.status\" \n\t\t\t\t\t\tclass=\"text-success\">\n\t\t\t\t\t\tActive\n\t\t\t\t\t</div> \n\t\t\t\t\t<div \n\t\t\t\t\t\t*ngIf=\"!rental.status\" \n\t\t\t\t\t\tclass=\"text-danger\">\n\t\t\t\t\t\tReturned\n\t\t\t\t\t</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Customer ID:</b> \n\t\t\t\t\t<div>{{rental.customerId}}</div>\n\t      \t<hr>\n\t      \t<b>Customer Name:</b> \n\t\t\t\t\t<div>{{rental.customerName}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Start Date:</b> \n\t\t\t\t\t<div>{{rental.date | date:\"medium\"}}</div>\n\t      \t<hr>\n\t      \t<b>Duration (Minutes):</b> <div>{{rental.duration}}</div>\n\t      </div>\n\t\t\t\t<div \n\t\t\t\t\tclass=\"col-md-3 col-sm-6 col-xs-12 text-center\" style=\"overflow-wrap:break-word;\">\n\t      \t<b>Total:</b> \n\t\t\t\t\t<div>{{rental.total | currency:'CAD':'1.2-2'}}</div>\n\t      \t<hr>\n\t      \t<b>Bikes:</b> \n\t\t\t\t\t<div>{{rental.bikeId.length}}</div>\n\t      </div>\n    \t</div>\n    </li>\n\t</ul>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/components/sales/sales.component.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_rental_service__ = __webpack_require__(43);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SalesComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__("./node_modules/angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_rental_service__ = __webpack_require__("./src/app/services/rental.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1461,10 +1607,10 @@ var SalesComponent = /** @class */ (function () {
         }
     };
     SalesComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-sales',
-            template: __webpack_require__(361),
-            styles: [__webpack_require__(349)]
+            template: __webpack_require__("./src/app/components/sales/sales.component.html"),
+            styles: [__webpack_require__("./src/app/components/sales/sales.component.css")]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_rental_service__["a" /* RentalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_rental_service__["a" /* RentalService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object])
     ], SalesComponent);
@@ -1476,14 +1622,14 @@ var SalesComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 175:
+/***/ "./src/app/guards/auth.guard.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(28);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthGuard; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1511,8 +1657,8 @@ var AuthGuard = /** @class */ (function () {
         }
     };
     AuthGuard = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === "function" && _b || Object])
     ], AuthGuard);
     return AuthGuard;
     var _a, _b;
@@ -1522,177 +1668,16 @@ var AuthGuard = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 176:
+/***/ "./src/app/services/auth.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BikeFilterPipe; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var BikeFilterPipe = /** @class */ (function () {
-    function BikeFilterPipe() {
-    }
-    BikeFilterPipe.prototype.transform = function (bikes, query) {
-        if (!bikes || !query)
-            return bikes;
-        return bikes.filter(function (bike) {
-            for (var field in query) {
-                if (query[field]) {
-                    if (field === '_id') {
-                        if (Math.floor(bike[field] / 1000) !== query[field]) {
-                            return false;
-                        }
-                    }
-                    else if (field === 'status' || field === 'model') {
-                        if (bike[field].toLowerCase().indexOf(query[field].toLowerCase()) === -1) {
-                            return false;
-                        }
-                    }
-                    else if (field === 'price') {
-                        if (bike[field] !== query[field]) {
-                            return false;
-                        }
-                    }
-                }
-            }
-            return true;
-        });
-    };
-    BikeFilterPipe = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
-            name: 'bfilter',
-            pure: false
-        })
-    ], BikeFilterPipe);
-    return BikeFilterPipe;
-}());
-
-//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/bikefilter.pipe.js.map
-
-/***/ }),
-
-/***/ 177:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerFilterPipe; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var CustomerFilterPipe = /** @class */ (function () {
-    function CustomerFilterPipe() {
-    }
-    CustomerFilterPipe.prototype.transform = function (customers, query) {
-        if (!customers || !query)
-            return customers;
-        return customers.filter(function (cust) {
-            for (var field in query) {
-                if (query[field] && cust[field]) {
-                    if (field === 'name' || field === 'info') {
-                        if (cust[field].toUpperCase().indexOf(query[field].toUpperCase()) === -1) {
-                            return false;
-                        }
-                    }
-                    else if (field === 'rentalId') {
-                        var found = false;
-                        for (var id in cust[field]) {
-                            if (cust[field][id].indexOf(query[field]) !== -1) {
-                                found = true;
-                            }
-                        }
-                        return found;
-                    }
-                    else {
-                        if (cust[field].indexOf(query[field]) === -1) {
-                            return false;
-                        }
-                    }
-                }
-            }
-            return true;
-        });
-    };
-    CustomerFilterPipe = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
-            name: 'cfilter',
-            pure: false
-        })
-    ], CustomerFilterPipe);
-    return CustomerFilterPipe;
-}());
-
-//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/customerfilter.pipe.js.map
-
-/***/ }),
-
-/***/ 178:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Model; });
-var Model = /** @class */ (function () {
-    function Model() {
-    }
-    return Model;
-}());
-
-//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/model.js.map
-
-/***/ }),
-
-/***/ 179:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Rental; });
-var Rental = /** @class */ (function () {
-    function Rental() {
-    }
-    return Rental;
-}());
-
-//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/rental.js.map
-
-/***/ }),
-
-/***/ 180:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
-// The file contents for the current environment will overwrite these during build.
-// The build system defaults to the dev environment which uses `environment.ts`, but if you do
-// `ng build --env=prod` then `environment.prod.ts` will be used instead.
-// The list of which env maps to which file can be found in `angular-cli.json`.
-var environment = {
-    production: false
-};
-//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/environment.js.map
-
-/***/ }),
-
-/***/ 28:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_jwt__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_jwt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_jwt__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_jwt__ = __webpack_require__("./node_modules/angular2-jwt/angular2-jwt.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_jwt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_jwt__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1744,7 +1729,7 @@ var AuthService = /** @class */ (function () {
         this.authToken = token;
     };
     AuthService.prototype.loggedIn = function () {
-        return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_angular2_jwt__["tokenNotExpired"])('id_token');
+        return Object(__WEBPACK_IMPORTED_MODULE_2_angular2_jwt__["tokenNotExpired"])('id_token');
     };
     AuthService.prototype.logout = function () {
         this.authToken = null;
@@ -1752,7 +1737,7 @@ var AuthService = /** @class */ (function () {
         localStorage.clear();
     };
     AuthService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object])
     ], AuthService);
     return AuthService;
@@ -1763,191 +1748,14 @@ var AuthService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 338:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 339:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 340:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 341:
-/***/ (function(module, exports) {
-
-module.exports = ".panel {\n\tpadding:0;\n}\n\n#countPanels {\n\t padding-left: 10%;\n\t padding-right: 10%;\n}"
-
-/***/ }),
-
-/***/ 342:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 343:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 344:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 345:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 346:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 347:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 348:
-/***/ (function(module, exports) {
-
-module.exports = "#all {\n\tfont-weight: bold;\n}"
-
-/***/ }),
-
-/***/ 349:
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ 350:
-/***/ (function(module, exports) {
-
-module.exports = "<app-navbar></app-navbar>\n<div class=\"container\">\n\t<flash-messages></flash-messages>\n\t<router-outlet></router-outlet>\n</div>"
-
-/***/ }),
-
-/***/ 351:
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"this.rentalService.returnDetails\" id=\"rentalDetails\">\n  <ul class=\"list-group\">\n    <li class=\"list-group-item\">\n      <div class=\"row\">\n        <div class=\"col-md-6 col-sm-6 col-xs-12 text-center\">\n          <b>Rental ID</b> <div>{{rentalService.returnDetails.rental._id}}</div>\n        </div>\n        <div class=\"col-md-6 col-sm-6 col-xs-12 text-center\">\n          <b>Customer Name</b> <div>{{rentalService.returnDetails.cust.name}}</div>\n        </div>\n      </div>\n      <hr>\n      <div class=\"row\">\n        <div class=\"col-md-4 col-sm-4 col-xs-12 text-center\">\n          <b>Start Time</b> <div>{{rentalService.returnDetails.rental.date | date:\"medium\"}}</div>\n        </div>\n        <div class=\"col-md-4 col-sm-4 col-xs-12 text-center\">\n          <b>Return Time</b> <div>{{rentalService.returnDetails.endDate | date:\"medium\"}}</div>\n        </div>\n        <div class=\"col-md-4 col-sm-4 col-xs-12 text-center\">\n          <b>Duration (Minutes)</b> <div>{{rentalService.returnDetails.rental.duration}}</div>\n        </div>\n      </div>\n    </li>\n    <br>\n    <table class=\"table table-bordered\">\n      <thead>\n        <tr>\n          <th><b>Bike ID</b></th>\n          <th><b>Model</b></th>\n          <th><b>Rate</b></th>\n          <th><b>Subtotal</b></th>\n          <th><b>Tax</b></th>\n          <th><b>Total</b></th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let bikeDetail of rentalService.returnDetails.bikeCostDetails\">\n          <td>{{bikeDetail.bike._id}}</td>\n          <td>{{bikeDetail.bike.model}}</td>\n          <td>{{bikeDetail.bike.price}}</td>\n          <td>{{bikeDetail.subTotal | currency:'CAD':'1.2-2'}}</td>\n          <td>{{bikeDetail.tax | currency:'CAD':'1.2-2'}}</td>\n          <td>{{bikeDetail.total | currency:'CAD':'1.2-2'}}</td>\n        </tr>\n      </tbody>\n    </table>\n    <br>\n    <li class=\"list-group-item\">\n      <div class=\"row\">\n        <div class=\"col-md-4 col-sm-4 col-xs-12 text-center\">\n          <b>Subtotal</b> <div>{{rentalService.returnDetails.subTotal | currency:'CAD':'1.2-2'}}</div>\n        </div>\n        <div class=\"col-md-4 col-sm-4 col-xs-12 text-center\">\n          <b>Tax</b> <div>{{rentalService.returnDetails.taxTotal | currency:'CAD':'1.2-2'}}</div>\n        </div>\n        <div class=\"col-md-4 col-sm-4 col-xs-12 text-center\">\n          <b>Total</b> <div>{{rentalService.returnDetails.total | currency:'CAD':'1.2-2'}}</div>\n        </div> \n      </div>\n    </li>\n  </ul>\n</div>\n\n<div class=\"row\">\n  <div class=\"col-md-12 col-sm-12 col-xs-12 text-center\">\n    <button type=\"button\" class=\"btn btn-default\" (click)=\"rentalService.print('rentalDetails')\">Print Page</button>\n    <button *ngIf=\"this.rentalService.returnDetails\" type=\"button\" class=\"btn btn-primary\" (click)=\"onRetSubmit()\">Return Bike</button>\n    <button type=\"button\" class=\"btn btn-danger btn-xs pull-right\" (click)=\"goBack()\">Go Back</button>\n  </div>\n</div>"
-
-/***/ }),
-
-/***/ 352:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 class=\"page-header\">Customers</h2>\n\n<div *ngIf=\"customers\">\n\t<ul class=\"list-group\">\n\t\t<!-- Customer List Filter-->\n\t\t<li class=\"list-group-item\">\n\t\t\t<div class=\"row\">\n\t\t\t  <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t\t    <input\n\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t[(ngModel)]=\"customerfilter._id\"\n\t\t\t\t\t\tplaceholder=\"ID\">\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t\t    <input\n\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t[(ngModel)]=\"customerfilter.name\"\n\t\t\t\t\t\tplaceholder=\"Name\">\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t\t    <input\n\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t[(ngModel)]=\"customerfilter.info\"\n\t\t\t\t\t\tplaceholder=\"Info\">\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t\t    <input\n\t\t\t\t\t\tclass=\"form-control\"\n\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t[(ngModel)]=\"customerfilter.rentalId\"\n\t\t\t\t\t\tplaceholder=\"Rental ID\">\n\t\t\t  </div>\n\t\t  </div>\n\t\t</li>\n\t\t<!-- Customer List -->\n\t\t<li\n\t\t\tclass=\"list-group-item\"\n\t\t\t*ngFor=\"let cust of customers | cfilter:customerfilter\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Customer ID:</b> <div>{{cust._id}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Name:</b> <div>{{cust.name}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Note:</b> <div>{{cust.info}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Rentals:</b> <div>{{cust.rentalId.length}}</div>\n\t      </div>\n    \t</div>\n    \t<hr>\n    \t<div class=\"row\">\n\t      <div class=\"col-md-12 col-sm-12 col-xs-12 text-center\">\n\t      \t<button\n\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\tclass=\"btn btn-primary btn-xs\"\n\t\t\t\t\t\t(click)=\"onEditCust(cust)\"\n\t\t\t\t\t\tdata-toggle=\"modal\"\n\t\t\t\t\t\tdata-target=\"#editModal\">\n\t\t\t\t\t\tEdit Note\n\t\t\t\t\t</button>\n\t      \t<button\n\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\tclass=\"btn btn-danger btn-xs pull-right\"\n\t\t\t\t\t\t(click)=\"onDelCust(cust)\">\n\t\t\t\t\t\tDelete Customer\n\t\t\t\t\t</button>\n\t      </div>\n    \t</div>\n    </li>\n\t</ul>\n</div>\n\n<!-- Edit Customer Modal -->\n<div\n\tclass=\"modal fade\"\n\tid=\"editModal\"\n\ttabindex=\"-1\"\n\trole=\"dialog\"\n\taria-labelledby=\"myModalLabel\">\n  <div\n\t\tclass=\"modal-dialog\"\n\t\trole=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button\n\t\t\t\t\ttype=\"button\"\n\t\t\t\t\tclass=\"close\"\n\t\t\t\t\tdata-dismiss=\"modal\"\n\t\t\t\t\taria-label=\"Close\">\n\t\t\t\t\t<span aria-hidden=\"true\">\n\t\t\t\t\t\t&times;\n\t\t\t\t\t</span>\n\t\t\t\t</button>\n        <h4\n\t\t\t\t\tclass=\"modal-title\"\n\t\t\t\t\tid=\"myModalLabel\">\n\t\t\t\t\tCustomer Info\n\t\t\t\t</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Customer ID:</label>\n\t\t\t\t\t{{this.currCust._id}}\n\t\t\t\t</div>\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Name:</label>\n\t\t\t\t\t{{this.currCust.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Note</label>\n\t\t\t\t\t<input\n\t\t\t\t\t\ttype=\"text\"\n\t\t\t\t\t\t[(ngModel)]=\"this.currCust.info\"\n\t\t\t\t\t\tname=\"custInfo\"\n\t\t\t\t\t\tclass=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button\n\t\t\t\t\ttype=\"button\"\n\t\t\t\t\tclass=\"btn btn-default\"\n\t\t\t\t\t(click)=\"resetEdit()\">\n\t\t\t\t\tReset Changes\n\t\t\t\t</button>\n        <button\n\t\t\t\t\ttype=\"button\"\n\t\t\t\t\tclass=\"btn btn-primary\"\n\t\t\t\t\t(click)=\"onEditSubmit()\"\n\t\t\t\t\tdata-dismiss=\"modal\">\n\t\t\t\t\tSave Changes\n\t\t\t\t</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ 353:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 class=\"page-header\">Dashboard</h2>\n\n<div class=\"col-lg-12\">\n\t<!-- Current Counts -->\n\t<div\n\t\tclass=\"row text-center\"\n\t\tid=\"countPanels\">\n\t\t\t<div class=\"panel panel-success col-md-5 col-xs-12\">\n\t\t\t\t<div class=\"panel-heading\">\n\t\t\t    <h2 class=\"panel-title\">Current Active Rentals</h2>\n\t\t\t  </div>\n\t\t\t  <div class=\"panel-body\">\n\t\t\t\t\t<h1>\n\t\t\t    \t{{this.rentalCount}}\n\t\t\t    </h1>\n\t\t\t  </div>\n\t\t\t</div>\n\n\t\t\t<div class=\"panel panel-success col-md-5 col-md-offset-1 col-xs-12 pull-right\">\n\t\t\t  <div class=\"panel-heading\">\n\t\t\t    <h2 class=\"panel-title\">Current Available Bikes</h2>\n\t\t\t  </div>\n\t\t\t  <div class=\"panel-body\">\n\t\t\t    <h1>\n\t\t\t    \t{{this.availBikeCount}} / {{this.totalBikeCount}}\n\t\t\t    </h1>\n\t\t\t  </div>\n\t\t\t</div>\n\t</div>\n\n\t<div\n\t\t*ngIf=\"rentalList\" \n\t\tclass=\"row\">\n\t\t<h3>Active Rentals</h3>\n\t\t<ul class=\"list-group\">\n\t\t\t<!-- Rental List -->\n\t\t\t<li\n\t\t\t\tclass=\"list-group-item\"\n\t\t\t\t*ngFor=\"let rental of rentalList\">\n\t\t\t\t<div class=\"row text-center\">\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t\t\t\t\t<b>Rental ID:</b>\n\t\t\t\t\t\t<div>{{rental._id}}</div>\n\t\t      \t<hr>\n\t\t      \t<b>Status:</b>\n\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t*ngIf=\"rental.status\"\n\t\t\t\t\t\t\tclass=\"text-success\">\n\t\t\t\t\t\t\tActive\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t*ngIf=\"!rental.status\"\n\t\t\t\t\t\t\tclass=\"text-danger\">\n\t\t\t\t\t\t\tReturned\n\t\t\t\t\t\t</div>\n\t\t      </div>\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t      \t<b>Customer ID:</b>\n\t\t\t\t\t\t<div>{{rental.customerId}}</div>\n\t\t      \t<hr>\n\t\t      \t<b>Customer Name:</b>\n\t\t\t\t\t\t<div>{{rental.customerName}}</div>\n\t\t      </div>\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t      \t<b>Start Date:</b>\n\t\t\t\t\t\t<div>{{rental.date | date:\"medium\"}}</div>\n\t\t      \t<hr>\n\t\t      \t<b>Duration (Minutes):</b>\n\t\t\t\t\t\t<div>{{rental.duration}}</div>\n\t\t      </div>\n\t\t      <div\n\t\t\t\t\t\tclass=\"col-md-3 col-sm-6 col-xs-12\"\n\t\t\t\t\t\tstyle=\"overflow-wrap:break-word;\">\n\t\t\t\t\t\t<b>Total:</b>\n\t\t\t\t\t\t<div>{{rental.total}}</div>\n\t\t\t\t\t\t<hr>\n\t\t\t\t\t\t<b>Bikes:</b>\n\t\t\t\t\t\t<div>{{rental.bikeId.length}}</div>\n\t\t      </div>\n\t    \t</div>\n\t    </li>\n\t\t</ul>\n\t</div>\n\n\t<div\n\t\t*ngIf=\"this.availBikeCount !== 0\"\n\t\tclass=\"row\">\n\t\t<h3>Available Bikes</h3>\n\t\t<ul class=\"list-group\">\n\t\t\t<!-- Bike List -->\n\t\t\t<li\n\t\t\t\tclass=\"list-group-item\"\n\t\t\t\t*ngFor=\"let bike of bikeList | bfilter:bikefilter\">\n\t\t\t\t<div class=\"row text-center\">\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t      <b>ID:</b> {{bike._id}}\n\t\t      </div>\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t      <b>Model:</b> {{bike.model}}\n\t\t      </div>\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t      <b>Status:</b> {{bike.status}}\n\t\t      </div>\n\t\t      <div class=\"col-md-3 col-sm-6 col-xs-12\">\n\t\t      <b>Price:</b> {{bike.price}}\n\t\t      </div>\n\t    \t</div>\n\t    </li>\n\t\t</ul>\n\t</div>\n\n</div>\n"
-
-/***/ }),
-
-/***/ 354:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"jumbotron text-center\" [@fadeInAnimation]>\n\t<h2>Bike Rental</h2>\n\t<div>\n\t\t<a class=\"btn btn-default\" [routerLink]=\"['/login']\">Login</a>\n\t</div>\n</div>\n"
-
-/***/ }),
-
-/***/ 355:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 class=\"page-header\">\n\tBikes\n\t<!-- Function Buttons --> \n\t<a class=\"btn btn-success pull-right\" data-toggle=\"modal\" data-target=\"#addModal\" (click)=\"clearBikeInfo();clearModelInfo()\">Add Bike</a>\n\t<a class=\"btn btn-primary pull-right\" data-toggle=\"modal\" data-target=\"#editModelModal\" (click)=\"clearModelInfo()\">Edit Price</a>\n\t<a class=\"btn btn-danger pull-right\" data-toggle=\"modal\" data-target=\"#delModelModal\" (click)=\"clearModelInfo()\">Delete Model</a>\n\t<a class=\"btn btn-success pull-right\" data-toggle=\"modal\" data-target=\"#addModelModal\" (click)=\"clearModelInfo()\">Add Model</a>\n</h2>\n\n<div *ngIf=\"list\">\n\t<ul class=\"list-group\">\n\t\t<!-- Bike List Filter-->\n\t\t<li class=\"list-group-item\">\n\t\t\t<div class=\"row\">\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <select class=\"form-control\" [(ngModel)]=\"bikefilter._id\">\n\t\t\t    \t<option selected=\"selected\" [ngValue]=\"null\">All</option>\n\t\t\t\t    <option *ngFor=\"let tag of bikeService.idTags\" [ngValue]=\"tag\">Group {{tag}}</option>\n\t\t\t    </select>\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <select class=\"form-control\" [(ngModel)]=\"bikefilter.model\">\n\t\t\t    \t<option selected=\"selected\" [ngValue]=\"null\">All</option>\n\t\t\t\t    <option *ngFor=\"let model of bikeService.modelList\" [ngValue]=\"model.name\">{{model.name}}</option>\n\t\t\t    </select>\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <select class=\"form-control\" [(ngModel)]=\"bikefilter.status\">\n\t\t\t    \t<option selected=\"selected\" [ngValue]=\"null\">All</option>\n\t\t\t\t    <option *ngFor=\"let status of bikeService.bikeStatus\" [ngValue]=\"status\">{{status}}</option>\n\t\t\t    </select>\n\t\t\t  </div>\n\t\t\t  <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t\t\t    <input class=\"form-control\" type=\"number\" step=\"0.5\" [(ngModel)]=\"bikefilter.price\" placeholder=\"Price\">\n\t\t\t  </div>\n\t\t  </div>\n\t\t</li>\n\t\t<!-- Bike List -->\n\t\t<li class=\"list-group-item\" *ngFor=\"let bike of list | bfilter:bikefilter\">\n\t\t\t<div class=\"row\">\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>ID:</b> {{bike._id}}\n\t      </div>\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>Model:</b> {{bike.model}}\n\t      </div>\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>Status:</b> {{bike.status}}\n\t      </div>\n\t      <div class=\"col-md-2 col-sm-4 col-xs-6 text-center\">\n\t      <b>Price:</b> {{bike.price}}\n\t      </div>\n\t      <div class=\"col-md-4 col-sm-12 col-xs-12 text-center\"> \n\t      \t<button type=\"button\" class=\"btn btn-primary btn-xs pull-left\" (click)=\"onEditBike(bike)\" data-toggle=\"modal\" data-target=\"#editModal\">Edit Bike</button>\n\t      \t<button type=\"button\" class=\"btn btn-danger btn-xs pull-right\" (click)=\"onDelBike(bike)\">Delete Bike</button>\n\t      </div>\n    \t</div>\n    </li>\n\t</ul>\n</div>\n\n<!-- Add Bike Modal -->\n<div class=\"modal fade\" id=\"addModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearBikeInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Add Bike</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>ID</label>\n\t\t\t\t\t<input type=\"number\" [(ngModel)]=\"currBike._id\" name=\"id\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"selectModel\">\n\t\t\t\t    <option *ngFor=\"let model of bikeService.modelList\" [ngValue]=\"model\">{{model.name}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<br>\n\t\t\t\t\t{{selectModel.price}}\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"clearBikeInfo()\">Clear</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"currBike._id\" (click)=\"onAddSubmit()\" data-dismiss=\"modal\">Add Bike</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Edit Bike Modal -->\n<div class=\"modal fade\" id=\"editModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearBikeInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Edit Bike {{currBike._id}}</h4>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"prevBike.status === 'Available' || prevBike.status === 'Maintenance'\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" (change)=\"updateEdit(currBike.model)\" [(ngModel)]=\"currBike.model\">\n\t\t\t\t    <option *ngFor=\"let model of bikeService.modelList\" [ngValue]=\"model.name\">{{model.name}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Status</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"currBike.status\">\n\t\t\t\t    <option *ngFor=\"let status of bikeService.bikeStatus\" [ngValue]=\"status\">{{status}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"number\" [(ngModel)]=\"currBike.price\" name=\"price\" step=\"0.5\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-body\" *ngIf=\"prevBike.status !== 'Available' && prevBike.status !== 'Maintenance'\">\n      \t<h3 class=\"text-danger\">Bike is currently out and cannot be modified.</h3>\n      </div>\n      <div class=\"modal-footer\" *ngIf=\"prevBike.status === 'Available' || prevBike.status === 'Maintenance'\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"undoEdit()\">Reset</button>\n        <button type=\"button\" class=\"btn btn-primary\" *ngIf=\"currBike.model && currBike.status && currBike.price\" (click)=\"onEditSubmit()\" data-dismiss=\"modal\">Save changes</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Add Model Modal -->\n<div class=\"modal fade\" id=\"addModelModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearModelInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Add Model</h4>\n      </div>\n      <div class=\"modal-body\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"selectModel.name\" name=\"model\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"number\" [(ngModel)]=\"selectModel.price\" name=\"price\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"clearModelInfo()\">Clear</button>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onAddModelSubmit()\" data-dismiss=\"modal\">Add Model</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Delete Model Modal -->\n<div class=\"modal fade\" id=\"delModelModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearModelInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Delete Model</h4>\n      </div>\n      <div class=\"modal-body\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"selectModel\">\n\t\t\t\t    <option *ngFor=\"let model of bikeService.modelList\" [ngValue]=\"model\">{{model.name}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t</div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onDelModelSubmit()\" data-dismiss=\"modal\">Delete Model</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Edit Model Modal -->\n<div class=\"modal fade\" id=\"editModelModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearModelInfo()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Edit Price</h4>\n      </div>\n      <div class=\"modal-body\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Model</label>\n\t\t\t\t\t<select class=\"form-control\" [(ngModel)]=\"selectModel\">\n\t\t\t\t    <option *ngFor=\"let model of bikeService.modelList\" [ngValue]=\"model\">{{model.name}}</option>\n\t\t\t    </select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Price</label>\n\t\t\t\t\t<input type=\"number\" [(ngModel)]=\"selectModel.price\" name=\"price\" step=\"0.5\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t</div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onEditModelSubmit()\" data-dismiss=\"modal\">Update Price</button>\n      </div>\n    </div>\n  </div>\n</div>"
-
-/***/ }),
-
-/***/ 356:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12\" id=\"loginForm\" [@fadeInAnimation]>\t\n\t<h2 class=\"page-header\">Login</h2>\n\t<form class=\"text-center\" (submit)=\"onLoginSubmit()\">\n\t\t<div class=\"form-group\">\n\t\t\t<input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\" placeholder=\"Username\">\n\t\t</div>\n\t\t<div class=\"form-group\">\n\t\t\t<input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\" placeholder=\"Password\">\n\t\t</div>\n\t\t<input type=\"submit\" class=\"btn btn-success\" value=\"Login\" style=\"width: 30%\">\n\t</form>\n</div>"
-
-/***/ }),
-
-/***/ 357:
-/***/ (function(module, exports) {
-
-module.exports = "<nav class=\"navbar navbar-inverse\" role=\"navigation\">\n  <div class=\"navbar-header\">\n    <button\n      type=\"button\"\n      class=\"navbar-toggle\"\n      data-toggle=\"collapse\"\n      data-target=\".navbar-ex1-collapse\">\n        <span class=\"sr-only\">Toggle navigation</span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n        <span class=\"icon-bar\"></span>\n    </button>\n    <a\n      class=\"navbar-brand\"\n      [routerLink]=\"['/']\">\n      Bike Rental\n    </a>\n  </div>\n\n  <div class=\"collapse navbar-collapse navbar-ex1-collapse\">\n    <ul\n      id=\"active\"\n      class=\"nav navbar-nav side-nav\">\n        <li\n        *ngIf=\"!authService.loggedIn()\"\n        [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/register']\">\n          Register\n        </a>\n      </li>\n      <li\n        *ngIf=\"authService.loggedIn()\"\n        [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/dashboard']\">\n          Dashboard\n        </a>\n      </li>\n      <li\n        *ngIf=\"authService.loggedIn()\"\n        [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/inventory']\">\n          Bikes\n        </a>\n      </li>\n      <li\n        *ngIf=\"authService.loggedIn()\"\n        [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/rental']\">\n          Rentals\n        </a>\n      </li>\n      <li\n        *ngIf=\"authService.loggedIn()\"\n        [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/customer']\">\n          Customers\n        </a>\n      </li>\n      <li\n        *ngIf=\"authService.loggedIn()\"\n        [routerLinkActive]=\"['active']\">\n        <a [routerLink]=\"['/sales']\">\n          Sales\n        </a>\n      </li>\n\n    </ul>\n    <ul class=\"nav navbar-nav navbar-right navbar-user\">\n      <li\n        *ngIf=\"authService.loggedIn()\"\n        class=\"dropdown user-dropdown\">\n        <a\n          href=\"#\"\n          class=\"dropdown-toggle\"\n          data-toggle=\"dropdown\">\n          {{authService.user?.name}}\n          <b class=\"caret\"></b>\n        </a>\n        <ul class=\"dropdown-menu\">\n          <li>\n            <a [routerLink]=\"['/profile']\">\n              <i class=\"fa fa-user\"></i>\n              Profile\n            </a>\n          </li>\n          <li class=\"divider\"></li>\n          <li>\n            <a\n              href=\"#\"\n              (click)=\"onLogoutClick()\">\n              <i class=\"fa fa-power-off\"></i>\n              Log Out\n            </a>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
-
-/***/ }),
-
-/***/ 358:
-/***/ (function(module, exports) {
-
-module.exports = "<div *ngIf=\"user\">\n\t<h2 class=\"page-header\">Profile</h2>\n\t<ul class=\"list-group\">\n\t\t<li class=\"list-group-item\"><b>Username:</b> {{user.username}}</li>\n\t\t<li class=\"list-group-item\"><b>Email:</b> {{user.email}}</li>\n\t\t<li class=\"list-group-item\"><b>Last Login:</b> {{user.lastLogin | date:\"medium\"}}</li>\n\t</ul>\n</div>"
-
-/***/ }),
-
-/***/ 359:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"container\" [@fadeInAnimation]>\n\t<h2 class=\"page-header\">Register</h2>\n\t<form (submit)=\"onRegisterSubmit()\">\n\t\t<div class=\"form-group\">\n\t\t\t<label>Name</label>\n\t\t\t<input type=\"text\" [(ngModel)]=\"name\" name=\"name\" class=\"form-control\">\n\t\t</div>\n\t\t<div class=\"form-group\">\n\t\t\t<label>Username</label>\n\t\t\t<input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\n\t\t</div>\n\t\t<div class=\"form-group\">\n\t\t\t<label>Email</label>\n\t\t\t<input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\">\n\t\t</div>\n\t\t<div class=\"form-group\">\n\t\t\t<label>Password</label>\n\t\t\t<input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\n\t\t</div>\n\t\t<input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n\t</form>\n</div>"
-
-/***/ }),
-
-/***/ 360:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 class=\"page-header\">Rentals\n\t<!-- Function Buttons -->\n\t<button class=\"btn btn-success pull-right\" data-toggle=\"modal\" data-target=\"#startModal\" (click)=\"clearCustInfo()\">Start Rental</button>\n</h2>\n\n<!-- Rental List -->\n<div *ngIf=\"rentals\">\n\t<ul class=\"list-group\">\n\t\t<li class=\"list-group-item\" *ngFor=\"let rental of rentals\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Rental ID:</b> <div>{{rental._id}}</div>\n\t      \t<hr>\n\t      \t<b>Status:</b> <div *ngIf=\"rental.status\" class=\"text-success\">Active</div> <div *ngIf=\"!rental.status\" class=\"text-danger\">Returned</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Customer ID:</b> <div>{{rental.customerId}}</div>\n\t      \t<hr>\n\t      \t<b>Customer Name:</b> <div>{{rental.customerName}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Start Date:</b> <div>{{rental.date | date:\"medium\"}}</div>\n\t      \t<hr>\n\t      \t<b>Duration (Minutes):</b> <div>{{rental.duration}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\" style=\"overflow-wrap:break-word;\">\n\t      \t<b>Total:</b> <div>{{rental.total | currency:'CAD':'1.2-2'}}</div>\n\t      \t<hr>\n\t      \t<b>Bikes Out:</b> <div>{{rental.bikeId.length}}</div>\n\t      </div>\n    \t</div>\n    \t<hr>\n    \t<!-- Function Buttons -->\n    \t<div class=\"row\">\n\t      <div class=\"col-md-12 col-sm-12 col-xs-12 text-center\">\n\t      \t<button *ngIf=\"rental.status\" type=\"button\" class=\"btn btn-primary btn-xs\" (click)=\"onAddBike(rental)\" data-toggle=\"modal\" data-target=\"#addBikeModal\">Add Bike</button>\n\t      \t<button *ngIf=\"rental.status\" type=\"button\" class=\"btn btn-primary btn-xs\" (click)=\"onDelBike(rental)\" data-toggle=\"modal\" data-target=\"#delBikeModal\">Remove Bike</button>\n\t      \t<button *ngIf=\"rental.status\" type=\"button\" class=\"btn btn-primary btn-xs\" (click)=\"onEditRental(rental)\" data-toggle=\"modal\" data-target=\"#editModal\">Edit Time</button>\n\t      \t<button *ngIf=\"rental.status\" type=\"button\" class=\"btn btn-primary btn-xs\" (click)=\"onRetBike(rental)\" data-toggle=\"modal\" data-target=\"#retBikeModal\">Return Bike</button>\n\t      \t<button type=\"button\" class=\"btn btn-danger btn-xs pull-right\" (click)=\"onDelRental(rental)\">Delete Rental</button>\n\t      </div>\n    \t</div>\n    </li>\n\t</ul>\n</div>\n\n<!-- Start Rental Modal -->\n<div class=\"modal fade\" id=\"startModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Search Customer</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Name</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"searchName\" name=\"custName\" class=\"form-control\">\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"custFound == true\" class=\"text-center\">\n\t\t\t\t\t<hr>\n\t\t\t\t\t<div *ngIf=\"cust\">\n\t\t\t\t\t\t<strong>Customer Name:</strong>\n\t\t\t\t\t\t{{cust.name}}\n\t\t\t\t\t\t<br>\n\t\t\t\t\t\t<strong>Visits:</strong>\n\t\t\t\t\t\t{{cust.rentalId.length}}\n\t\t\t\t\t\t<div *ngIf=\"cust.info\">\n\t\t\t\t\t\t\t<strong>Note:</strong>\n\t\t\t\t\t\t\t{{cust.info}}\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<br>\n\t\t\t\t\t<button type=\"button\" class=\"btn btn-success\" (click)=\"startRental(cust)\" data-dismiss=\"modal\">Create Rental</button>\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"custFound == false\" class=\"text-center\">\n\t\t\t\t\t<h2>Customer Not Found :(</h2>\n\t\t\t\t\t<br>\n\t\t\t\t\t<button type=\"button\" class=\"btn btn-success\" (click)=\"addCustStartRental()\" data-dismiss=\"modal\">Add Customer and Create Rental</button>\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button *ngIf=\"searchName\" type=\"button\" class=\"btn btn-default\" (click)=\"clearCustInfo()\">Clear</button>\n        <button *ngIf=\"searchName\" type=\"button\" class=\"btn btn-primary\" (click)=\"getCustId()\">Find Customer</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Edit Rental Modal -->\n<div class=\"modal fade\" id=\"editModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Rental Info</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Rental ID:</label>\n\t\t\t\t\t{{this.rental._id}}\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"cust\" class=\"form-group\">\n\t\t\t\t\t<label>Customer Name:</label>\n\t\t\t\t\t{{this.cust.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Date (Please change according to format)</label>\n\t\t\t\t\t<input type=\"text\" [(ngModel)]=\"editDate\" id=\"rentalDate\" class=\"form-control\">\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n      \t<button type=\"button\" class=\"btn btn-default\" (click)=\"editToCurrent()\">Use Current Time</button>\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"resetEdit()\">Reset Change</button>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"onEditSubmit()\" data-dismiss=\"modal\">Change Time</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Add Bike Modal -->\n<div class=\"modal fade\" id=\"addBikeModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearSelectedBikes()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Rental Info</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Rental ID:</label>\n\t\t\t\t\t{{this.rental._id}}\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"cust\" class=\"form-group\">\n\t\t\t\t\t<label>Customer Name:</label>\n\t\t\t\t\t{{this.cust.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Date:</label>\n\t\t\t\t\t{{this.rental.date | date:\"medium\"}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Bike</label>\n\t\t\t\t\t<table\n\t\t\t\t\t\tclass=\"table table-bordered\"\n\t\t\t\t\t\t*ngIf=\"inBikeCount.length !== 0;else noBikes\">\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<td class=\"text-center\">\n\t\t\t\t\t\t  \t<b>Model</b>\n\t\t\t\t\t\t  </td>\n\t\t\t\t\t\t  <td class=\"text-center\">\n\t\t\t\t\t\t  \t<b>Available</b>\n\t\t\t\t\t\t  </td>\n\t\t\t\t\t\t  <td class=\"text-center\">\n\t\t\t\t\t\t  \t<b>Renting</b>\n\t\t\t\t\t\t  </td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t<tr *ngFor=\"let inBike of inBikeCount\">\n\t\t\t\t\t\t\t<td class=\"text-center\">\n\t\t\t\t\t\t  \t{{inBike.model}}\n\t\t\t\t\t\t  </td>\n\t\t\t\t\t\t  <td class=\"text-center\">\n\t\t\t\t\t\t  \t{{inBike.count}}\n\t\t\t\t\t\t  </td>\n\t\t\t\t\t\t  <td\n\t\t\t\t\t\t\t\tclass=\"text-center\"\n\t\t\t\t\t\t\t\t*ngIf=\"rentBikeCount[inBike.model];else zero\">\n\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\t\t\t\tclass=\"btn btn-xs btn-success pull-left\"\n\t\t\t\t\t\t\t\t\t(click)=\"addBikeToRental(inBike)\">\n\t\t\t\t\t\t\t\t\t+\n\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t{{rentBikeCount[inBike.model]}}\n\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\t\t\t\tclass=\"btn btn-xs btn-danger pull-right\"\n\t\t\t\t\t\t\t\t\t(click)=\"removeBikeFromRental(inBike)\">\n\t\t\t\t\t\t\t\t\t-\n\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t  </td>\n\t\t\t\t\t\t\t<ng-template #zero>\n\t\t\t\t\t\t\t\t<td class=\"text-center\">\n\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\t\t\t\tclass=\"btn btn-xs btn-success pull-left\"\n\t\t\t\t\t\t\t\t\t(click)=\"addBikeToRental(inBike)\">\n\t\t\t\t\t\t\t\t\t+\n\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t\t0\n\t\t\t\t\t\t\t\t<button\n\t\t\t\t\t\t\t\t\ttype=\"button\"\n\t\t\t\t\t\t\t\t\tclass=\"btn btn-xs btn-danger pull-right\"\n\t\t\t\t\t\t\t\t\t(click)=\"removeBikeFromRental(inBike)\">\n\t\t\t\t\t\t\t\t\t-\n\t\t\t\t\t\t\t\t</button>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t</ng-template>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</table>\n\t\t\t\t\t<ng-template #noBikes>\n\t\t\t\t\t\t<div class=\"text-danger\">\n\t\t\t\t\t\t\tNo Bikes Available :(\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</ng-template>\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button *ngIf=\"!isEmpty(rentBikeCount)\" type=\"button\" class=\"btn btn-primary\" (click)=\"onAddBikeSubmit()\" data-dismiss=\"modal\">Add Bike</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Remove Bike Modal -->\n<div class=\"modal fade\" id=\"delBikeModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearSelectedBikes()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Remove Bike</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Rental ID:</label>\n\t\t\t\t\t{{this.rental._id}}\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"cust\" class=\"form-group\">\n\t\t\t\t\t<label>Customer Name:</label>\n\t\t\t\t\t{{this.cust.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Date:</label>\n\t\t\t\t\t{{this.rental.date | date:\"medium\"}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Bike</label>\n\t\t\t\t\t<label *ngFor=\"let outBike of outBikes\" class=\"form-control\">\n\t\t        <input type=\"checkbox\" (change)=\"updateChecked(outBike)\"> ID: {{outBike._id}} | Model: {{outBike.model}}\n\t\t    \t</label>\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n        <button *ngIf=\"selectedBikes.length !== 0\" type=\"button\" class=\"btn btn-primary\" (click)=\"onDelBikeSubmit()\" data-dismiss=\"modal\">Remove Bike</button>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- Return Bike Modal -->\n<div class=\"modal fade\" id=\"retBikeModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\" (click)=\"clearSelectedBikes()\"><span aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Return Bike</h4>\n      </div>\n      <div class=\"modal-body\">\n        <div class=\"form-group\">\n\t\t\t\t\t<label>Rental ID:</label>\n\t\t\t\t\t{{this.rental._id}}\n\t\t\t\t</div>\n\t\t\t\t<div *ngIf=\"cust\" class=\"form-group\">\n\t\t\t\t\t<label>Customer Name:</label>\n\t\t\t\t\t{{this.cust.name}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Date:</label>\n\t\t\t\t\t{{this.rental.date | date:\"medium\"}}\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Duration:</label>\n\t\t\t\t\t{{this.rental.duration}} minutes\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label>Bike</label>\n\t\t\t\t\t<label *ngFor=\"let outBike of outBikes\" class=\"form-control\">\n\t\t        <input type=\"checkbox\" [checked]=\"selectAll\" (change)=\"updateChecked(outBike)\"> ID: {{outBike._id}} | Model: {{outBike.model}}\n\t\t    \t</label>\n\t\t    \t<button type=\"button\" class=\"form-control\" id=\"all\" (click)=\"selectAllBikes();\">Select All</button>\n\t\t\t\t</div>\n      </div>\n      <div class=\"modal-footer\">\n\t\t\t\t<div class=\"pull-right\">\n        \t<button *ngIf=\"selectedBikes.length !== 0\" type=\"button\" class=\"btn btn-primary\" (click)=\"onRetBikeSubmit()\" data-dismiss=\"modal\">Return Bike</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
-
-/***/ }),
-
-/***/ 361:
-/***/ (function(module, exports) {
-
-module.exports = "<h2 class=\"page-header\">Sales</h2>\n\n<!-- Search Date -->\n<div>\n\t<input \n\t\ttype=\"date\" \n\t\t(change)=\"changeDate(date);\"\n\t\t[(ngModel)]=\"date\" \n\t\tname=\"date\" \n\t\tclass=\"form-control\" \n\t\tstyle=\"width:170px;\">\n</div>\n<br>\n\n<!-- Sales Report -->\n<table class=\"table table-bordered\">\n\t<div class=\"row\">\n\t\t<div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t  \t<b>Number of Rentals:</b> \n\t\t\t<div>{{totalRentals}}</div>\n\t  </div>\n\t  <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t  \t<b>Total Sales:</b> \n\t\t\t<div>{{revenue | currency:'CAD':'1.2-2'}}</div>\n\t  </div>\n\t  <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t  \t<b>Tax:</b> \n\t\t\t<div>{{tax | currency:'CAD':'1.2-2'}}</div>\n\t  </div>\n\t  <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t  \t<b>Average Rental Sale:</b> \n\t\t\t<div>{{avgRental | currency:'CAD':'1.2-2'}}</div>\n\t  </div>\n\t</div>\n</table>\n\n<!-- Rental List -->\n<div *ngIf=\"rentals\">\n\t<ul class=\"list-group\">\n\t\t<li \n\t\t\tclass=\"list-group-item\" \n\t\t\t*ngFor=\"let rental of rentals\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Rental ID:</b> \n\t\t\t\t\t<div>{{rental._id}}</div>\n\t      \t<hr>\n\t      \t<b>Status:</b> \n\t\t\t\t\t<div \n\t\t\t\t\t\t*ngIf=\"rental.status\" \n\t\t\t\t\t\tclass=\"text-success\">\n\t\t\t\t\t\tActive\n\t\t\t\t\t</div> \n\t\t\t\t\t<div \n\t\t\t\t\t\t*ngIf=\"!rental.status\" \n\t\t\t\t\t\tclass=\"text-danger\">\n\t\t\t\t\t\tReturned\n\t\t\t\t\t</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Customer ID:</b> \n\t\t\t\t\t<div>{{rental.customerId}}</div>\n\t      \t<hr>\n\t      \t<b>Customer Name:</b> \n\t\t\t\t\t<div>{{rental.customerName}}</div>\n\t      </div>\n\t      <div class=\"col-md-3 col-sm-6 col-xs-12 text-center\">\n\t      \t<b>Start Date:</b> \n\t\t\t\t\t<div>{{rental.date | date:\"medium\"}}</div>\n\t      \t<hr>\n\t      \t<b>Duration (Minutes):</b> <div>{{rental.duration}}</div>\n\t      </div>\n\t\t\t\t<div \n\t\t\t\t\tclass=\"col-md-3 col-sm-6 col-xs-12 text-center\" style=\"overflow-wrap:break-word;\">\n\t      \t<b>Total:</b> \n\t\t\t\t\t<div>{{rental.total | currency:'CAD':'1.2-2'}}</div>\n\t      \t<hr>\n\t      \t<b>Bikes:</b> \n\t\t\t\t\t<div>{{rental.bikeId.length}}</div>\n\t      </div>\n    \t</div>\n    </li>\n\t</ul>\n</div>"
-
-/***/ }),
-
-/***/ 414:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(154);
-
-
-/***/ }),
-
-/***/ 42:
+/***/ "./src/app/services/bike.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BikeService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2025,7 +1833,7 @@ var BikeService = /** @class */ (function () {
         return this.http.post('bikes/update', model, { headers: headers }).map(function (res) { return res.json(); });
     };
     BikeService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object])
     ], BikeService);
     return BikeService;
@@ -2036,15 +1844,75 @@ var BikeService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 43:
+/***/ "./src/app/services/customer.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CustomerService = /** @class */ (function () {
+    function CustomerService(http) {
+        this.http = http;
+    }
+    CustomerService.prototype.getCustList = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('customers/list', { headers: headers }).map(function (res) { return res.json(); });
+    };
+    CustomerService.prototype.getCust = function (name) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('customers/find', name, { headers: headers }).map(function (res) { return res.json(); });
+    };
+    CustomerService.prototype.addCustomer = function (name) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/customers/add', name, { headers: headers }).map(function (res) { return res.json(); });
+    };
+    CustomerService.prototype.delCustomer = function (custId) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('customers/del', custId, { headers: headers }).map(function (res) { return res.json(); });
+    };
+    CustomerService.prototype.editCustomer = function (cust) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('customers/update', cust, { headers: headers }).map(function (res) { return res.json(); });
+    };
+    CustomerService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object])
+    ], CustomerService);
+    return CustomerService;
+    var _a;
+}());
+
+//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/customer.service.js.map
+
+/***/ }),
+
+/***/ "./src/app/services/rental.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RentalService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2147,7 +2015,7 @@ var RentalService = /** @class */ (function () {
         popupWin.document.close();
     };
     RentalService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object])
     ], RentalService);
     return RentalService;
@@ -2158,96 +2026,12 @@ var RentalService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 68:
+/***/ "./src/app/services/validate.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_animations__ = __webpack_require__(67);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return fadeInAnimation; });
-
-var fadeInAnimation = 
-// trigger name for attaching this animation to an element using the [@triggerName] syntax
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["i" /* trigger */])('fadeInAnimation', [
-    // route 'enter' transition
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["j" /* transition */])(':enter', [
-        // css styles at start of transition
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* style */])({ opacity: 0 }),
-        // animation and styles at end of transition
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["k" /* animate */])('.5s', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_animations__["h" /* style */])({ opacity: 1 }))
-    ])
-]);
-//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/fade-in.animation.js.map
-
-/***/ }),
-
-/***/ 69:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var CustomerService = /** @class */ (function () {
-    function CustomerService(http) {
-        this.http = http;
-    }
-    CustomerService.prototype.getCustList = function () {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-Type', 'application/json');
-        return this.http.get('customers/list', { headers: headers }).map(function (res) { return res.json(); });
-    };
-    CustomerService.prototype.getCustId = function (name) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-Type', 'application/json');
-        return this.http.post('customers/find', name, { headers: headers }).map(function (res) { return res.json(); });
-    };
-    CustomerService.prototype.addCustomer = function (name) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-Type', 'application/json');
-        return this.http.post('/customers/add', name, { headers: headers }).map(function (res) { return res.json(); });
-    };
-    CustomerService.prototype.delCustomer = function (custId) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-Type', 'application/json');
-        return this.http.post('customers/del', custId, { headers: headers }).map(function (res) { return res.json(); });
-    };
-    CustomerService.prototype.editCustomer = function (cust) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        headers.append('Content-Type', 'application/json');
-        return this.http.post('customers/update', cust, { headers: headers }).map(function (res) { return res.json(); });
-    };
-    CustomerService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object])
-    ], CustomerService);
-    return CustomerService;
-    var _a;
-}());
-
-//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/customer.service.js.map
-
-/***/ }),
-
-/***/ 70:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ValidateService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2282,7 +2066,7 @@ var ValidateService = /** @class */ (function () {
         return re.test(email);
     };
     ValidateService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [])
     ], ValidateService);
     return ValidateService;
@@ -2290,7 +2074,226 @@ var ValidateService = /** @class */ (function () {
 
 //# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/validate.service.js.map
 
+/***/ }),
+
+/***/ "./src/app/shared/bike.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Bike; });
+var Bike = /** @class */ (function () {
+    function Bike() {
+    }
+    return Bike;
+}());
+
+//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/bike.js.map
+
+/***/ }),
+
+/***/ "./src/app/shared/bikefilter.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BikeFilterPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var BikeFilterPipe = /** @class */ (function () {
+    function BikeFilterPipe() {
+    }
+    BikeFilterPipe.prototype.transform = function (bikes, query) {
+        if (!bikes || !query)
+            return bikes;
+        return bikes.filter(function (bike) {
+            for (var field in query) {
+                if (query[field]) {
+                    if (field === '_id') {
+                        if (Math.floor(bike[field] / 1000) !== query[field]) {
+                            return false;
+                        }
+                    }
+                    else if (field === 'status' || field === 'model') {
+                        if (bike[field].toLowerCase().indexOf(query[field].toLowerCase()) === -1) {
+                            return false;
+                        }
+                    }
+                    else if (field === 'price') {
+                        if (bike[field] !== query[field]) {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        });
+    };
+    BikeFilterPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'bfilter',
+            pure: false
+        })
+    ], BikeFilterPipe);
+    return BikeFilterPipe;
+}());
+
+//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/bikefilter.pipe.js.map
+
+/***/ }),
+
+/***/ "./src/app/shared/customer.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Customer; });
+var Customer = /** @class */ (function () {
+    function Customer() {
+    }
+    return Customer;
+}());
+
+//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/customer.js.map
+
+/***/ }),
+
+/***/ "./src/app/shared/customerfilter.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerFilterPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var CustomerFilterPipe = /** @class */ (function () {
+    function CustomerFilterPipe() {
+    }
+    CustomerFilterPipe.prototype.transform = function (customers, query) {
+        if (!customers || !query)
+            return customers;
+        return customers.filter(function (cust) {
+            for (var field in query) {
+                if (query[field] && cust[field]) {
+                    if (field === 'name' || field === 'info') {
+                        if (cust[field].toUpperCase().indexOf(query[field].toUpperCase()) === -1) {
+                            return false;
+                        }
+                    }
+                    else if (field === 'rentalId') {
+                        var found = false;
+                        for (var id in cust[field]) {
+                            if (cust[field][id].indexOf(query[field]) !== -1) {
+                                found = true;
+                            }
+                        }
+                        return found;
+                    }
+                    else {
+                        if (cust[field].indexOf(query[field]) === -1) {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        });
+    };
+    CustomerFilterPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'cfilter',
+            pure: false
+        })
+    ], CustomerFilterPipe);
+    return CustomerFilterPipe;
+}());
+
+//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/customerfilter.pipe.js.map
+
+/***/ }),
+
+/***/ "./src/app/shared/model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Model; });
+var Model = /** @class */ (function () {
+    function Model() {
+    }
+    return Model;
+}());
+
+//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/model.js.map
+
+/***/ }),
+
+/***/ "./src/app/shared/rental.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Rental; });
+var Rental = /** @class */ (function () {
+    function Rental() {
+    }
+    return Rental;
+}());
+
+//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/rental.js.map
+
+/***/ }),
+
+/***/ "./src/environments/environment.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
+// The file contents for the current environment will overwrite these during build.
+// The build system defaults to the dev environment which uses `environment.ts`, but if you do
+// `ng build --env=prod` then `environment.prod.ts` will be used instead.
+// The list of which env maps to which file can be found in `angular-cli.json`.
+var environment = {
+    production: false
+};
+//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/environment.js.map
+
+/***/ }),
+
+/***/ "./src/main.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__("./node_modules/@angular/platform-browser-dynamic/@angular/platform-browser-dynamic.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__("./src/app/app.module.ts");
+
+
+
+
+if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment */].production) {
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["enableProdMode"])();
+}
+Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
+//# sourceMappingURL=/home/jm/Projects/mean/angular-src/src/main.js.map
+
+/***/ }),
+
+/***/ 0:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("./src/main.ts");
+
+
 /***/ })
 
-},[414]);
-//# sourceMappingURL=main.bundle.map
+},[0]);
+//# sourceMappingURL=main.bundle.js.map

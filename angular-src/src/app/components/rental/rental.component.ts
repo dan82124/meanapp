@@ -47,12 +47,12 @@ export class RentalComponent implements OnInit {
     });
   }
 
-  getCustId() {
+  getCust(name) {
     let query = {
-      name: this.searchName.toUpperCase()
+      name: name.toUpperCase()
     }
 
-    this.customerService.getCustId(query).subscribe(data => {
+    this.customerService.getCust(query).subscribe(data => {
       if (data.success) {
         this.cust = data.msg;
         this.custFound = true;
@@ -234,16 +234,13 @@ export class RentalComponent implements OnInit {
 
   onRetBike(rental) {
     this.clearSelectedBikes();
-    this.cust._id = rental.customerId;
-    this.cust.name = rental.customerName;
-    this.rental._id = rental._id;
-    this.rental.date = new Date(rental.date);
-    this.rental.bikeId = rental.bikeId;
-    this.rental.tax = rental.tax;
-    this.rental.total = rental.total;
+
+    this.getCust(rental.customerName);
+
+    this.rental = rental;
 
     this.currentTime = new Date();
-    let duration = Math.round((this.currentTime.getTime() - this.rental.date.getTime())/(1000*60));
+    let duration = Math.round((this.currentTime.getTime() - new Date(this.rental.date).getTime())/(1000*60));
     this.rental.duration = duration;
 
     let rented = {
@@ -294,6 +291,8 @@ export class RentalComponent implements OnInit {
       subTotal: this.subTotal,
       total: this.total
     }
+
+    console.log(this.rentalService.returnDetails);
 
     this.router.navigate(['/checkout']);
   }
@@ -365,8 +364,8 @@ export class RentalComponent implements OnInit {
       this.clearSelectedBikes();
       document.getElementById('all').innerHTML = 'Select All';
     }
-    console.log(this.selectedBikes);
-    console.log(this.selectAll);
+    // console.log(this.selectedBikes);
+    // console.log(this.selectAll);
   }
 
   clearSelectedBikes() {

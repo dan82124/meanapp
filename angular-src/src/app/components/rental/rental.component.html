@@ -81,7 +81,7 @@
       </div>
       <div class="modal-footer">
         <button *ngIf="searchName" type="button" class="btn btn-default" (click)="clearCustInfo()">Clear</button>
-        <button *ngIf="searchName" type="button" class="btn btn-primary" (click)="getCustId()">Find Customer</button>
+        <button *ngIf="searchName" type="button" class="btn btn-primary" (click)="getCust(searchName)">Find Customer</button>
       </div>
     </div>
   </div>
